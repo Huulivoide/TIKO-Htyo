@@ -28,7 +28,8 @@ if [ -e "${DOKUMENTTI}.pan" ]; then
 
     pandoc -V papersize:a4paper \
            -V geometry:margin=2cm \
-           -V documentclass:report \
+           -V fontfamily:cantarell \
+           -V documentclass:scrreprt \
            --table-of-contents \
            -o "${DOKUMENTTI}.pdf" \
            "${DOKUMENTTI}.pan"
