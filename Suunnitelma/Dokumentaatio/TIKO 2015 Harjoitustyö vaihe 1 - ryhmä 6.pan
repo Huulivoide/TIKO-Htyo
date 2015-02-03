@@ -1,6 +1,6 @@
 % Digitaalinen HOPS järjestelmä – Ryhmän 6 esitys
 % Jesse Jaara     <Jaara.Jesse.J@student.uta.fi>
-  Samo Voutilanen <Voutilainen.Sami.J@student.uta.fi>
+  Sami Voutilanen <Voutilainen.Sami.J@student.uta.fi>
 % 2015.02.03
 
 
