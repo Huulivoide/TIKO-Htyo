@@ -30,6 +30,7 @@ if [ -e "${DOKUMENTTI}.pan" ]; then
            -V geometry:margin=2cm \
            -V fontfamily:cantarell \
            -V documentclass:scrreprt \
+           -V lang:finnish \
            --table-of-contents \
            -o "${DOKUMENTTI}.pdf" \
            "${DOKUMENTTI}.pan"
