@@ -30,7 +30,7 @@ if [ -e "${DOKUMENTTI}.pan" ]; then
            --template=tiko.latex \
            --table-of-contents \
            -o "${DOKUMENTTI}.pdf" \
-           "/tmp/${DOKUMENTTI}.pan"
+           "${DOKUMENTTI}.pan"
 else
     echo "Tiedostoa ${DOKUMENTTI}.pan ei löydy."
 fi
