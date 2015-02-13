@@ -1972,13 +1972,13 @@
         <dia:point val="101,-8"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="100.95,-8.05;105.36,-6.15"/>
+        <dia:rectangle val="100.95,-8.05;105.745,-6.15"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="101,-8"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
-        <dia:real val="4.3100000000000005"/>
+        <dia:real val="4.6950000000000003"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
         <dia:real val="1.8"/>
@@ -1993,7 +1993,7 @@
         <dia:color val="#ffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
-        <dia:string>#keski-#</dia:string>
+        <dia:string>#toinen-#</dia:string>
       </dia:attribute>
       <dia:attribute name="key">
         <dia:boolean val="false"/>
@@ -2016,14 +2016,14 @@
     </dia:object>
     <dia:object type="Standard - Line" version="0" id="O53">
       <dia:attribute name="obj_pos">
-        <dia:point val="100.953,-7.14598"/>
+        <dia:point val="100.953,-7.14818"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="99.797,-7.22008;101.004,-7.09495"/>
+        <dia:rectangle val="99.7972,-7.22141;101.004,-7.09719"/>
       </dia:attribute>
       <dia:attribute name="conn_endpoints">
-        <dia:point val="100.953,-7.14598"/>
-        <dia:point val="99.848,-7.16904"/>
+        <dia:point val="100.953,-7.14818"/>
+        <dia:point val="99.8482,-7.17042"/>
       </dia:attribute>
       <dia:attribute name="numcp">
         <dia:int val="1"/>
@@ -2038,13 +2038,13 @@
         <dia:point val="59,-14.5"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="58.95,-14.55;63.36,-12.65"/>
+        <dia:rectangle val="58.95,-14.55;63.745,-12.65"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="59,-14.5"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
-        <dia:real val="4.3100000000000005"/>
+        <dia:real val="4.6950000000000003"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
         <dia:real val="1.8"/>
@@ -2059,7 +2059,7 @@
         <dia:color val="#ffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
-        <dia:string>#keski-#</dia:string>
+        <dia:string>#toinen-#</dia:string>
       </dia:attribute>
       <dia:attribute name="key">
         <dia:boolean val="false"/>
@@ -2082,14 +2082,14 @@
     </dia:object>
     <dia:object type="Standard - Line" version="0" id="O55">
       <dia:attribute name="obj_pos">
-        <dia:point val="60.0245,-12.8266"/>
+        <dia:point val="60.1201,-12.7956"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="57.7973,-12.8961;60.094,-11.2809"/>
+        <dia:rectangle val="57.8278,-12.8648;60.1894,-11.2694"/>
       </dia:attribute>
       <dia:attribute name="conn_endpoints">
-        <dia:point val="60.0245,-12.8266"/>
-        <dia:point val="57.8668,-11.3504"/>
+        <dia:point val="60.1201,-12.7956"/>
+        <dia:point val="57.8971,-11.3386"/>
       </dia:attribute>
       <dia:attribute name="numcp">
         <dia:int val="1"/>
