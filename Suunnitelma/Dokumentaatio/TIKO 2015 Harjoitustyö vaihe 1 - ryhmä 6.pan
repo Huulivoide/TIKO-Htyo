@@ -1,7 +1,6 @@
 % Digitaalinen HOPS järjestelmä – Ryhmän 6 esitys
 % Jesse Jaara     <Jaara.Jesse.J@student.uta.fi>
   Sami Voutilanen <Voutilainen.Sami.J@student.uta.fi>
-% 2015.02.03
 
 
 
@@ -10,7 +9,7 @@
 * Entitteeti 1
     - Ominaisuus 1: Kuvaus ominaisuudesta
 
-  ![Entitteeti 1](kuvat/Testi-kuva.png)\
+  \insertDiagram{opiskelija}
 
 
 * Entiteetti 2
@@ -20,13 +19,13 @@
       jolla on pitkäseselite,
       joka ei mahdu yhdelle riville
 
-  ![Entiteetti 2](kuvat/Testi-kuva.png)\
+  \insertDiagram{Opintojakso}
     
 
 
 # ER-kaavio kokonaisuudessaan
 
-![ER-kaavio](kuvat/Testi-kuva.png)\
+\insertDiagram{ER-kokonaisuus}
 
 Pitkät pätkät selitystä ER-kaavion sisällöstä,
 ja kaikesta muusta mahdollisesta
@@ -34,8 +33,6 @@ ja kaikesta muusta mahdollisesta
 
 
 # Tietokantakaavion graafinen esitys
-
-![SQL-kaavio](kuvat/Testi-kuva.png)\
 
 Paljon kohinaa ja staattista televisio lumisadetta,
 joka kuvastaa kaavion syvintä olemusta.
@@ -68,7 +65,7 @@ Kappale 2 käy taas puolestaan itse asian kimppuun
 
 # Tietokannan luontilauseet
 
-~~~~~~ {#SQL-lauseet .sql .numberLines}
+~~~~~~ {#SQL-lauseet .sqlpostgresql .numberLines}
 CREATE TABLE HOPS
 (
     ID SERIAL PRIMARY KEY,

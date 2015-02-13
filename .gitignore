@@ -1,6 +1,7 @@
 # Linux "backup" files
 *~
 
-# Dokumentaatio scripti muuntaa dia tiedostot png kuviksi
+# Dokumentaatio scripti muuntaa dia tiedostot PGF: tikz-makroiksi
+*.tikz
 *.png 
 *.pdf
