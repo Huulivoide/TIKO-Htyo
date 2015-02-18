@@ -6,21 +6,36 @@
 
 # ER-kaavion entiteetit
 
-* Entitteeti 1
-    - Ominaisuus 1: Kuvaus ominaisuudesta
+### Käyttäjä - Opiskelija - Opettaja
+\insertDiagram{ER-entiteetti-kayttaja}
+\insertDiagram{ER-entiteetti-opiskelija}
+\insertDiagram{ER-entiteetti-opettajatuutori}
 
-  \insertDiagram{opiskelija}
+- Ominaisuus 1: Kuvaus ominaisuudesta
 
 
-* Entiteetti 2
-    - Ominaisuus 1
-    - Ominaisuus 2
-    - Ominaisuus 3,
-      jolla on pitkäseselite,
-      joka ei mahdu yhdelle riville
+### Ryhmä
+\insertDiagram{ER-entiteetti-ryhma}
 
-  \insertDiagram{Opintojakso}
-    
+- ID
+
+
+### Opintojakso
+\insertDiagram{ER-entiteetti-opintojakso}
+
+- Ominaisuus 1
+- Ominaisuus 2
+- Ominaisuus 3,
+    jolla on pitkäseselite,
+    joka ei mahdu yhdelle riville
+
+
+### Oppiaine
+\insertDiagram{ER-entiteetti-oppiaine}
+
+- ID:
+- Nimi:
+
 
 
 # ER-kaavio kokonaisuudessaan

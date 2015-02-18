@@ -7,6 +7,9 @@ function dia2tikz()
     DIAFILE="$(basename "$1")"
     TIKZFILE="kaaviot/${DIAFILE//dia/tikz}"
 
+    # LaTeX ei tykkää ääkkösiä sisältävistä tiedostonimistä
+    TIKZFILE="$(echo $TIKZFILE | sed -e 's|ä|a|g' -e 's|ö|o|g')"
+
     # Muunna vain jos dia kaaviota on muutettu tai
     # tikz tiedostoa ei ole jo olemassa
     if [ "${1}" -nt "${TIKZFILE}" ] || [ ! -f "${TIKZFILE}"  ]; then
