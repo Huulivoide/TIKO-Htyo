@@ -62,8 +62,36 @@
       </dia:composite>
     </dia:attribute>
   </dia:diagramdata>
-  <dia:layer name="Tausta" visible="true">
-    <dia:object type="ER - Entity" version="0" id="O0">
+  <dia:layer name="rajat" visible="true">
+    <dia:object type="Standard - Box" version="0" id="O0">
+      <dia:attribute name="obj_pos">
+        <dia:point val="5,6"/>
+      </dia:attribute>
+      <dia:attribute name="obj_bb">
+        <dia:rectangle val="5,6;32,10"/>
+      </dia:attribute>
+      <dia:attribute name="elem_corner">
+        <dia:point val="5,6"/>
+      </dia:attribute>
+      <dia:attribute name="elem_width">
+        <dia:real val="27"/>
+      </dia:attribute>
+      <dia:attribute name="elem_height">
+        <dia:real val="4"/>
+      </dia:attribute>
+      <dia:attribute name="border_width">
+        <dia:real val="1.1754943508222875e-38"/>
+      </dia:attribute>
+      <dia:attribute name="border_color">
+        <dia:color val="#ffffff"/>
+      </dia:attribute>
+      <dia:attribute name="show_background">
+        <dia:boolean val="false"/>
+      </dia:attribute>
+    </dia:object>
+  </dia:layer>
+  <dia:layer name="Tausta" visible="true" active="true">
+    <dia:object type="ER - Entity" version="0" id="O1">
       <dia:attribute name="obj_pos">
         <dia:point val="10,7"/>
       </dia:attribute>
@@ -92,7 +120,7 @@
         <dia:string>#opettajatuutori#</dia:string>
       </dia:attribute>
       <dia:attribute name="weak">
-        <dia:boolean val="false"/>
+        <dia:boolean val="true"/>
       </dia:attribute>
       <dia:attribute name="associative">
         <dia:boolean val="false"/>
@@ -104,7 +132,7 @@
         <dia:real val="0.80000000000000004"/>
       </dia:attribute>
     </dia:object>
-    <dia:object type="ER - Attribute" version="0" id="O1">
+    <dia:object type="ER - Attribute" version="0" id="O2">
       <dia:attribute name="obj_pos">
         <dia:point val="20,7"/>
       </dia:attribute>
@@ -151,7 +179,7 @@
         <dia:real val="0.80000000000000004"/>
       </dia:attribute>
     </dia:object>
-    <dia:object type="Standard - Line" version="0" id="O2">
+    <dia:object type="Standard - Line" version="0" id="O3">
       <dia:attribute name="obj_pos">
         <dia:point val="19.9499,7.9"/>
       </dia:attribute>
@@ -166,37 +194,9 @@
         <dia:int val="1"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O1" connection="8"/>
-        <dia:connection handle="1" to="O0" connection="8"/>
+        <dia:connection handle="0" to="O2" connection="8"/>
+        <dia:connection handle="1" to="O1" connection="8"/>
       </dia:connections>
-    </dia:object>
-  </dia:layer>
-  <dia:layer name="rajat" visible="true" active="true">
-    <dia:object type="Standard - Box" version="0" id="O3">
-      <dia:attribute name="obj_pos">
-        <dia:point val="5,6"/>
-      </dia:attribute>
-      <dia:attribute name="obj_bb">
-        <dia:rectangle val="5,6;32,10"/>
-      </dia:attribute>
-      <dia:attribute name="elem_corner">
-        <dia:point val="5,6"/>
-      </dia:attribute>
-      <dia:attribute name="elem_width">
-        <dia:real val="27"/>
-      </dia:attribute>
-      <dia:attribute name="elem_height">
-        <dia:real val="4"/>
-      </dia:attribute>
-      <dia:attribute name="border_width">
-        <dia:real val="1.1754943508222875e-38"/>
-      </dia:attribute>
-      <dia:attribute name="border_color">
-        <dia:color val="#ffffff"/>
-      </dia:attribute>
-      <dia:attribute name="show_background">
-        <dia:boolean val="false"/>
-      </dia:attribute>
     </dia:object>
   </dia:layer>
 </dia:diagram>
