@@ -65,19 +65,19 @@
   <dia:layer name="reunus" visible="true" active="true">
     <dia:object type="Standard - Box" version="0" id="O0">
       <dia:attribute name="obj_pos">
-        <dia:point val="24,11"/>
+        <dia:point val="24,12"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="24,11;51,24"/>
+        <dia:rectangle val="24,12;51,13"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
-        <dia:point val="24,11"/>
+        <dia:point val="24,12"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
         <dia:real val="27"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
-        <dia:real val="13"/>
+        <dia:real val="1"/>
       </dia:attribute>
       <dia:attribute name="border_width">
         <dia:real val="1.1754943508222875e-38"/>
