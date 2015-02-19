@@ -146,11 +146,32 @@ $endfor$
 % Tikz:in käyttöön tarvittavat juttelot sun muut omat härpäkkeet
 \usepackage{tikz}
 \usepackage{adjustbox}
+\usepackage{inconsolata}
+\usepackage{caption}
 
-\newcommand{\insertDiagram}[1]{
-\begin{adjustbox}{width=\textwidth,height=\textheight,keepaspectratio}
-\input{kaaviot/#1.tikz}
-\end{adjustbox}
+\newcommand{\insertGeneral}[4]
+{
+    \begin{figure}[h]
+    \label{#1}
+    \begin{adjustbox}{width=#3,height=\textheight,keepaspectratio}
+    \texttt
+    {
+        \input{kaaviot/#1.tikz}
+    }
+    \end{adjustbox}
+    \captionsetup{justification=#4,singlelinecheck=false}
+    \caption{#2}
+    \end{figure}
+}
+
+\newcommand{\insertDiagram}[2]
+{
+    \insertGeneral{#1}{#2}{\textwidth}{centering}
+}
+
+\newcommand{\insertRelation}[2]
+{
+    \insertGeneral{#1}{#2}{6cm}{justified}
 }
 
 % Tähän loppuu omat härpäkkeet
