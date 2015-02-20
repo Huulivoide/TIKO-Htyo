@@ -2509,7 +2509,7 @@
         <dia:point val="33,1"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="33,1;45.1,12.4"/>
+        <dia:rectangle val="33,1;45.5,12.4"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -2518,7 +2518,7 @@
         <dia:point val="33,1"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
-        <dia:real val="12.1"/>
+        <dia:real val="12.5"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
         <dia:real val="11.399999999999999"/>
@@ -2714,7 +2714,7 @@
         </dia:composite>
         <dia:composite type="table_attribute">
           <dia:attribute name="name">
-            <dia:string>#secondary_interest#</dia:string>
+            <dia:string>#secondary_interests#</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
             <dia:string>#TEXT#</dia:string>
@@ -2776,13 +2776,13 @@
     </dia:object>
     <dia:object type="Standard - ZigZagLine" version="1" id="O31">
       <dia:attribute name="obj_pos">
-        <dia:point val="45.1,3.8"/>
+        <dia:point val="45.5,3.8"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="45.05,3.75;48.1118,19.1309"/>
+        <dia:rectangle val="45.45,3.75;48.1118,19.1309"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="45.1,3.8"/>
+        <dia:point val="45.5,3.8"/>
         <dia:point val="47,3.8"/>
         <dia:point val="47,18.8"/>
         <dia:point val="48,18.8"/>
