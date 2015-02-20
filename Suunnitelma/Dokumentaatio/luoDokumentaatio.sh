@@ -26,11 +26,14 @@ if [ -e "${DOKUMENTTI}.pan" ]; then
 
     pandoc -V papersize:a4paper \
            -V geometry:margin=2cm \
-           -V fontfamily:cantarell \
+           -V mainfont:"Noto Serif" \
+           -V sansfont:"Noto Sans" \
+           -V monofont:"Liberation Mono" \
            -V documentclass:scrreprt \
            -V lang:finnish \
-           -f markdown+raw_tex \
+           -f markdown+raw_tex+auto_identifiers \
            --template=tiko.latex \
+           --latex-engine=xelatex \
            --table-of-contents \
            -o "${DOKUMENTTI}.pdf" \
            "${DOKUMENTTI}.pan"

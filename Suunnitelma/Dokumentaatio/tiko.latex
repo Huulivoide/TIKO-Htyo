@@ -146,13 +146,11 @@ $endfor$
 % Tikz:in käyttöön tarvittavat juttelot sun muut omat härpäkkeet
 \usepackage{tikz}
 \usepackage{adjustbox}
-\usepackage{inconsolata}
 \usepackage{caption}
 
 \newcommand{\insertGeneral}[4]
 {
     \begin{figure}[h]
-    \label{#1}
     \begin{adjustbox}{width=#3,height=\textheight,keepaspectratio}
     \texttt
     {
@@ -161,6 +159,7 @@ $endfor$
     \end{adjustbox}
     \captionsetup{justification=#4,singlelinecheck=false}
     \caption{#2}
+    \label{fig:#1}
     \end{figure}
 }
 
