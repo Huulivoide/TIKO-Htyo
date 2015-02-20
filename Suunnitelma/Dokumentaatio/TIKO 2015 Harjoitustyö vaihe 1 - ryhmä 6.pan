@@ -49,31 +49,381 @@ ja kaikesta muusta mahdollisesta
 
 # Tietokantakaavion graafinen esitys
 
+Tietokannan relaatiot on nimetty [CakePHP](http://cakephp.org/)
+ohjelmistokehyksen suositusten mukaisesti, joten esimerkiksi monen suhde moneen
+relaatioiden nimet eivät ole kovin selkeitä. CakePHP:n nimeämis tekniikoiden
+käyttäminen kuitenkin mahdollistaa kaikkien CakePHP:n 
+tietokanta-automatisointiominaisuuksien käyttämisen, helpottaen varsinaista
+toteutusvaihetta. Viitteavainviivojen väreiällä ei ole merkitystä, ne ovat vain
+helpottamassa havainnollistamista kohdissa, joissa useampi viiva risteää.
+
 \insertDiagram{Relaatio-kaavio}{Relaatio-kaavio}
 
-Paljon kohinaa ja staattista televisio lumisadetta,
-joka kuvastaa kaavion syvintä olemusta.
+Kaaviossa \ref{fig:Relaatio-kaavio} on esiteltynä kaikki projektiin liittyvät
+relaatiot ja niiden keskinäiset suhteet. Sama kaavio löytyy koko sivun kokoisena
+tämän dokumentin lopusta.
+
+Salmiakkikuviolla ♦ merkityt attribuuttit ovat pääavaimia.
+Avoin ympyrä ○ vasemlla tarkoittaa että __NULL__ arvot ovat sallittuja. Suljettu
+ympyrä ● taas puolestaan tarkoittaa, että __NULL__ arvot eivät olesallittuja.
 
 
 ## User
-\insertRelation{Relaatio-student}{Student ralaatio}
 
-- id: Numeerinen tunniste, joka on valittu PPT-tunnuksen sijaan
+_User_ relaatio vastaa ER-kaavion \ref{fig:ER-entiteetti-kayttaja} käyttäjä
+entiteettiä
+
+\insertRelation{Relaatio-user}{User ralaatio}
+
+- id: Numeerinen automaattisesti kasvava pääavain.
+    * 0
+    * 134
+    * 975858975858
+- login: Uniikki tunnus, jota käytetään siisänkirjausuttaessa. == __PPT__
+  Koska käyttäjä tauluun ja/tai sen aliluokkiin viitataan useista paikoista
+  ei login-attribuuttia ole valittu pääavaimeksi.
   säästämään tilaa lukuisissa viiteavaimissa.
-- login: PPT
-- password: Suolattu ja hash-funtionläpi viety salasana
-- phone: puhelinnumero
+    * ab76895
+    * jk97452
+    * nl99912
+- password: Suolattu ja hash-funtionläpi viety salasana.
+    * 'Vahva salalause nro 78' => $2970968|dfas879da7g908u98adf7hg89fd897h8fd9h^
+    * 'salasana' => $9892194|jlksdg86afga897d9a8hadfhdgmleälwäfioo49^
+- phone: Käyttäjän puhelinnumero. Uniikki.
+    * +3580476581
+    * 0451766895
+    * 0316727672
+- email: Käyttäjän sähköpostiosoite, käytetään esimerkiksi ryhmäläisille
+  tapaamiskutsua lähetettäessä.
+    * Erkki.Esimerkki.E@student.uta.fi
+    * Saila.Anttila.K@uta.fi
+    * Alisa.Seleznjova.I@student.uta.fi
+- firs_name: Käyttäjän etunimi.
+    * Erkki
+    * Wēn
+    * Anna-Kaisa
+- last_name: Käyttäjän sukunimi
+    * Postinen
+    * Salmela
+    * Nakata
+- other_name: Moniselitteinen kenttä, johon voi tallettaa kaikki muut henkilön
+  nimet, kuten toisen etunimen.
+    * Alviira
+    * Oiva
+    * Aku
+
+
+### Tutor
+_Tutor_ relaatio on [_user_](#user) relaation aliluokka. Vastaa ER-kaavion
+\ref{fig:ER-entiteetti-opettajatuutori} opettajatuutori entiteettiä.
+
+\insertRelation{Relaatio-tutor}{Tutor relaatio}
+
+- _user_id_: Pääavaimena toimiva viiteavain [_user_](#user) relaatioon
+  id-attribuuttiin.
+    * 0
+    * 123
+    * 975858
+- is_god: Kertoo onko tuutori ylituutori
+    * __TRUE__
+    * __FALSE__
+
+
+### Student
+
+_Student_ relaatio on [_user_](#user) relaation aliluokka. Vastaa ER-kaavion
+\ref{fig:ER-entiteetti-opiskelija} opiskelija entiteettiä.
+
+\insertRelation{Relaatio-student}{Student relaatio}
+
+- _user_id_: Pääavaimena toimiva viiteavain [_user_](#user) relaatioon
+  id-attribuuttiin.
+    * 0
+    * 123
+    * 975858
+- entry_year: Opintojen aloitusvuosi kokonaislukuna
+    * 2012
+    * 2000
+    * 2037
+- _tutor_id_: Viiteavain [_tutor_](#tutor) relaatoon id attribuuttiin.
+    * 198
+    * 88790
+    * __NULL__: Käyttäjällä ei ole vielä määritelty opettajatuutoria.
+- _program_structure_id_: Viiteavain [_program_structure_](#program_structure)
+  relaatioon, kertoo opiskelijan pääaineen.
+    * 1
+    * 7
+    * 14
+- _group_id_: Viiteavain [_group_](#group) relaatioon, kertoo mihin ryhmään
+  käyttäjä kuuluu.
+    * 676
+    * 12
+    * __NULL__: Opiskelijaa ei ole vielä lisätty mihinkään ryhmään
+
+
+## Group
+_Group_ relaatio vastaa ER-kaavion \ref{fig:ER-entiteetti-ryhma} ryhmä
+entiteettiä.
+
+\insertRelation{Relaatio-group}{Group relaatio}
+
+* id: Automaattisesti kasvava numeerinen pääavain
+    * 1
+    * 2
+    * 123
+* _tutor_id_: Viiteavain [_tutor_](#tutor) entiteettin id-atribuuttiin.
+    * 0
+    * 123
+    * 975858
+
+
+## Meeting
+
+_Meeting_ relaatio vastaa ER-kaavion \ref{fig:ER-entiteetti-palaveri} palaveri
+entiteettiä.
+
+\insertRelation{Relaatio-meeting}{Meeting relaatio}
+
+* id: Automaattisesti kasvava numeerinen pääavain.
+    * 1
+    * 2
+    * 123
+* date: Päivämäärä, jolloin palveri on pidetty
+    * 12.9.2013
+    * 10.1.2015
+    * 29.11.2016
+* _group_id_: Viiteavain [_group_](#group) relaation id-attribuuttiin. Kertoo
+  minkä ryhmän jäsenet(iä) osallistui palaveriin.
+    * 1
+    * 123
+    * __NULL__: Palaveri oli henkilökohtainen palveri opiskelijan ja hänen
+      tuutorinsa kanssa.
+* _tutor_id_: Viiteavain [_tutor_](#tutor) relaation id-attribuuttiin, kertoo
+  kuka on pitänyt palverin.
+    * 1
+    * 123
+    * 975858
+* report: Raportti palaverissa käsitellyistä asioista.
+    * Keskusteltiin opiskelijan laatiman HOPS:in sisälllöstä ja ensivuoden
+      suunnitelmista.
+
+
+## Meetings_students
+_Meetings_students_ relaatio vastaa ER-kaavion
+\ref{fig:ER-sude-ryhma-opiskelija} opiskelija kuuluu ryhmään suhdetta.
+
+\insertRelation{Relaatio-meetings-students}{Meetings{\_}students relaatio}
+
+* _student_id_: Viiteavain [_student_](#student) relaation id-attribuuttiin
+  osittaisena pääavaimena.
+    * 1
+    * 123
+    * 975858
+* _meeting_id_: Viiteavain [_meeting_](#meeting) relaation id-attribuuttiin
+  osittaisena viiteavaimena.
+    * 1
+    * 2
+    * 3
 
 
 ## Course
+
+_Course_ relaatio vastaa ER-kaavion \ref{fig:ER-entiteetti-kurssi} kurssi
+entiteettiä.
+
 \insertRelation{Relaatio-course}{Course relaatio}
 
-- id: Numeerinen tunniste.
-- name: Kurssin nimi, muodossa "KURSSITUNNUS-Kurssin nimi kokonaisuudessaan".
-- year: Vuosi, jolloin kurssi on järjesttetty ensimmäisen kerran.
+- id: Numeerinen automaattisesti kasvava pääavain.
+    * 100
+    * 101
+    * 102
+- name: Kurssin nimi, muodossa "KURSSITUNNUS Kurssin nimi kokonaisuudessaan".
+    * TIETA12 WWW-ojelmointi
+    * VENP4 Venäjän historian ja kirjallisuuden perusteet
+    * KKSULUK Tieteellinen kirjoittaminen
+- year: Vuosi, jolloin kurssi on järjesttetty ensimmäisen kerran. Uniikki.
+  Kurssin laajuus voi muuttua, jonka seurauksena opintopistemäärä muuttuu,
+  vuoden avulla voidaan tietokannasta etsiä tuoreimman kurssin tiedot.
+    * 2005
+    * 2009
+    * 2011
 - credits: Kurssista saatavien opintopisteiden märä.
+    * 3
+    * 5
+    * 10
 
 
+## Course_type
+
+_Course_type_ relaatio vastaa ER-kaavion \ref{fig:ER-entiteetti-kurssityyppi}
+kurssityyppi entiteettiä.
+
+\insertRelation{Relaatio-course_type}{Course{\_}type relaatio}
+
+* id: Automaattisesti kasvava numeerinen pääavain.
+    * 1
+    * 2
+    * 123
+* name: Uniikki nimi
+    * Perusopinto
+    * Kieliopinto
+    * Tietojenkäsittelytieteiden opinto
+
+## courses_course_types
+
+_Courses_course_types_ relaatio vastaa ER-kaavion
+[kurssin ja kurssityypin](#kurssi-kurssityyppi) välistä suhdetta.
+
+\insertRelation{Relaatio-courses-course-types}{Courses{\_}course{\_}types relaatio}
+
+* _course_id_: Osittaisena pääavaimena toimiva viiteavain [_course_](#course)
+  relaation.
+* _course_type_id_: Osittaisena pääavaimena toimiva viiteavain
+  [_course_type_](#course_type) relaation.
+
+
+## Form
+
+_Form_ relaatio vastaa ER-Kaavion [lomake](#lomake) entiteettiä.
+
+\insertRelation{Relaatio-form}{Form relaatio}
+
+* id: Automaattisesti kasvava numeerinen pääavain
+    * 1
+    * 2
+    * 123
+* _student_id_: Viiteavain [_student_](#student) relaation id-attribuuttiin.
+  Kertoo lomakkeen täyttäjän.
+    * 0
+    * 123
+    * 98765
+* time: Lomakkeen palautus aika
+    * 10.10.2010 20:00:10
+    * 1.9.2014 15:45:02
+    * 30.5.2015 08:07:57
+* works: Työskenteleekö opiskelija
+    * __TRUE__
+    * __FALSE__
+* weekly_hours: Viikottaiset työ tunnit
+    * 0: Jos ei aio käydä töissä opiskelin aikana
+    * 45
+    * 25
+* working_reason: Miksi/miksei töissä
+    * "Aion keskittyä opiskeluun"
+    * "En tahdo ottaa opintolainaa ja tarvitsen lisätienestejä"
+    * "Ei jaksa. XD"
+* interests: Pääaineen kiinnostavat aiheet
+    * "": Ei kiinnostuksen kohteita
+    * "Ohjelmointi kurssit ovat olleet hyvin miellekkäitä."
+    * "Käännös kurssit on ihan kivoja, mutta kirjallisuuden kurssit ei oikein
+      iske."
+* secondary_interests: Muut kiinnostavat aineet
+    * "Venäjän kurssit kiinnostavat kovasti, mutta harmillisesti eivät mahdu
+      lukujärjestykseen."
+    * "Matematiikan kurssit ovat parantaneet elämönlaatuani huomattavasti."
+    * "Johtamiskorkeakoulun kurssitarjonta vaikuttaa tosi kiintoisalta."
+* last_year_positive: Viimevuoden plussat
+    * "Tuutorit olivat hyvin tehtäviensä tasalla ja ovat olleet suureksi avuksi"
+    * "On tullut opittua kaikkea uutta ja jännää"
+* last_year_negative: Viimevuoden miinukset
+    * "Liian pitkät päivät"
+    * "Ei saanut kaikkia sivuaineita mahtumaan kalenteriin"
+
+
+## Courses_students
+
+_Courses_students_ relaatio vastaa ER_kaavion
+[opiskelija-suorittaa-kurssin](#opiskelija-suorittaa-kurssin) suhdetta.
+
+\insertRelation{Relaatio-courses-students}{Courses{\_}students relaatio}
+
+* _course_id_: Viiteavain relaation [_course_](#course) id-attribuuttiin,
+  toimii osittaisena pääavaimena.
+    * 0
+    * 2
+    * 123
+* _form_id_: Viiteavain relaation [_form_](#form) id-attribuuttiin,
+  toimii osittaisena pääavaimena.
+    * 1
+    * 2
+    * 123
+* _student_id_: Viiteavain relaation [_student_](#student) id-attribuuttiin,
+  toimii osittaisena pääavaimena.
+    * 0
+    * 1
+    * 98765
+* planned_finishing_date: Milloin aikoo suorittaa kurssin
+    * 1.4.2015: Lukuovuoden 2014-2015 kolmas periodi
+    * 1.6.2015: Lukuovuoden 2014-2015 neljäs periodi
+* finishing_date: Milloin kurssi on suoritettu
+    * 12.12.2015
+    * 10.6.2016
+    * __NULL__: Kurssia ei ole suoritettu
+
+
+## Program_structure
+
+_Program_structure_ relaatio vastaa ER-kaavion [TK-rakenne](#tk-rakenne)
+entiteettiä.
+
+\insertRelation{Relaatio-program-structure}{Program{\_}structure relaatio}
+
+* id: Automaattisesti kasvava numeerinen pääavain
+    * 1
+    * 2
+    * 123
+* name: Tutkinnon nimi
+    * "Tietojenkäsittelytieteiden kandinaatin tutkonto-ohjelma"
+    * "Venäjän kielen, kulttuurin ja kääntämisen tutkinto-ohjelma"
+    * "Tietojenkäsittelyopin maisterin tutkinto-ohjelma"
+* year: Tutkinnon alkamisvuosi
+    * 2000
+    * 2005
+    * 2020
+
+
+## Courses_program_structures
+
+_Courses_program_structures_ relaatio vastaa ER-kaavion
+[kurssi-kuuluu-tutkintoon](#kurssi-kuuluu-tutkintoon) suhdetta.
+
+\insertRelation{Relaatio-courses-program-structures}{Courses{\_}program{\_}structures relaatio}
+
+* _course_id_: Viiteavain relaation [_course_](#course) id-attribuuttiin,
+  toimii osittaisena pääavaimena.
+    * 1
+    * 2
+    * 123
+* _program_structure_: Viiteavain relaation [_program_structure_](#program_structure)
+  id-attribuuttiin, toimii osittaisena pääavaimena.
+    * 1
+    * 2
+    * 123
+* credits: vaadittu opintopistemäärä kyseisestä kurssi tyypistä
+    * 10
+    * 60
+    * 30
+
+
+## Program_requirement
+
+_Program_requirement_ relaatio vastaa ER-kaavion [TK-rakenne](#tk-rakenne)
+moniarvoista vaatimus-attribuuttia.
+
+\insertRelation{Relaatio-program-requirement}{Program{\_}requirement relaatio}
+
+* id: Automaattisesti kasvava numeerinen pääavain
+    * 1
+    * 2
+    * 123
+* _course_type_id_: Viiteavain relaation [_course_type_](#course_type)
+  id-attribuuttiin, kertoo vaditun kurssi tyypin.
+    * 1
+    * 2
+    * 123
+* _program_structure_id_: Viiteavain relaation
+  [_program_structure_](#program_structure)
+  id-attribuuttiin, kertoo vaditun kurssi tyypin.
 
 # Tietokantakaavio tekstimuodossa
 
