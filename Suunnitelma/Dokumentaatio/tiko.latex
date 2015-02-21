@@ -152,10 +152,7 @@ $endfor$
 {
     \begin{figure}[h]
     \begin{adjustbox}{width=#3,height=\textheight,keepaspectratio}
-    \texttt
-    {
         \input{kaaviot/#1.tikz}
-    }
     \end{adjustbox}
     \captionsetup{justification=#4,singlelinecheck=false}
     \caption{#2}
