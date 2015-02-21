@@ -30,14 +30,6 @@
     joka ei mahdu yhdelle riville
 
 
-## Oppiaine
-\insertDiagram{ER-entiteetti-oppiaine}{Oppiaine entiteetti}
-
-- ID:
-- Nimi:
-
-
-
 # ER-kaavio kokonaisuudessaan
 
 \insertDiagram{ER-kokonaisuus}{ER-kaavio}
@@ -70,8 +62,7 @@ ympyrä ● taas puolestaan tarkoittaa, että __NULL__ arvot eivät olesallittuj
 
 ## User
 
-_User_ relaatio vastaa ER-kaavion \ref{fig:ER-entiteetti-kayttaja} käyttäjä
-entiteettiä
+_User_ relaatio vastaa ER-kaavion [käyttäjä](#käyttäjä) entiteettiä
 
 \insertRelation{Relaatio-user}{User ralaatio}
 
@@ -115,7 +106,7 @@ entiteettiä
 
 ### Tutor
 _Tutor_ relaatio on [_user_](#user) relaation aliluokka. Vastaa ER-kaavion
-\ref{fig:ER-entiteetti-opettajatuutori} opettajatuutori entiteettiä.
+[opettajatuutori](#opettajatuutori) opettajatuutori entiteettiä.
 
 \insertRelation{Relaatio-tutor}{Tutor relaatio}
 
@@ -132,7 +123,7 @@ _Tutor_ relaatio on [_user_](#user) relaation aliluokka. Vastaa ER-kaavion
 ### Student
 
 _Student_ relaatio on [_user_](#user) relaation aliluokka. Vastaa ER-kaavion
-\ref{fig:ER-entiteetti-opiskelija} opiskelija entiteettiä.
+[opiskelija](#opiskelija) entiteettiä.
 
 \insertRelation{Relaatio-student}{Student relaatio}
 
@@ -162,8 +153,7 @@ _Student_ relaatio on [_user_](#user) relaation aliluokka. Vastaa ER-kaavion
 
 
 ## Group
-_Group_ relaatio vastaa ER-kaavion \ref{fig:ER-entiteetti-ryhma} ryhmä
-entiteettiä.
+_Group_ relaatio vastaa ER-kaavion [ryhmä](#ryhmä) entiteettiä.
 
 \insertRelation{Relaatio-group}{Group relaatio}
 
@@ -179,8 +169,7 @@ entiteettiä.
 
 ## Meeting
 
-_Meeting_ relaatio vastaa ER-kaavion \ref{fig:ER-entiteetti-palaveri} palaveri
-entiteettiä.
+_Meeting_ relaatio vastaa ER-kaavion [palaveri](#palaveri) entiteettiä.
 
 \insertRelation{Relaatio-meeting}{Meeting relaatio}
 
@@ -210,7 +199,7 @@ entiteettiä.
 
 ## Meetings_students
 _Meetings_students_ relaatio vastaa ER-kaavion
-\ref{fig:ER-sude-ryhma-opiskelija} opiskelija kuuluu ryhmään suhdetta.
+[opiskelija kuuluu ryhmään](#opiskelija-ryhmä) suhdetta.
 
 \insertRelation{Relaatio-meetings-students}{Meetings{\_}students relaatio}
 
@@ -228,8 +217,7 @@ _Meetings_students_ relaatio vastaa ER-kaavion
 
 ## Course
 
-_Course_ relaatio vastaa ER-kaavion \ref{fig:ER-entiteetti-kurssi} kurssi
-entiteettiä.
+_Course_ relaatio vastaa ER-kaavion [kurssi](#kurssi) entiteettiä.
 
 \insertRelation{Relaatio-course}{Course relaatio}
 
@@ -255,10 +243,9 @@ entiteettiä.
 
 ## Course_type
 
-_Course_type_ relaatio vastaa ER-kaavion \ref{fig:ER-entiteetti-kurssityyppi}
-kurssityyppi entiteettiä.
+_Course_type_ relaatio vastaa ER-kaavion [kurssityyppi](#kurssityyppi) entiteettiä.
 
-\insertRelation{Relaatio-course_type}{Course{\_}type relaatio}
+\insertRelation{Relaatio-course-type}{Course{\_}type relaatio}
 
 * id: Automaattisesti kasvava numeerinen pääavain.
     * 1
