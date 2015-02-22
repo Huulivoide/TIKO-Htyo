@@ -147,6 +147,7 @@ $endfor$
 \usepackage{tikz}
 \usepackage{adjustbox}
 \usepackage{caption}
+\usepackage{pdflscape}
 
 \newcommand{\insertGeneral}[4]
 {
@@ -168,6 +169,26 @@ $endfor$
 \newcommand{\insertRelation}[2]
 {
     \insertGeneral{#1}{#2}{6cm}{justified}
+}
+
+
+\newcommand{\insertFullPageDiagram}[2]
+{
+    \newpage
+    \newgeometry{margin=0.5cm}
+
+    \begin{landscape}
+        \begin{figure}[h]
+            \begin{adjustbox}{width=\linewidth,height=\textheight,keepaspectratio}
+                \input{kaaviot/#1.tikz}
+            \end{adjustbox}
+            \captionsetup{justification=centering,singlelinecheck=false}
+            \caption{#2}
+            \label{fig:BIG-#1}
+        \end{figure}
+    \end{landscape}
+
+    \restoregeometry
 }
 
 % Tähän loppuu omat härpäkkeet

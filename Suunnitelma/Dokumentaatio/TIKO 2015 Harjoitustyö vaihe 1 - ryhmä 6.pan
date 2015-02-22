@@ -437,7 +437,7 @@ Kappale 2 käy taas puolestaan itse asian kimppuun
 
 
 # Tietokannan luontilauseet
-
+ 
 ~~~~~~ {#SQL-lauseet .sqlpostgresql .numberLines}
 CREATE TABLE HOPS
 (
@@ -446,3 +446,12 @@ CREATE TABLE HOPS
     ATTR2 INT
 );
 ~~~~~~
+
+
+
+# Koko sivun kokoiset kaaviot
+
+ER-kaavio on seuraavalla sivulla ja Relaatio-kaavio sitä seuraavalla.
+
+\insertFullPageDiagram{ER-kokonaisuus}{ER-kaavio}
+\insertFullPageDiagram{Relaatio-kaavio}{Relaatio-kaavio}
