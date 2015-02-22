@@ -2,10 +2,10 @@
 <dia:diagram xmlns:dia="http://www.lysator.liu.se/~alla/dia/">
   <dia:diagramdata>
     <dia:attribute name="background">
-      <dia:color val="#ffffff"/>
+      <dia:color val="#ffffffff"/>
     </dia:attribute>
     <dia:attribute name="pagebreak">
-      <dia:color val="#000099"/>
+      <dia:color val="#000099ff"/>
     </dia:attribute>
     <dia:attribute name="paper">
       <dia:composite type="paper">
@@ -37,6 +37,9 @@
     </dia:attribute>
     <dia:attribute name="grid">
       <dia:composite type="grid">
+        <dia:attribute name="dynamic">
+          <dia:boolean val="true"/>
+        </dia:attribute>
         <dia:attribute name="width_x">
           <dia:real val="1"/>
         </dia:attribute>
@@ -53,7 +56,7 @@
       </dia:composite>
     </dia:attribute>
     <dia:attribute name="color">
-      <dia:color val="#d8e5e5"/>
+      <dia:color val="#d8e5e5ff"/>
     </dia:attribute>
     <dia:attribute name="guides">
       <dia:composite type="guides">
@@ -61,8 +64,27 @@
         <dia:attribute name="vguides"/>
       </dia:composite>
     </dia:attribute>
+    <dia:attribute name="display">
+      <dia:composite type="display">
+        <dia:attribute name="antialiased">
+          <dia:boolean val="true"/>
+        </dia:attribute>
+        <dia:attribute name="snap-to-grid">
+          <dia:boolean val="true"/>
+        </dia:attribute>
+        <dia:attribute name="snap-to-object">
+          <dia:boolean val="true"/>
+        </dia:attribute>
+        <dia:attribute name="show-grid">
+          <dia:boolean val="true"/>
+        </dia:attribute>
+        <dia:attribute name="show-connection-points">
+          <dia:boolean val="true"/>
+        </dia:attribute>
+      </dia:composite>
+    </dia:attribute>
   </dia:diagramdata>
-  <dia:layer name="Tausta" visible="true" active="true">
+  <dia:layer name="Tausta" visible="true" connectable="true" active="true">
     <dia:object type="ER - Entity" version="0" id="O0">
       <dia:attribute name="obj_pos">
         <dia:point val="87.2137,-16.4137"/>
@@ -83,10 +105,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Opettajatuutori#</dia:string>
@@ -124,10 +146,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Opintojakso#</dia:string>
@@ -165,10 +187,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#ID#</dia:string>
@@ -212,10 +234,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Nimi#</dia:string>
@@ -259,10 +281,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#OP-pisteet#</dia:string>
@@ -306,10 +328,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Vuosi#</dia:string>
@@ -353,10 +375,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Opiskelija#</dia:string>
@@ -394,10 +416,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Sposti#</dia:string>
@@ -441,10 +463,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#nimi#</dia:string>
@@ -488,10 +510,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Etu-#</dia:string>
@@ -535,10 +557,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Suku-#</dia:string>
@@ -658,10 +680,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Aloitusvuosi#</dia:string>
@@ -690,7 +712,7 @@
         <dia:point val="47.0388,-16.4638"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="45.2861,-17.5332;47.1073,-16.3953"/>
+        <dia:rectangle val="45.2861,-17.5332;47.1073,-16.3952"/>
       </dia:attribute>
       <dia:attribute name="conn_endpoints">
         <dia:point val="47.0388,-16.4638"/>
@@ -724,10 +746,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Ryhmä#</dia:string>
@@ -765,10 +787,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#ID#</dia:string>
@@ -831,10 +853,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Koko#</dia:string>
@@ -897,10 +919,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Täytetty lomake#</dia:string>
@@ -938,10 +960,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Päivämäärä/aika#</dia:string>
@@ -985,10 +1007,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#On töissä#</dia:string>
@@ -1032,10 +1054,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Työ selite#</dia:string>
@@ -1079,10 +1101,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Työ tunnit#</dia:string>
@@ -1126,10 +1148,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Kiinnostukset#</dia:string>
@@ -1173,10 +1195,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Valinnaiset kiinnostukset#</dia:string>
@@ -1220,10 +1242,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#ID#</dia:string>
@@ -1267,10 +1289,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Plussat#</dia:string>
@@ -1314,10 +1336,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Miinukset#</dia:string>
@@ -1361,10 +1383,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Viime vuosi#</dia:string>
@@ -1484,10 +1506,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Toinen-#</dia:string>
@@ -1550,10 +1572,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Kuuluu#</dia:string>
@@ -1624,10 +1646,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Päivämäärä#</dia:string>
@@ -1690,10 +1712,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Täyttää#</dia:string>
@@ -1722,7 +1744,7 @@
         <dia:point val="87.2137,5.9575"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="72.2416,5.7825;87.3887,6.1325"/>
+        <dia:rectangle val="72.2416,5.7825;87.4612,6.1325"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
         <dia:point val="87.2137,5.9575"/>
@@ -1962,10 +1984,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Tarkastaa#</dia:string>
@@ -1998,8 +2020,8 @@
       </dia:attribute>
       <dia:attribute name="orth_points">
         <dia:point val="90.8012,5.00704"/>
-        <dia:point val="90.8012,4.83204"/>
-        <dia:point val="90.8012,3.69858"/>
+        <dia:point val="90.8012,4.26531"/>
+        <dia:point val="90.8012,4.26531"/>
         <dia:point val="90.8012,3.52358"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
@@ -2020,13 +2042,13 @@
     </dia:object>
     <dia:object type="ER - Participation" version="1" id="O57">
       <dia:attribute name="obj_pos">
-        <dia:point val="90.8012,0.144905"/>
+        <dia:point val="90.8012,0.144909"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="90.7512,-14.6637;90.8512,0.194905"/>
+        <dia:rectangle val="90.7512,-14.6844;90.8512,0.194909"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="90.8012,0.144905"/>
+        <dia:point val="90.8012,0.144909"/>
         <dia:point val="90.8012,-14.6137"/>
         <dia:point val="90.8012,-14.6137"/>
       </dia:attribute>
@@ -2065,10 +2087,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Aikoo suorittaa#</dia:string>
@@ -2112,10 +2134,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Milloin#</dia:string>
@@ -2178,10 +2200,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#On ylituutori#</dia:string>
@@ -2244,10 +2266,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Käyttäjä#</dia:string>
@@ -2285,10 +2307,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#PPT#</dia:string>
@@ -2332,10 +2354,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Salasana#</dia:string>
@@ -2379,10 +2401,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Tyyppi#</dia:string>
@@ -2558,10 +2580,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Palaveri#</dia:string>
@@ -2599,10 +2621,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#ID#</dia:string>
@@ -2665,10 +2687,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Raportti#</dia:string>
@@ -2731,10 +2753,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Puhelin#</dia:string>
@@ -2818,7 +2840,7 @@
         <dia:point val="72.3091,-27.044"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="72.2591,-27.094;91.6321,-16.3019"/>
+        <dia:rectangle val="72.2591,-27.094;91.6321,-16.3519"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
         <dia:point val="72.3091,-27.044"/>
@@ -2869,10 +2891,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Ohjaa#</dia:string>
@@ -2943,10 +2965,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Suoritettu#</dia:string>
@@ -2998,8 +3020,8 @@
       </dia:attribute>
       <dia:attribute name="orth_points">
         <dia:point val="31.6729,-0.0425"/>
-        <dia:point val="31.7229,-0.0425"/>
-        <dia:point val="36.0611,-0.0425"/>
+        <dia:point val="33.892,-0.0425"/>
+        <dia:point val="33.892,-0.0425"/>
         <dia:point val="36.1111,-0.0425"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
@@ -3050,7 +3072,7 @@
         <dia:point val="53.935,-10.4766"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="53.2,-10.5266;60.52,-6.91661"/>
+        <dia:rectangle val="53.2,-10.5266;60.52,-6.9166"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="53.935,-10.4766"/>
@@ -3065,10 +3087,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#osallistuu#</dia:string>
@@ -3097,7 +3119,7 @@
         <dia:point val="78.5423,-10.4766"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="77.8073,-10.5266;85.1273,-6.91661"/>
+        <dia:rectangle val="77.8073,-10.5266;85.1273,-6.9166"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="78.5423,-10.4766"/>
@@ -3112,10 +3134,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#osallistuu#</dia:string>
@@ -3159,10 +3181,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#palaveeraa#</dia:string>
@@ -3206,10 +3228,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#palaverityyppi#</dia:string>
@@ -3257,13 +3279,13 @@
         <dia:point val="72.3594,-8.72161"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="72.1844,-8.89661;78.6677,-8.54661"/>
+        <dia:rectangle val="72.1844,-8.89661;78.6677,-8.5466"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
         <dia:point val="72.3594,-8.72161"/>
-        <dia:point val="72.5344,-8.72161"/>
-        <dia:point val="78.3177,-8.72161"/>
-        <dia:point val="78.4927,-8.72161"/>
+        <dia:point val="75.426,-8.72161"/>
+        <dia:point val="75.426,-8.7216"/>
+        <dia:point val="78.4927,-8.7216"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="0"/>
@@ -3283,15 +3305,15 @@
     </dia:object>
     <dia:object type="ER - Participation" version="1" id="O94">
       <dia:attribute name="obj_pos">
-        <dia:point val="70.0691,-7.77115"/>
+        <dia:point val="70.0691,-7.82161"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="70.0191,-7.82115;70.1191,-5.70057"/>
+        <dia:rectangle val="70.0191,-7.87161;70.1191,-5.70057"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="70.0691,-7.77115"/>
-        <dia:point val="70.0691,-7.72115"/>
-        <dia:point val="70.0691,-5.80057"/>
+        <dia:point val="70.0691,-7.82161"/>
+        <dia:point val="70.0691,-6.78609"/>
+        <dia:point val="70.0691,-6.78609"/>
         <dia:point val="70.0691,-5.75057"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
@@ -3306,21 +3328,21 @@
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O73" connection="8"/>
+        <dia:connection handle="0" to="O73" connection="6"/>
         <dia:connection handle="1" to="O90" connection="8"/>
       </dia:connections>
     </dia:object>
     <dia:object type="ER - Participation" version="1" id="O95">
       <dia:attribute name="obj_pos">
-        <dia:point val="70.0691,-2.14059"/>
+        <dia:point val="70.0691,-2.19058"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="70.0191,-2.19059;70.1191,-0.940797"/>
+        <dia:rectangle val="70.0191,-2.24058;70.1191,-0.940797"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="70.0691,-2.14059"/>
-        <dia:point val="70.0691,-2.09059"/>
-        <dia:point val="70.0691,-1.0408"/>
+        <dia:point val="70.0691,-2.19058"/>
+        <dia:point val="70.0691,-1.59069"/>
+        <dia:point val="70.0691,-1.59069"/>
         <dia:point val="70.0691,-0.990797"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
@@ -3335,21 +3357,21 @@
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O90" connection="8"/>
+        <dia:connection handle="0" to="O90" connection="6"/>
         <dia:connection handle="1" to="O17" connection="8"/>
       </dia:connections>
     </dia:object>
     <dia:object type="ER - Participation" version="1" id="O96">
       <dia:attribute name="obj_pos">
-        <dia:point val="59.8346,-8.72161"/>
+        <dia:point val="59.8346,-8.7216"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="59.7846,-8.77161;67.8288,-8.67161"/>
+        <dia:rectangle val="59.7846,-8.77161;67.8288,-8.6716"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="59.8346,-8.72161"/>
-        <dia:point val="59.8846,-8.72161"/>
-        <dia:point val="67.7288,-8.72161"/>
+        <dia:point val="59.8346,-8.7216"/>
+        <dia:point val="63.8067,-8.7216"/>
+        <dia:point val="63.8067,-8.72161"/>
         <dia:point val="67.7788,-8.72161"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
@@ -3373,13 +3395,13 @@
         <dia:point val="51.3128,-15.5137"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="51.2628,-15.5637;53.985,-8.67161"/>
+        <dia:rectangle val="51.2628,-15.5637;53.985,-8.6716"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
         <dia:point val="51.3128,-15.5137"/>
         <dia:point val="52.6239,-15.5137"/>
-        <dia:point val="52.6239,-8.72161"/>
-        <dia:point val="53.935,-8.72161"/>
+        <dia:point val="52.6239,-8.7216"/>
+        <dia:point val="53.935,-8.7216"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="0"/>
@@ -3417,10 +3439,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#TK-Rakenne#</dia:string>
@@ -3458,10 +3480,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#ID#</dia:string>
@@ -3505,10 +3527,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Nimi#</dia:string>
@@ -3552,10 +3574,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Vuosi#</dia:string>
@@ -3599,10 +3621,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Vaatimukset#</dia:string>
@@ -3685,13 +3707,13 @@
     </dia:object>
     <dia:object type="Standard - Line" version="0" id="O106">
       <dia:attribute name="obj_pos">
-        <dia:point val="24.726,-13.1482"/>
+        <dia:point val="24.726,-13.1481"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
         <dia:rectangle val="24.6577,-14.6329;27.267,-13.0799"/>
       </dia:attribute>
       <dia:attribute name="conn_endpoints">
-        <dia:point val="24.726,-13.1482"/>
+        <dia:point val="24.726,-13.1481"/>
         <dia:point val="27.1987,-14.5647"/>
       </dia:attribute>
       <dia:attribute name="numcp">
@@ -3722,10 +3744,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Suorittaa#</dia:string>
@@ -3754,7 +3776,7 @@
         <dia:point val="26.7004,-10.0146"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="26.6504,-11.1646;31.0604,-6.27861"/>
+        <dia:rectangle val="26.6504,-11.1646;31.0604,-6.2786"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="26.7004,-10.0146"/>
@@ -3769,10 +3791,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Kuuluu#</dia:string>
@@ -3832,8 +3854,8 @@
       </dia:attribute>
       <dia:attribute name="orth_points">
         <dia:point val="37.2661,-15.5137"/>
-        <dia:point val="37.2161,-15.5137"/>
-        <dia:point val="31.5304,-15.5137"/>
+        <dia:point val="34.3732,-15.5137"/>
+        <dia:point val="34.3732,-15.5137"/>
         <dia:point val="31.4804,-15.5137"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
@@ -3857,12 +3879,12 @@
         <dia:point val="28.8554,-14.6137"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="28.8054,-14.6637;28.9054,-9.96461"/>
+        <dia:rectangle val="28.8054,-14.6637;28.9054,-9.9646"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
         <dia:point val="28.8554,-14.6137"/>
-        <dia:point val="28.8554,-14.5637"/>
-        <dia:point val="28.8554,-10.0646"/>
+        <dia:point val="28.8554,-12.3141"/>
+        <dia:point val="28.8554,-12.3141"/>
         <dia:point val="28.8554,-10.0146"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
@@ -3886,7 +3908,7 @@
         <dia:point val="28.8554,-7.42861"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="28.8054,-7.47861;28.9054,-0.8925"/>
+        <dia:rectangle val="28.8054,-7.49932;28.9054,-0.8925"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
         <dia:point val="28.8554,-7.42861"/>
@@ -3910,14 +3932,14 @@
     </dia:object>
     <dia:object type="ER - Participation" version="1" id="O113">
       <dia:attribute name="obj_pos">
-        <dia:point val="84.4419,-8.72161"/>
+        <dia:point val="84.4419,-8.7216"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="84.3919,-15.5637;87.2133,-8.67161"/>
+        <dia:rectangle val="84.3919,-15.5637;87.2133,-8.6716"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="84.4419,-8.72161"/>
-        <dia:point val="85.8026,-8.72161"/>
+        <dia:point val="84.4419,-8.7216"/>
+        <dia:point val="85.8026,-8.7216"/>
         <dia:point val="85.8026,-15.5137"/>
         <dia:point val="87.1633,-15.5137"/>
       </dia:attribute>
@@ -3957,10 +3979,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Tuutoroi#</dia:string>
@@ -3993,8 +4015,8 @@
       </dia:attribute>
       <dia:attribute name="orth_points">
         <dia:point val="51.3128,-15.5137"/>
-        <dia:point val="51.4878,-15.5137"/>
-        <dia:point val="67.3067,-15.5137"/>
+        <dia:point val="59.3973,-15.5137"/>
+        <dia:point val="59.3973,-15.5137"/>
         <dia:point val="67.4817,-15.5137"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
@@ -4022,8 +4044,8 @@
       </dia:attribute>
       <dia:attribute name="orth_points">
         <dia:point val="72.6565,-15.5137"/>
-        <dia:point val="72.7065,-15.5137"/>
-        <dia:point val="87.1133,-15.5137"/>
+        <dia:point val="79.9099,-15.5137"/>
+        <dia:point val="79.9099,-15.5137"/>
         <dia:point val="87.1633,-15.5137"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
@@ -4044,13 +4066,13 @@
     </dia:object>
     <dia:object type="ER - Entity" version="0" id="O117">
       <dia:attribute name="obj_pos">
-        <dia:point val="25.8454,7"/>
+        <dia:point val="25.8454,8"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="25.7954,6.95;31.9154,8.85"/>
+        <dia:rectangle val="25.7954,7.95;31.9154,9.85"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
-        <dia:point val="25.8454,7"/>
+        <dia:point val="25.8454,8"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
         <dia:real val="6.0199999999999996"/>
@@ -4062,10 +4084,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Kurssityyppi#</dia:string>
@@ -4085,13 +4107,13 @@
     </dia:object>
     <dia:object type="ER - Attribute" version="0" id="O118">
       <dia:attribute name="obj_pos">
-        <dia:point val="25,10"/>
+        <dia:point val="25,11"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="24.95,9.95;27.82,11.85"/>
+        <dia:rectangle val="24.95,10.95;27.82,12.85"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
-        <dia:point val="25,10"/>
+        <dia:point val="25,11"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
         <dia:real val="2.77"/>
@@ -4103,10 +4125,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#ID#</dia:string>
@@ -4132,13 +4154,13 @@
     </dia:object>
     <dia:object type="ER - Attribute" version="0" id="O119">
       <dia:attribute name="obj_pos">
-        <dia:point val="29,10"/>
+        <dia:point val="29,11"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="28.95,9.95;32.59,11.85"/>
+        <dia:rectangle val="28.95,10.95;32.59,12.85"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
-        <dia:point val="29,10"/>
+        <dia:point val="29,11"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
         <dia:real val="3.54"/>
@@ -4150,10 +4172,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Nimi#</dia:string>
@@ -4179,14 +4201,14 @@
     </dia:object>
     <dia:object type="Standard - Line" version="0" id="O120">
       <dia:attribute name="obj_pos">
-        <dia:point val="30.1967,10.0017"/>
+        <dia:point val="30.1967,11.0017"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="29.3926,8.7809;30.2657,10.0707"/>
+        <dia:rectangle val="29.3926,9.7809;30.2657,11.0707"/>
       </dia:attribute>
       <dia:attribute name="conn_endpoints">
-        <dia:point val="30.1967,10.0017"/>
-        <dia:point val="29.4617,8.84995"/>
+        <dia:point val="30.1967,11.0017"/>
+        <dia:point val="29.4617,9.84995"/>
       </dia:attribute>
       <dia:attribute name="numcp">
         <dia:int val="1"/>
@@ -4198,14 +4220,14 @@
     </dia:object>
     <dia:object type="Standard - Line" version="0" id="O121">
       <dia:attribute name="obj_pos">
-        <dia:point val="27.0705,10.0676"/>
+        <dia:point val="27.0705,11.0676"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="27.0001,8.77957;28.1435,10.138"/>
+        <dia:rectangle val="27.0001,9.77957;28.1435,11.138"/>
       </dia:attribute>
       <dia:attribute name="conn_endpoints">
-        <dia:point val="27.0705,10.0676"/>
-        <dia:point val="28.0731,8.84995"/>
+        <dia:point val="27.0705,11.0676"/>
+        <dia:point val="28.0731,9.84995"/>
       </dia:attribute>
       <dia:attribute name="numcp">
         <dia:int val="1"/>
@@ -4217,13 +4239,13 @@
     </dia:object>
     <dia:object type="ER - Relationship" version="0" id="O122">
       <dia:attribute name="obj_pos">
-        <dia:point val="26.7004,3"/>
+        <dia:point val="26.7004,3.5"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="26.6504,1.85;31.0604,6.736"/>
+        <dia:rectangle val="26.6504,2.35;31.0604,7.236"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
-        <dia:point val="26.7004,3"/>
+        <dia:point val="26.7004,3.5"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
         <dia:real val="4.3100000000000005"/>
@@ -4235,10 +4257,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Kuuluu#</dia:string>
@@ -4264,15 +4286,15 @@
     </dia:object>
     <dia:object type="ER - Participation" version="1" id="O123">
       <dia:attribute name="obj_pos">
-        <dia:point val="28.8554,2.95102"/>
+        <dia:point val="28.8554,3.45102"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="28.6804,0.732964;29.0304,3.12602"/>
+        <dia:rectangle val="28.6804,0.732964;29.0304,3.62602"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="28.8554,2.95102"/>
-        <dia:point val="28.8554,2.77602"/>
-        <dia:point val="28.8554,1.08296"/>
+        <dia:point val="28.8554,3.45102"/>
+        <dia:point val="28.8554,2.17949"/>
+        <dia:point val="28.8554,2.17949"/>
         <dia:point val="28.8554,0.907964"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
@@ -4293,16 +4315,16 @@
     </dia:object>
     <dia:object type="ER - Participation" version="1" id="O124">
       <dia:attribute name="obj_pos">
-        <dia:point val="28.8554,5.63498"/>
+        <dia:point val="28.8554,6.086"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="28.8054,5.58498;28.9054,6.99954"/>
+        <dia:rectangle val="28.8054,6.036;28.9054,7.99954"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="28.8554,5.63498"/>
-        <dia:point val="28.8554,5.68498"/>
-        <dia:point val="28.8554,6.89954"/>
-        <dia:point val="28.8554,6.94954"/>
+        <dia:point val="28.8554,6.086"/>
+        <dia:point val="28.8554,7.01777"/>
+        <dia:point val="28.8554,7.01777"/>
+        <dia:point val="28.8554,7.94954"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -4316,7 +4338,7 @@
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O122" connection="8"/>
+        <dia:connection handle="0" to="O122" connection="6"/>
         <dia:connection handle="1" to="O117" connection="8"/>
       </dia:connections>
     </dia:object>
