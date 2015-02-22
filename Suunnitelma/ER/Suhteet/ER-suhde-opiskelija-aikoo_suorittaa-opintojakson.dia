@@ -62,8 +62,36 @@
       </dia:composite>
     </dia:attribute>
   </dia:diagramdata>
-  <dia:layer name="Tausta" visible="true" active="true">
-    <dia:object type="ER - Relationship" version="0" id="O0">
+  <dia:layer name="Uusi taso 1" visible="true" active="true">
+    <dia:object type="Standard - Box" version="0" id="O0">
+      <dia:attribute name="obj_pos">
+        <dia:point val="0.925,6.445"/>
+      </dia:attribute>
+      <dia:attribute name="obj_bb">
+        <dia:rectangle val="0.925,6.445;27.925,7.445"/>
+      </dia:attribute>
+      <dia:attribute name="elem_corner">
+        <dia:point val="0.925,6.445"/>
+      </dia:attribute>
+      <dia:attribute name="elem_width">
+        <dia:real val="27"/>
+      </dia:attribute>
+      <dia:attribute name="elem_height">
+        <dia:real val="1"/>
+      </dia:attribute>
+      <dia:attribute name="border_width">
+        <dia:real val="1.1754943508222875e-038"/>
+      </dia:attribute>
+      <dia:attribute name="border_color">
+        <dia:color val="#ffffff"/>
+      </dia:attribute>
+      <dia:attribute name="show_background">
+        <dia:boolean val="false"/>
+      </dia:attribute>
+    </dia:object>
+  </dia:layer>
+  <dia:layer name="Tausta" visible="true">
+    <dia:object type="ER - Relationship" version="0" id="O1">
       <dia:attribute name="obj_pos">
         <dia:point val="10.0861,4.62"/>
       </dia:attribute>
@@ -110,7 +138,7 @@
         <dia:real val="0.80000000000000004"/>
       </dia:attribute>
     </dia:object>
-    <dia:object type="ER - Attribute" version="0" id="O1">
+    <dia:object type="ER - Attribute" version="0" id="O2">
       <dia:attribute name="obj_pos">
         <dia:point val="15.175,1.145"/>
       </dia:attribute>
@@ -157,7 +185,7 @@
         <dia:real val="0.80000000000000004"/>
       </dia:attribute>
     </dia:object>
-    <dia:object type="Standard - Line" version="0" id="O2">
+    <dia:object type="Standard - Line" version="0" id="O3">
       <dia:attribute name="obj_pos">
         <dia:point val="13.9736,4.62"/>
       </dia:attribute>
@@ -172,11 +200,11 @@
         <dia:int val="1"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O0" connection="2"/>
-        <dia:connection handle="1" to="O1" connection="8"/>
+        <dia:connection handle="0" to="O1" connection="2"/>
+        <dia:connection handle="1" to="O2" connection="8"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="ER - Attribute" version="0" id="O3">
+    <dia:object type="ER - Attribute" version="0" id="O4">
       <dia:attribute name="obj_pos">
         <dia:point val="8.175,1.145"/>
       </dia:attribute>
@@ -223,7 +251,7 @@
         <dia:real val="0.80000000000000004"/>
       </dia:attribute>
     </dia:object>
-    <dia:object type="Standard - Line" version="0" id="O4">
+    <dia:object type="Standard - Line" version="0" id="O5">
       <dia:attribute name="obj_pos">
         <dia:point val="12.0429,2.88992"/>
       </dia:attribute>
@@ -238,11 +266,11 @@
         <dia:int val="1"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O3" connection="8"/>
-        <dia:connection handle="1" to="O0" connection="2"/>
+        <dia:connection handle="0" to="O4" connection="8"/>
+        <dia:connection handle="1" to="O1" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="ER - Entity" version="0" id="O5">
+    <dia:object type="ER - Entity" version="0" id="O6">
       <dia:attribute name="obj_pos">
         <dia:point val="2.55,6.2"/>
       </dia:attribute>
@@ -283,7 +311,7 @@
         <dia:real val="0.80000000000000004"/>
       </dia:attribute>
     </dia:object>
-    <dia:object type="ER - Entity" version="0" id="O6">
+    <dia:object type="ER - Entity" version="0" id="O7">
       <dia:attribute name="obj_pos">
         <dia:point val="20.3,6.05"/>
       </dia:attribute>
@@ -324,7 +352,7 @@
         <dia:real val="0.80000000000000004"/>
       </dia:attribute>
     </dia:object>
-    <dia:object type="ER - Participation" version="1" id="O7">
+    <dia:object type="ER - Participation" version="1" id="O8">
       <dia:attribute name="obj_pos">
         <dia:point val="7.85033,7.1"/>
       </dia:attribute>
@@ -349,10 +377,10 @@
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O5" connection="8"/>
+        <dia:connection handle="0" to="O6" connection="8"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="ER - Participation" version="1" id="O8">
+    <dia:object type="ER - Participation" version="1" id="O9">
       <dia:attribute name="obj_pos">
         <dia:point val="17.8611,6.9525"/>
       </dia:attribute>
@@ -377,35 +405,9 @@
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O0" connection="4"/>
-        <dia:connection handle="1" to="O6" connection="8"/>
+        <dia:connection handle="0" to="O1" connection="4"/>
+        <dia:connection handle="1" to="O7" connection="8"/>
       </dia:connections>
-    </dia:object>
-    <dia:object type="Standard - Box" version="0" id="O9">
-      <dia:attribute name="obj_pos">
-        <dia:point val="0.925,6.445"/>
-      </dia:attribute>
-      <dia:attribute name="obj_bb">
-        <dia:rectangle val="0.925,6.445;27.925,7.445"/>
-      </dia:attribute>
-      <dia:attribute name="elem_corner">
-        <dia:point val="0.925,6.445"/>
-      </dia:attribute>
-      <dia:attribute name="elem_width">
-        <dia:real val="27"/>
-      </dia:attribute>
-      <dia:attribute name="elem_height">
-        <dia:real val="1"/>
-      </dia:attribute>
-      <dia:attribute name="border_width">
-        <dia:real val="1.1754943508222875e-038"/>
-      </dia:attribute>
-      <dia:attribute name="border_color">
-        <dia:color val="#ffffff"/>
-      </dia:attribute>
-      <dia:attribute name="show_background">
-        <dia:boolean val="false"/>
-      </dia:attribute>
     </dia:object>
   </dia:layer>
 </dia:diagram>

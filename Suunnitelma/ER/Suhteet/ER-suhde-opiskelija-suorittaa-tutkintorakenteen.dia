@@ -62,8 +62,36 @@
       </dia:composite>
     </dia:attribute>
   </dia:diagramdata>
-  <dia:layer name="Tausta" visible="true" active="true">
-    <dia:object type="ER - Entity" version="0" id="O0">
+  <dia:layer name="Uusi taso 1" visible="true" active="true">
+    <dia:object type="Standard - Box" version="0" id="O0">
+      <dia:attribute name="obj_pos">
+        <dia:point val="0.275,1.595"/>
+      </dia:attribute>
+      <dia:attribute name="obj_bb">
+        <dia:rectangle val="0.275,1.595;27.275,2.595"/>
+      </dia:attribute>
+      <dia:attribute name="elem_corner">
+        <dia:point val="0.275,1.595"/>
+      </dia:attribute>
+      <dia:attribute name="elem_width">
+        <dia:real val="27"/>
+      </dia:attribute>
+      <dia:attribute name="elem_height">
+        <dia:real val="1"/>
+      </dia:attribute>
+      <dia:attribute name="border_width">
+        <dia:real val="1.1754943508222875e-038"/>
+      </dia:attribute>
+      <dia:attribute name="border_color">
+        <dia:color val="#ffffff"/>
+      </dia:attribute>
+      <dia:attribute name="show_background">
+        <dia:boolean val="false"/>
+      </dia:attribute>
+    </dia:object>
+  </dia:layer>
+  <dia:layer name="Tausta" visible="true">
+    <dia:object type="ER - Entity" version="0" id="O1">
       <dia:attribute name="obj_pos">
         <dia:point val="18.2071,1.21449"/>
       </dia:attribute>
@@ -104,7 +132,7 @@
         <dia:real val="0.80000000000000004"/>
       </dia:attribute>
     </dia:object>
-    <dia:object type="ER - Entity" version="0" id="O1">
+    <dia:object type="ER - Entity" version="0" id="O2">
       <dia:attribute name="obj_pos">
         <dia:point val="3.675,1.21449"/>
       </dia:attribute>
@@ -145,7 +173,7 @@
         <dia:real val="0.80000000000000004"/>
       </dia:attribute>
     </dia:object>
-    <dia:object type="ER - Relationship" version="0" id="O2">
+    <dia:object type="ER - Relationship" version="0" id="O3">
       <dia:attribute name="obj_pos">
         <dia:point val="10.8107,0.47499"/>
       </dia:attribute>
@@ -192,7 +220,7 @@
         <dia:real val="0.80000000000000004"/>
       </dia:attribute>
     </dia:object>
-    <dia:object type="ER - Participation" version="1" id="O3">
+    <dia:object type="ER - Participation" version="1" id="O4">
       <dia:attribute name="obj_pos">
         <dia:point val="18.2071,2.11449"/>
       </dia:attribute>
@@ -215,11 +243,11 @@
         <dia:boolean val="true"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O0" connection="3"/>
-        <dia:connection handle="1" to="O2" connection="4"/>
+        <dia:connection handle="0" to="O1" connection="3"/>
+        <dia:connection handle="1" to="O3" connection="4"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="ER - Participation" version="1" id="O4">
+    <dia:object type="ER - Participation" version="1" id="O5">
       <dia:attribute name="obj_pos">
         <dia:point val="10.8107,2.11449"/>
       </dia:attribute>
@@ -244,35 +272,9 @@
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O2" connection="0"/>
-        <dia:connection handle="1" to="O1" connection="4"/>
+        <dia:connection handle="0" to="O3" connection="0"/>
+        <dia:connection handle="1" to="O2" connection="4"/>
       </dia:connections>
-    </dia:object>
-    <dia:object type="Standard - Box" version="0" id="O5">
-      <dia:attribute name="obj_pos">
-        <dia:point val="0.275,1.595"/>
-      </dia:attribute>
-      <dia:attribute name="obj_bb">
-        <dia:rectangle val="0.275,1.595;27.275,2.595"/>
-      </dia:attribute>
-      <dia:attribute name="elem_corner">
-        <dia:point val="0.275,1.595"/>
-      </dia:attribute>
-      <dia:attribute name="elem_width">
-        <dia:real val="27"/>
-      </dia:attribute>
-      <dia:attribute name="elem_height">
-        <dia:real val="1"/>
-      </dia:attribute>
-      <dia:attribute name="border_width">
-        <dia:real val="1.1754943508222875e-038"/>
-      </dia:attribute>
-      <dia:attribute name="border_color">
-        <dia:color val="#ffffff"/>
-      </dia:attribute>
-      <dia:attribute name="show_background">
-        <dia:boolean val="false"/>
-      </dia:attribute>
     </dia:object>
   </dia:layer>
 </dia:diagram>
