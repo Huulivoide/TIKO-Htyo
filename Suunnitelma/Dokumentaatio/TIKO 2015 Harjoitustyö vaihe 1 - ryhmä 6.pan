@@ -32,7 +32,7 @@
 
 # ER-kaavio kokonaisuudessaan
 
-\insertDiagram{ER-kokonaisuus}{ER-kaavio}
+\insertDiagram{ER-kaavio}{ER-kaavio}
 
 Pitkät pätkät selitystä ER-kaavion sisällöstä,
 ja kaikesta muusta mahdollisesta
@@ -583,5 +583,5 @@ CREATE TABLE form
 
 ER-kaavio on seuraavalla sivulla ja Relaatio-kaavio sitä seuraavalla.
 
-\insertFullPageDiagram{ER-kokonaisuus}{ER-kaavio}
+\insertFullPageDiagram{ER-kaavio}{ER-kaavio}
 \insertFullPageDiagram{Relaatio-kaavio}{Relaatio-kaavio}
