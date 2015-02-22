@@ -437,13 +437,143 @@ Kappale 2 käy taas puolestaan itse asian kimppuun
 
 
 # Tietokannan luontilauseet
- 
-~~~~~~ {#SQL-lauseet .sqlpostgresql .numberLines}
-CREATE TABLE HOPS
+
+## User
+
+~~~~~~ {#SQL-user .sqlpostgresql}
+CREATE TABLE user
 (
-    ID SERIAL PRIMARY KEY,
-    ATTR1 VARCHAR(100) UNIQUE,
-    ATTR2 INT
+
+);
+~~~~~~
+
+
+## Tutor
+
+~~~~~~ {#SQL-tutor .sqlpostgresql}
+CREATE TABLE tutor
+(
+
+);
+~~~~~~
+
+
+## Student
+
+~~~~~~ {#SQL-student .sqlpostgresql}
+CREATE TABLE student
+(
+
+);
+~~~~~~
+
+
+## Group
+
+~~~~~~ {#SQL-group .sqlpostgresql}
+CREATE TABLE group
+(
+
+);
+~~~~~~
+
+
+## Meeting
+
+~~~~~~ {#SQL-meeting .sqlpostgresql}
+CREATE TABLE meeting
+(
+
+);
+~~~~~~
+
+
+## Meetings_students
+
+~~~~~~ {#SQL-meeting_students .sqlpostgresql}
+CREATE TABLE meeting_students
+(
+
+);
+~~~~~~
+
+
+## Course
+
+~~~~~~ {#SQL-course .sqlpostgresql}
+CREATE TABLE course
+(
+
+);
+~~~~~~
+
+
+## Course_type
+
+~~~~~~ {#SQL-course_type .sqlpostgresql}
+CREATE TABLE course_type
+(
+
+);
+~~~~~~
+
+
+## Courses_course_types
+
+~~~~~~ {#SQL-courses_course_types .sqlpostgresql}
+CREATE TABLE courses_course_types
+(
+
+);
+~~~~~~
+
+
+## Program_structure
+
+~~~~~~ {#SQL-program_structure .sqlpostgresql}
+CREATE TABLE program_structure
+(
+
+);
+~~~~~~
+
+
+## Courses_program_structures
+
+~~~~~~ {#SQL-courses_program_structures .sqlpostgresql}
+CREATE TABLE courses_program_structures
+(
+
+);
+~~~~~~
+
+
+## Program_requirement
+
+~~~~~~ {#SQL-program_requirement .sqlpostgresql}
+CREATE TABLE program_requirement
+(
+
+);
+~~~~~~
+
+
+## Courses_students
+
+~~~~~~ {#SQL-courses_students .sqlpostgresql}
+CREATE TABLE courses_students
+(
+
+);
+~~~~~~
+
+
+## Form
+
+~~~~~~ {#SQL-form .sqlpostgresql}
+CREATE TABLE form
+(
+
 );
 ~~~~~~
 
