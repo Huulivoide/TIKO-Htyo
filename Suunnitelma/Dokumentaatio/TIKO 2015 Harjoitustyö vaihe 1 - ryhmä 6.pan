@@ -443,7 +443,14 @@ Kappale 2 käy taas puolestaan itse asian kimppuun
 ~~~~~~ {#SQL-user .sqlpostgresql}
 CREATE TABLE user
 (
-
+    id SERIAL PRIMARY KEY,
+    login TEXT NOT NULL UNIQUE,
+    password TEXT NOT NULL,
+    phone TEXT NOT NULL UNIQUE,
+    email TEXT NOT NULL UNIQUE,
+    first_name TEXT NOT NULL,
+    other_name TEXT,
+    last_name TEXT NOT NULL
 );
 ~~~~~~
 
@@ -453,7 +460,8 @@ CREATE TABLE user
 ~~~~~~ {#SQL-tutor .sqlpostgresql}
 CREATE TABLE tutor
 (
-
+    user_id INTEGER PRIMARY KEY REFERENCES user(id),
+    is_god BOOLEAN NOT NULL
 );
 ~~~~~~
 
@@ -463,7 +471,11 @@ CREATE TABLE tutor
 ~~~~~~ {#SQL-student .sqlpostgresql}
 CREATE TABLE student
 (
-
+    user_id INTEGER PRIMARY KEY REFERENCES user(id),
+    entry_year INTEGER NOT NULL,
+    tutor_id INTEGER REFERENCES tutor(user_id),
+    program_structure_id INTEGER NOT NULL REFERENCES program_structure(id),
+    group_id INTEGER REFERENCES group(id)
 );
 ~~~~~~
 
@@ -473,7 +485,8 @@ CREATE TABLE student
 ~~~~~~ {#SQL-group .sqlpostgresql}
 CREATE TABLE group
 (
-
+    id SERIAL PRIMARY KEY,
+    tutor_id INTEGER NOT NULL REFERENCES tutor(user_id)
 );
 ~~~~~~
 
@@ -483,7 +496,11 @@ CREATE TABLE group
 ~~~~~~ {#SQL-meeting .sqlpostgresql}
 CREATE TABLE meeting
 (
-
+    id SERIAL PRIMARY KEY,
+    date DATE NOT NULL,
+    group_id INTEGER REFERENCES group(id),
+    tutor_id INTEGER REFERENCES tutor(user_id),
+    report TEXT NOT NULL
 );
 ~~~~~~
 
@@ -493,7 +510,9 @@ CREATE TABLE meeting
 ~~~~~~ {#SQL-meeting_students .sqlpostgresql}
 CREATE TABLE meeting_students
 (
-
+    student_id INTEGER REFERENCES student(user_id),
+    meeting_id INTEGER REFERENCES meeting(id),
+    PRIMARY KEY(student_id, meeting_id)
 );
 ~~~~~~
 
@@ -503,7 +522,11 @@ CREATE TABLE meeting_students
 ~~~~~~ {#SQL-course .sqlpostgresql}
 CREATE TABLE course
 (
-
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    year INTEGER NOT NULL,
+    credits INTEGER NOT NULL,
+    CONSTRAINT UNIQUE(name, year)
 );
 ~~~~~~
 
@@ -513,7 +536,8 @@ CREATE TABLE course
 ~~~~~~ {#SQL-course_type .sqlpostgresql}
 CREATE TABLE course_type
 (
-
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL UNIQUE
 );
 ~~~~~~
 
@@ -523,7 +547,9 @@ CREATE TABLE course_type
 ~~~~~~ {#SQL-courses_course_types .sqlpostgresql}
 CREATE TABLE courses_course_types
 (
-
+    course_id INTEGER REFERENCES course(id),
+    course_type_id INTEGER REFERENCES course_type(id),
+    PRIMARY KEY(course_id, course_type_id)
 );
 ~~~~~~
 
@@ -533,7 +559,10 @@ CREATE TABLE courses_course_types
 ~~~~~~ {#SQL-program_structure .sqlpostgresql}
 CREATE TABLE program_structure
 (
-
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    year INTEGER NOT NULL,
+    CONSTARINT UNIQUE(name, year)
 );
 ~~~~~~
 
@@ -543,7 +572,9 @@ CREATE TABLE program_structure
 ~~~~~~ {#SQL-courses_program_structures .sqlpostgresql}
 CREATE TABLE courses_program_structures
 (
-
+    course_id INTEGER REFERENCES course(id),
+    program_structure_id INTEGER REFERENCES program_structure(id),
+    PRIMARY KEY(course_id, program_structure_id)
 );
 ~~~~~~
 
@@ -553,7 +584,10 @@ CREATE TABLE courses_program_structures
 ~~~~~~ {#SQL-program_requirement .sqlpostgresql}
 CREATE TABLE program_requirement
 (
-
+    course_type_id INTEGER REFERENCES course_type(id),
+    program_structure_id INTEGER REFERENCES program_structure(id),
+    credits INTEGER NOT NULL,
+    PRIMARY KEY(course_type_id, program_structure_id)
 );
 ~~~~~~
 
@@ -563,7 +597,12 @@ CREATE TABLE program_requirement
 ~~~~~~ {#SQL-courses_students .sqlpostgresql}
 CREATE TABLE courses_students
 (
-
+    course_id INTEGER REFERENCES course(id),
+    form_id INTEGER REFERENCES form(id),
+    student_id INTEGER REFERENCES student(user_id),
+    planned_finishing_date DATE NOT NULL,
+    finishing_date DATE NOT NULL,
+    PRIMARY KEY(course_id, form_id, student_id)
 );
 ~~~~~~
 
@@ -573,7 +612,16 @@ CREATE TABLE courses_students
 ~~~~~~ {#SQL-form .sqlpostgresql}
 CREATE TABLE form
 (
-
+    id SERIAL PRIMARY KEY,
+    student_id INTEGER NOT NULL REFERENCES student(user_id),
+    time TIMESTAMP NOT NULL,
+    works BOOLEAN NOT NULL,
+    weekly_hours INTEGER NOT NULL,
+    working_reason TEXT NOT NULL,
+    interest TEXT NOT NULL,
+    secondary_interest TEXT NOT NULL,
+    last_year_positive TEXT NOT NULL,
+    last_year_negative TEXT NOT NULL
 );
 ~~~~~~
 
