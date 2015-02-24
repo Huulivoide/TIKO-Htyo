@@ -4,34 +4,204 @@
 
 
 
-# ER-kaavion entiteetit
+# ER-kaavio
 
-## Käyttäjä - Opiskelija - Opettaja
+Tässä luvussa esitellään digitaalisessa HOPS-järjestelmässä tarvittava tietokanta ER-kaaviona.
+Ensimmäiseksi käsitellään kaavion entiteetit ja sen jälkeen niiden väliset suhteet.
+
+Kaaviossa \ref{fig:ER-kaavio} on esiteltynä kaikki projektiin liittyvät
+ER-entiteetit ja niiden keskinäiset suhteet. Sama kaavio löytyy koko sivun kokoisena
+tämän dokumentin lopusta.  
+
+## ER-kaavion entiteetit
+
+Esittelyssä ER-kaaviossa esiintyvät entiteetit.
+
+### Käyttäjä
+
+Sähköisen HOPS-lomakkeen käyttäjä, opiskelija tai tuutori.
+
 \insertDiagram{ER-entiteetti-kayttaja}{Käyttäjä entiteetti}
+
+- ID: Numeerinen käyttäjän tunnus.
+- PPT: Uniikki tunnus, jota käytetään sisäänkirjausuttaessa.
+- Tyyppi: Tutor/Opiskelija.
+- Salasana: Suolattu ja hash-funtionläpi viety salasana.
+- Puhelin: Käyttäjän puhelinnumero.
+- Sposti:  Käyttäjän sähköpostiosoite, käytetään esimerkiksi ryhmäläisille
+  tapaamiskutsua lähetettäessä.
+- Nimi
+    * etu-: Käyttäjän etunimi.
+    * toinen-: Käyttäjän muut nimet, kuten toinen etunimi.
+    * suku-: Käyttäjän sukunimi.
+    
+#### Opiskelija
+Käyttäjän aliluokka, opiskelija.
+
 \insertDiagram{ER-entiteetti-opiskelija}{Opiskelija entiteetti}
+
+- Aloitusvuosi: Opintojen aloitusvuosi kokonaislukuna.
+
+#### Tuutori
+Käyttäjän aliluokka, tuutori.
+
 \insertDiagram{ER-entiteetti-opettajatuutori}{Tuutori entiteetti}
 
-- Ominaisuus 1: Kuvaus ominaisuudesta
+- On ylituutori: Kertoo onko tuutori ylituutori.
 
+### Ryhmä
 
-## Ryhmä
+Ryhmä, johon kuuluu tuutori sekä opiskelijoita. Ryhmä palaveeraa.
+
 \insertDiagram{ER-entiteetti-ryhma}{Ryhmä entiteetti}
 
-- ID
+- ID: Numeerinen ryhmän tunnus.
+- Koko: Ryhmän koko, johdettu opiskelija-taulusta.
 
 
-## Opintojakso
+### Opintojakso
+
+Tampereen yliopistossa suoritettavissa oleva kurssi.
+
 \insertDiagram{ER-entiteetti-opintojakso}{Opintojakso entiteetti}
 
-- Ominaisuus 1
-- Ominaisuus 2
-- Ominaisuus 3,
-    jolla on pitkäseselite,
-    joka ei mahdu yhdelle riville
+- ID: Numeerinen kurssitunnus.
+- Nimi: Kurssin nimi, muodossa "KURSSITUNNUS Kurssin nimi kokonaisuudessaan".
+- Vuosi: Vuosi, jolloin kurssi on järjesttetty ensimmäisen kerran. Uniikki.
+  Kurssin laajuus voi muuttua, jonka seurauksena opintopistemäärä muuttuu,
+  vuoden avulla voidaan tietokannasta etsiä tuoreimman kurssin tiedot.
+- OP-pisteet: Kurssista saatavien opintopisteiden määrä.
+
+### TK-Rakenne
+
+Tampereen yliopistossa suoritettavissa oleva tutkintorakenne, koostuu opintojaksoista.
+
+\insertDiagram{ER-entiteetti-tk-rakenne}{TK-rakenne entiteetti}
+
+- ID: Numeerinen tutkintorakenteen tunnus.
+- Nimi: Tutkinnon nimi.
+- Vuosi: Tutkinnon alkamisvuosi.
+- Vaatimukset: Rakenteen pakolliset kurssit.
+
+### Kurssityyppi
+
+Kertoo mihin opintokokonaisuuteen opintojakso kuuluu.
+
+\insertDiagram{ER-entiteetti-kurssityyppi}{Kurssityyppi entiteetti}
+
+- ID: Numeerinen kurssityypin tunnus.
+- Nimi: Perus-/aine-/syventävät-/muut opinnot, uniikki
+
+### Palaveri
+
+Kokous, jossa opiskelijat ja tuutori keskustelevat. Ryhmä- tai henkilökohtainen.
+
+\insertDiagram{ER-entiteetti-palaveri}{Palaveri entiteetti}
+
+- ID: Numeerinen palaverin tunnus.
+- Palaverityyppi: Ryhmä-/Henkilökohtainen palaveri, johdettu attribuutti.
+- Päivämäärä: Päivämäärä, jolloin palaveri on pidetty.
+- Raportti: Raportti palaverissa käsitellyistä asioista.
+
+### Täytetty lomake
+
+Opiskelijan täyttämä ja tuutorin tarkastettava jokavuotinen HOPS-lomake.
+
+\insertDiagram{ER-entiteetti-täytetty_lomake}{TK-rakenne täytetty lomake}
+
+- ID: Numeerinen lomakkeen tunnus.
+- On töissä: Työskenteleekö opiskelija?
+- Työ selite: Miksi/miksei töissä?
+- Työtunnit: Viikottaiset työtunnit.
+- Kiinnostukset: Pääaineen kiinnostavat aiheet.
+- Valinnaiset kiinnostukset: Muut kiinnostavat aineet.
+- Viime vuosi: Viime vuoden...
+    * Plussat: ...myönteiset asiat.
+    * Miinukset: ...kielteiset asiat.
+- Päivämäärä/aika: Lomakkeen palautusajankohta
 
 
-# ER-kaavio kokonaisuudessaan
+## ER-kaavion suhteet
 
+Seuraavaksi kuvataan entiteettien välisiä suhteita.
+
+### Opintojakso kuuluu kurssityyppiin
+
+Jokainen opintojakso kuuluu johonkin kurssityyppiin.
+
+\insertDiagram{ER-suhde-opintojakso-kuuluu-kurssityyppiin}{Opintojakso kuuluu kurssityyppiin -suhde}
+
+### Opintojakso kuuluu TK-rakenteeseen
+
+Opintojakso voi kuulua tutkintorakenteeseen.
+
+\insertDiagram{ER-suhde-opintojakso-kuulu-tk-rakenteseen}{Opintojakso kuuluu TK-rakenteeseen -suhde}
+
+### Opiskelija aikoo suorittaa opintojakson
+
+Opiskelijoiden ilmoittaa suoritettaviksi suunnittelemansa kurssit HOPS-lomakkeessa.
+
+\insertDiagram{ER-suhde-opiskelija-aikoo_suorittaa-opintojakson}{Opiskelija aikoo suorittaa opintojakson -suhde}
+
+- Suoritettu: Onko opintojakso suoritettu vai ei?
+- Milloin: Suoritusajankohta.
+
+### Opiskelija kuuluu ryhmään
+
+Opiskelijat kuuluvat tutor-ryhmiin.
+
+\insertDiagram{ER-suhde-opiskelija-kuuluu-ryhmään}{Opiskelija kuuluu ryhmään -suhde}
+
+### Opiskelija osallistuu palaveriin
+
+Opiskelijat osallistuvat palavereihin opintojensa aikana.
+
+\insertDiagram{ER-suhde-opiskelija-osallistuu-palaveriin}{Opiskelija osallistuu palaveriin -suhde}
+
+### Opiskelija suorittaa tutkintorakenteen
+
+Opiskelijoiden on tarkoitus suorittaa jokin tutkintorakenne.
+
+\insertDiagram{ER-suhde-opiskelija-suorittaa-tutkintorakenteen}{Opiskelija suorittaa tutkintorakenteen -suhde}
+
+### Opiskelija täyttää lomakkeen
+
+Opiskelijat vastaavat sähköisissä HOPS-lomakkeissa esitettyihin kysymyksiin.
+
+\insertDiagram{ER-suhde-opiskelija-täyttää-lomakkeen}{Opiskelija täyttää lomakkeen -suhde}
+
+### Ryhmä palaveeraa palaverissa
+
+Ryhmät käyvät palavereissa.
+
+\insertDiagram{ER-suhde-ryhmä-palaveeraa-palaverissa}{Ryhmä palaveeraa palaverissa -suhde}
+
+### Tutor ohjaa ryhmää
+
+Jokaisella ryhmällä on ohjaava opettajatuutori.
+
+\insertDiagram{ER-suhde-tutor-ohjaa-ryhmää}{Tutor ohjaa ryhmää -suhde}
+
+### Tutor osallistuu palaveriin
+
+Tutor on aina osallisena palaverissa.
+
+\insertDiagram{ER-suhde-tutor-osallistuu-palaveriin}{Tutor osallistuu palaveriin -suhde}
+
+### Tutor tarkastaa lomakkeen
+
+Tutorit tarkastavat oppilaiden täyttämät sähköiset HOPS-lomakkeet.
+
+\insertDiagram{ER-suhde-tutor-tarkastaa-lomakkeen}{Tutor tarkastaa lomakkeen -suhde}
+
+### Tutor tuutoroi opiskelijaa
+
+Opiskelijalla on oma opettajatuutori.
+
+\insertDiagram{ER-suhde-tutor-tuutoroi-opiskelijaa}{Tutor tuutoroi opiskelijaa -suhde}
+
+
+## ER-kaavio kokonaisuudessaan
 \insertDiagram{ER-kaavio}{ER-kaavio}
 
 Pitkät pätkät selitystä ER-kaavion sisällöstä,
@@ -64,41 +234,39 @@ ympyrä ● taas puolestaan tarkoittaa, että __NULL__ arvot eivät olesallittuj
 
 _User_ relaatio vastaa ER-kaavion [käyttäjä](#käyttäjä) entiteettiä
 
-\insertRelation{Relaatio-user}{User ralaatio}
+\insertRelation{Relaatio-user}{User relaatio}
 
 - id: Numeerinen automaattisesti kasvava pääavain.
     * 0
     * 134
     * 975858975858
-- login: Uniikki tunnus, jota käytetään siisänkirjausuttaessa. == __PPT__
+- login: login == __PPT__
   Koska käyttäjä tauluun ja/tai sen aliluokkiin viitataan useista paikoista
   ei login-attribuuttia ole valittu pääavaimeksi.
   säästämään tilaa lukuisissa viiteavaimissa.
     * ab76895
     * jk97452
     * nl99912
-- password: Suolattu ja hash-funtionläpi viety salasana.
+- password: 
     * 'Vahva salalause nro 78' => $2970968|dfas879da7g908u98adf7hg89fd897h8fd9h^
     * 'salasana' => $9892194|jlksdg86afga897d9a8hadfhdgmleälwäfioo49^
-- phone: Käyttäjän puhelinnumero. Uniikki.
+- phone: Uniikki.
     * +3580476581
     * 0451766895
     * 0316727672
-- email: Käyttäjän sähköpostiosoite, käytetään esimerkiksi ryhmäläisille
-  tapaamiskutsua lähetettäessä.
+- email:
     * Erkki.Esimerkki.E@student.uta.fi
     * Saila.Anttila.K@uta.fi
     * Alisa.Seleznjova.I@student.uta.fi
-- firs_name: Käyttäjän etunimi.
+- first_name: 
     * Erkki
     * Wēn
     * Anna-Kaisa
-- last_name: Käyttäjän sukunimi
+- last_name:
     * Postinen
     * Salmela
     * Nakata
-- other_name: Moniselitteinen kenttä, johon voi tallettaa kaikki muut henkilön
-  nimet, kuten toisen etunimen.
+- other_name: 
     * Alviira
     * Oiva
     * Aku
@@ -115,7 +283,7 @@ _Tutor_ relaatio on [_user_](#user) relaation aliluokka. Vastaa ER-kaavion
     * 0
     * 123
     * 975858
-- is_god: Kertoo onko tuutori ylituutori
+- is_god: 
     * __TRUE__
     * __FALSE__
 
@@ -132,7 +300,7 @@ _Student_ relaatio on [_user_](#user) relaation aliluokka. Vastaa ER-kaavion
     * 0
     * 123
     * 975858
-- entry_year: Opintojen aloitusvuosi kokonaislukuna
+- entry_year:
     * 2012
     * 2000
     * 2037
@@ -177,7 +345,7 @@ _Meeting_ relaatio vastaa ER-kaavion [palaveri](#palaveri) entiteettiä.
     * 1
     * 2
     * 123
-* date: Päivämäärä, jolloin palveri on pidetty
+* date: 
     * 12.9.2013
     * 10.1.2015
     * 29.11.2016
@@ -192,7 +360,7 @@ _Meeting_ relaatio vastaa ER-kaavion [palaveri](#palaveri) entiteettiä.
     * 1
     * 123
     * 975858
-* report: Raportti palaverissa käsitellyistä asioista.
+* report: 
     * Keskusteltiin opiskelijan laatiman HOPS:in sisälllöstä ja ensivuoden
       suunnitelmista.
 
@@ -225,17 +393,15 @@ _Course_ relaatio vastaa ER-kaavion [kurssi](#kurssi) entiteettiä.
     * 100
     * 101
     * 102
-- name: Kurssin nimi, muodossa "KURSSITUNNUS Kurssin nimi kokonaisuudessaan".
+- name: 
     * TIETA12 WWW-ojelmointi
     * VENP4 Venäjän historian ja kirjallisuuden perusteet
     * KKSULUK Tieteellinen kirjoittaminen
-- year: Vuosi, jolloin kurssi on järjesttetty ensimmäisen kerran. Uniikki.
-  Kurssin laajuus voi muuttua, jonka seurauksena opintopistemäärä muuttuu,
-  vuoden avulla voidaan tietokannasta etsiä tuoreimman kurssin tiedot.
+- year: 
     * 2005
     * 2009
     * 2011
-- credits: Kurssista saatavien opintopisteiden märä.
+- credits: 
     * 3
     * 5
     * 10
@@ -251,7 +417,7 @@ _Course_type_ relaatio vastaa ER-kaavion [kurssityyppi](#kurssityyppi) entiteett
     * 1
     * 2
     * 123
-* name: Uniikki nimi
+* name: 
     * Perusopinto
     * Kieliopinto
     * Tietojenkäsittelytieteiden opinto
@@ -284,35 +450,35 @@ _Form_ relaatio vastaa ER-Kaavion [lomake](#lomake) entiteettiä.
     * 0
     * 123
     * 98765
-* time: Lomakkeen palautus aika
+* time: 
     * 10.10.2010 20:00:10
     * 1.9.2014 15:45:02
     * 30.5.2015 08:07:57
-* works: Työskenteleekö opiskelija
+* works:
     * __TRUE__
     * __FALSE__
-* weekly_hours: Viikottaiset työ tunnit
+* weekly_hours: 
     * 0: Jos ei aio käydä töissä opiskelin aikana
     * 45
     * 25
-* working_reason: Miksi/miksei töissä
+* working_reason: 
     * "Aion keskittyä opiskeluun"
     * "En tahdo ottaa opintolainaa ja tarvitsen lisätienestejä"
     * "Ei jaksa. XD"
-* interests: Pääaineen kiinnostavat aiheet
+* interests: 
     * "": Ei kiinnostuksen kohteita
     * "Ohjelmointi kurssit ovat olleet hyvin miellekkäitä."
     * "Käännös kurssit on ihan kivoja, mutta kirjallisuuden kurssit ei oikein
       iske."
-* secondary_interests: Muut kiinnostavat aineet
+* secondary_interests: 
     * "Venäjän kurssit kiinnostavat kovasti, mutta harmillisesti eivät mahdu
       lukujärjestykseen."
     * "Matematiikan kurssit ovat parantaneet elämönlaatuani huomattavasti."
     * "Johtamiskorkeakoulun kurssitarjonta vaikuttaa tosi kiintoisalta."
-* last_year_positive: Viimevuoden plussat
+* last_year_positive:
     * "Tuutorit olivat hyvin tehtäviensä tasalla ja ovat olleet suureksi avuksi"
     * "On tullut opittua kaikkea uutta ja jännää"
-* last_year_negative: Viimevuoden miinukset
+* last_year_negative:
     * "Liian pitkät päivät"
     * "Ei saanut kaikkia sivuaineita mahtumaan kalenteriin"
 
@@ -359,11 +525,11 @@ entiteettiä.
     * 1
     * 2
     * 123
-* name: Tutkinnon nimi
+* name: 
     * "Tietojenkäsittelytieteiden kandinaatin tutkonto-ohjelma"
     * "Venäjän kielen, kulttuurin ja kääntämisen tutkinto-ohjelma"
     * "Tietojenkäsittelyopin maisterin tutkinto-ohjelma"
-* year: Tutkinnon alkamisvuosi
+* year: 
     * 2000
     * 2005
     * 2020
