@@ -21,7 +21,7 @@ Esittelyssä ER-kaaviossa esiintyvät entiteetit.
 
 Sähköisen HOPS-lomakkeen käyttäjä, opiskelija tai tuutori.
 
-\insertDiagram{ER-entiteetti-kayttaja}{Käyttäjä entiteetti}
+\insertDiagram{ER-entiteetti-käyttäjä}{Käyttäjä entiteetti}
 
 - ID: Numeerinen käyttäjän tunnus.
 - PPT: Uniikki tunnus, jota käytetään sisäänkirjausuttaessa.
@@ -135,7 +135,7 @@ Jokainen opintojakso kuuluu johonkin kurssityyppiin.
 
 Opintojakso voi kuulua tutkintorakenteeseen.
 
-\insertDiagram{ER-suhde-opintojakso-kuulu-tk-rakenteseen}{Opintojakso kuuluu TK-rakenteeseen -suhde}
+\insertDiagram{ER-suhde-opintojakso-kuuluu-tk-rakenteeseen}{Opintojakso kuuluu TK-rakenteeseen -suhde}
 
 ### Opiskelija aikoo suorittaa opintojakson
 
