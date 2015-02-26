@@ -63,7 +63,7 @@ Käyttäjän aliluokka, tuutori.
 
 Ryhmä, johon kuuluu tuutori sekä opiskelijoita.
 
-\insertDiagram{ER-entiteetti-ryhma}{Ryhmä entiteetti}
+\insertDiagram{ER-entiteetti-ryhmä}{Ryhmä entiteetti}
 
 - ID: Ryhmän tunnus.
 - Koko: Ryhmän koko, johdettu opiskelija-taulusta.
@@ -261,9 +261,12 @@ Kaaviossa \ref{fig:Relaatio-kaavio} on esiteltynä kaikki projektiin liittyvät
 relaatiot ja niiden keskinäiset suhteet. Sama kaavio löytyy koko sivun kokoisena
 tämän dokumentin lopusta.
 
-Salmiakkikuviolla ♦ merkityt attribuuttit ovat pääavaimia.
-Avoin ympyrä ○ vasemlla tarkoittaa että __NULL__ arvot ovat sallittuja. Suljettu
-ympyrä ● taas puolestaan tarkoittaa, että __NULL__ arvot eivät olesallittuja.
+Kaavion selitteet:
+* ♦: Pääavain.
+* ●: __NULL__ arvot eivät ole sallittuja.
+* ○: __NULL__ arvot ovat sallittuja.
+* ■: __UNIQUE__ määrä on voimassa, eivätkä __NULL__ arvot ole sallittuja.
+* □: __UNIQUE__ määre on voimassa ja __NULL__ arvot ovat sallittuja.
 
 
 ## User
