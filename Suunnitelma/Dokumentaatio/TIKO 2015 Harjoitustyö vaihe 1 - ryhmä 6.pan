@@ -632,6 +632,30 @@ CREATE TABLE tutor
 ~~~~~~
 
 
+## Group
+
+~~~~~~ {#SQL-group .sqlpostgresql}
+CREATE TABLE group
+(
+    id SERIAL PRIMARY KEY,
+    tutor_id INTEGER NOT NULL REFERENCES tutor(user_id)
+);
+~~~~~~
+
+
+## Program_structure
+
+~~~~~~ {#SQL-program_structure .sqlpostgresql}
+CREATE TABLE program_structure
+(
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    year INTEGER NOT NULL,
+    CONSTARINT UNIQUE(name, year)
+);
+~~~~~~
+
+
 ## Student
 
 ~~~~~~ {#SQL-student .sqlpostgresql}
@@ -642,17 +666,6 @@ CREATE TABLE student
     tutor_id INTEGER REFERENCES tutor(user_id),
     program_structure_id INTEGER NOT NULL REFERENCES program_structure(id),
     group_id INTEGER REFERENCES group(id)
-);
-~~~~~~
-
-
-## Group
-
-~~~~~~ {#SQL-group .sqlpostgresql}
-CREATE TABLE group
-(
-    id SERIAL PRIMARY KEY,
-    tutor_id INTEGER NOT NULL REFERENCES tutor(user_id)
 );
 ~~~~~~
 
@@ -720,19 +733,6 @@ CREATE TABLE courses_course_types
 ~~~~~~
 
 
-## Program_structure
-
-~~~~~~ {#SQL-program_structure .sqlpostgresql}
-CREATE TABLE program_structure
-(
-    id SERIAL PRIMARY KEY,
-    name TEXT NOT NULL,
-    year INTEGER NOT NULL,
-    CONSTARINT UNIQUE(name, year)
-);
-~~~~~~
-
-
 ## Courses_program_structures
 
 ~~~~~~ {#SQL-courses_program_structures .sqlpostgresql}
@@ -758,21 +758,6 @@ CREATE TABLE program_requirement
 ~~~~~~
 
 
-## Courses_students
-
-~~~~~~ {#SQL-courses_students .sqlpostgresql}
-CREATE TABLE courses_students
-(
-    course_id INTEGER REFERENCES course(id),
-    form_id INTEGER REFERENCES form(id),
-    student_id INTEGER REFERENCES student(user_id),
-    planned_finishing_date DATE NOT NULL,
-    finishing_date DATE NOT NULL,
-    PRIMARY KEY(course_id, form_id, student_id)
-);
-~~~~~~
-
-
 ## Form
 
 ~~~~~~ {#SQL-form .sqlpostgresql}
@@ -788,6 +773,21 @@ CREATE TABLE form
     secondary_interest TEXT NOT NULL,
     last_year_positive TEXT NOT NULL,
     last_year_negative TEXT NOT NULL
+);
+~~~~~~
+
+
+## Courses_students
+
+~~~~~~ {#SQL-courses_students .sqlpostgresql}
+CREATE TABLE courses_students
+(
+    course_id INTEGER REFERENCES course(id),
+    form_id INTEGER REFERENCES form(id),
+    student_id INTEGER REFERENCES student(user_id),
+    planned_finishing_date DATE NOT NULL,
+    finishing_date DATE NOT NULL,
+    PRIMARY KEY(course_id, form_id, student_id)
 );
 ~~~~~~
 
