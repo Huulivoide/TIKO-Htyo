@@ -2,10 +2,10 @@
 <dia:diagram xmlns:dia="http://www.lysator.liu.se/~alla/dia/">
   <dia:diagramdata>
     <dia:attribute name="background">
-      <dia:color val="#ffffff"/>
+      <dia:color val="#ffffffff"/>
     </dia:attribute>
     <dia:attribute name="pagebreak">
-      <dia:color val="#000099"/>
+      <dia:color val="#000099ff"/>
     </dia:attribute>
     <dia:attribute name="paper">
       <dia:composite type="paper">
@@ -37,6 +37,9 @@
     </dia:attribute>
     <dia:attribute name="grid">
       <dia:composite type="grid">
+        <dia:attribute name="dynamic">
+          <dia:boolean val="true"/>
+        </dia:attribute>
         <dia:attribute name="width_x">
           <dia:real val="1"/>
         </dia:attribute>
@@ -53,7 +56,7 @@
       </dia:composite>
     </dia:attribute>
     <dia:attribute name="color">
-      <dia:color val="#d8e5e5"/>
+      <dia:color val="#d8e5e5ff"/>
     </dia:attribute>
     <dia:attribute name="guides">
       <dia:composite type="guides">
@@ -61,8 +64,27 @@
         <dia:attribute name="vguides"/>
       </dia:composite>
     </dia:attribute>
+    <dia:attribute name="display">
+      <dia:composite type="display">
+        <dia:attribute name="antialiased">
+          <dia:boolean val="true"/>
+        </dia:attribute>
+        <dia:attribute name="snap-to-grid">
+          <dia:boolean val="true"/>
+        </dia:attribute>
+        <dia:attribute name="snap-to-object">
+          <dia:boolean val="true"/>
+        </dia:attribute>
+        <dia:attribute name="show-grid">
+          <dia:boolean val="true"/>
+        </dia:attribute>
+        <dia:attribute name="show-connection-points">
+          <dia:boolean val="true"/>
+        </dia:attribute>
+      </dia:composite>
+    </dia:attribute>
   </dia:diagramdata>
-  <dia:layer name="Uusi taso 1" visible="true" active="true">
+  <dia:layer name="Uusi taso 1" visible="true" connectable="true">
     <dia:object type="Standard - Box" version="0" id="O0">
       <dia:attribute name="obj_pos">
         <dia:point val="0.675,1.345"/>
@@ -80,26 +102,26 @@
         <dia:real val="1"/>
       </dia:attribute>
       <dia:attribute name="border_width">
-        <dia:real val="1.1754943508222875e-038"/>
+        <dia:real val="1.1754943508222875e-38"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="show_background">
         <dia:boolean val="false"/>
       </dia:attribute>
     </dia:object>
   </dia:layer>
-  <dia:layer name="Tausta" visible="true">
+  <dia:layer name="Tausta" visible="true" connectable="true" active="true">
     <dia:object type="ER - Entity" version="0" id="O1">
       <dia:attribute name="obj_pos">
-        <dia:point val="4.22418,0.93111"/>
+        <dia:point val="4.22418,1.08211"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="4.17418,0.88111;9.52418,2.78111"/>
+        <dia:rectangle val="4.17418,1.03211;9.52418,2.93211"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
-        <dia:point val="4.22418,0.93111"/>
+        <dia:point val="4.22418,1.08211"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
         <dia:real val="5.25"/>
@@ -111,10 +133,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Opiskelija#</dia:string>
@@ -134,13 +156,13 @@
     </dia:object>
     <dia:object type="ER - Entity" version="0" id="O2">
       <dia:attribute name="obj_pos">
-        <dia:point val="18.6317,1.07361"/>
+        <dia:point val="18.6317,1.08211"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="18.5817,1.02361;25.8567,2.92361"/>
+        <dia:rectangle val="18.5817,1.03211;25.8567,2.93211"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
-        <dia:point val="18.6317,1.07361"/>
+        <dia:point val="18.6317,1.08211"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
         <dia:real val="7.1750000000000007"/>
@@ -152,10 +174,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Täytetty lomake#</dia:string>
@@ -193,10 +215,10 @@
         <dia:real val="0.10000000000000001"/>
       </dia:attribute>
       <dia:attribute name="border_color">
-        <dia:color val="#000000"/>
+        <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:attribute name="inner_color">
-        <dia:color val="#ffffff"/>
+        <dia:color val="#ffffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Täyttää#</dia:string>
@@ -225,13 +247,13 @@
         <dia:point val="11.9867,1.98211"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="9.42418,1.78111;12.0367,2.05"/>
+        <dia:rectangle val="9.42418,1.93211;12.0367,2.05"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
         <dia:point val="11.9867,1.98211"/>
         <dia:point val="11.9867,2"/>
         <dia:point val="9.47418,2"/>
-        <dia:point val="9.47418,1.83111"/>
+        <dia:point val="9.47418,1.98211"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -254,13 +276,13 @@
         <dia:point val="16.6817,1.98211"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="16.5067,1.79861;18.7653,2.15711"/>
+        <dia:rectangle val="16.5067,1.80711;18.7653,2.15711"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
         <dia:point val="16.6817,1.98211"/>
         <dia:point val="17.6315,1.98211"/>
-        <dia:point val="17.6315,1.97361"/>
-        <dia:point val="18.5903,1.97361"/>
+        <dia:point val="17.6315,1.98211"/>
+        <dia:point val="18.5903,1.98211"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="0"/>
