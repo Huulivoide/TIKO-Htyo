@@ -52,11 +52,12 @@ mutteivät tuutoreihin.
 
 #### Tuutori
 
-Käyttäjän aliluokka, tuutori.
-
 \insertDiagram{ER-entiteetti-opettajatuutori}{Tuutori entiteetti}
 
-- On ylituutori: Kertoo onko tuutori ylituutori.
+Käyttäjän aliluokka, tuutori. Esitettynä vain selkeyden vuoksi.
+Relaatio kaavion puolella tuutori entiteetti putoaa pois ja
+jäljelle jää vain käyttäjä entiteetti jonka tyyppi kertoo onko käyttäjä
+tuutori tai ylituutori.
 
 
 ### Ryhmä
@@ -269,6 +270,22 @@ Kaavion selitteet:
 * □: __UNIQUE__ määre on voimassa ja __NULL__ arvot ovat sallittuja.
 
 
+## Access_level
+
+_Access_level_ relaatio vastaa ER-kaavion [käyttäjä](#käyttäjä) entiteetin
+tyyppi attribuuttia. Tulevaisuudessa relaatio olisi helposti laajennettavissa
+monipuolisemmaksi ja listata yksittäiset oikeudet attribuutteina, sen sijaan
+että järjstelmään on kova koodattuna kolme käyttäjä tyyppiä.
+
+* id: Pääavain
+    * 1: opiskelija
+    * 2: tuutori
+    * 3: ylituutori
+* name: Tasoa kuvaava nimike
+    * opiskelija
+    * tuutori
+    * ylituutori
+
 ## User
 
 _User_ relaatio vastaa ER-kaavion [käyttäjä](#käyttäjä) entiteettiä
@@ -279,17 +296,19 @@ _User_ relaatio vastaa ER-kaavion [käyttäjä](#käyttäjä) entiteettiä
     * 0
     * 134
     * 975858975858
-- login: login == __PPT__
-  Koska käyttäjä tauluun ja/tai sen aliluokkiin viitataan useista paikoista
+- login: login == __PPT__ Koska käyttäjä tauluun ja/tai sen aliluokkiin viitataan useista paikoista
   ei login-attribuuttia ole valittu pääavaimeksi.
-  säästämään tilaa lukuisissa viiteavaimissa.
     * ab76895
     * jk97452
     * nl99912
 - password: 
     * 'Vahva salalause nro 78' => $2970968|dfas879da7g908u98adf7hg89fd897h8fd9h^
     * 'salasana' => $9892194|jlksdg86afga897d9a8hadfhdgmleälwäfioo49^
-- phone: Uniikki.
+- access_level_id: Viiteavain [_access_level_](#access_level) relaation id-attribuuttii
+    * 1: opiskelija
+    * 2: tuutori
+    * 3: ylituutori
+- phone:
     * +3580476581
     * 0451766895
     * 0316727672
@@ -309,22 +328,6 @@ _User_ relaatio vastaa ER-kaavion [käyttäjä](#käyttäjä) entiteettiä
     * Alviira
     * Oiva
     * Aku
-
-
-### Tutor
-_Tutor_ relaatio on [_user_](#user) relaation aliluokka. Vastaa ER-kaavion
-[tuutori](#tuutori) entiteettiä.
-
-\insertRelation{Relaatio-tutor}{Tutor relaatio}
-
-- _user_id_: Pääavaimena toimiva viiteavain [_user_](#user) relaatioon
-  id-attribuuttiin.
-    * 0
-    * 123
-    * 975858
-- is_god: 
-    * __TRUE__
-    * __FALSE__
 
 
 ### Student
@@ -635,6 +638,17 @@ moniarvoista vaatimus-attribuuttia.
 
 # Tietokannan luontilauseet
 
+## Access_level
+
+~~~~~~ {#SQL-user .sqlpostgresql}
+CREATE TABLE user
+(
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL
+);
+~~~~~~
+
+
 ## User
 
 ~~~~~~ {#SQL-user .sqlpostgresql}
@@ -643,6 +657,7 @@ CREATE TABLE user
     id SERIAL PRIMARY KEY,
     login TEXT NOT NULL UNIQUE,
     password TEXT NOT NULL,
+    access_level_id INTEGER REFERENCES access_level(id)
     phone TEXT NOT NULL UNIQUE,
     email TEXT NOT NULL UNIQUE,
     first_name TEXT NOT NULL,
