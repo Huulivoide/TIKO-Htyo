@@ -126,7 +126,7 @@ ryhmä palaveri tai yksityispalaveri.
 - Raportti: Mitä palaverissa on käsitelty.
 
 
-### Täytetty lomake
+### Täytetty lomake {#form}
 
 Opiskelijan täyttämä ja tuutorin tarkastama jokavuotinen HOPS-lomake.
 Lomaketta voi "muokata" jälkikäteen, mutta silloin järjestelmään
@@ -152,7 +152,7 @@ tallentuu kokonaan uusi lomake.
 Seuraavaksi kuvataan entiteettien välisiä suhteita.
 
 
-### Opintojaksolla on kurssityyppejä
+### Opintojaksolla on kurssityyppejä {#kurssi-tyyppi}
 
 \insertDiagram{ER-suhde-opintojakso-kuuluu-kurssityyppiin}{Opintojakso kuuluu kurssityyppiin -suhde}
 
@@ -161,14 +161,14 @@ käytänössä suurimmalla osalla opintojaksoja on vähintään kaksi tyyppiä
 opintojakson taso ja oppiaine.
 
 
-### Opintojakso kuuluu TK-rakenteeseen
+### Opintojakso kuuluu TK-rakenteeseen {#kurssi-tkr}
 
 \insertDiagram{ER-suhde-opintojakso-kuuluu-tk-rakenteeseen}{Opintojakso kuuluu TK-rakenteeseen -suhde}
 
 Opintojakso voi kuulua pakollisena kurssina joihinkin tutkintorakenteisiin.
 
 
-### Opiskelija aikoo suorittaa opintojakson
+### Opiskelija aikoo suorittaa opintojakson {#opiskelija-kurssi}
 
 \insertDiagram{ER-suhde-opiskelija-aikoo_suorittaa-opintojakson}{Opiskelija aikoo suorittaa opintojakson -suhde}
 
@@ -194,7 +194,7 @@ Jokainen opiskelija kuuluu johonkin ryhmään.
 Jokaisella ryhmällä on ohjaava opettajatuutori.
 
 
-### Opiskelija osallistuu palaveriin
+### Opiskelija osallistuu palaveriin {#opikskelija-palaveri}
 
 \insertDiagram{ER-suhde-opiskelija-osallistuu-palaveriin}{Opiskelija osallistuu palaveriin -suhde}
 
@@ -313,7 +313,7 @@ _User_ relaatio vastaa ER-kaavion [käyttäjä](#käyttäjä) entiteettiä
 
 ### Tutor
 _Tutor_ relaatio on [_user_](#user) relaation aliluokka. Vastaa ER-kaavion
-[opettajatuutori](#opettajatuutori) opettajatuutori entiteettiä.
+[tuutori](#tuutori) entiteettiä.
 
 \insertRelation{Relaatio-tutor}{Tutor relaatio}
 
@@ -406,7 +406,7 @@ _Meeting_ relaatio vastaa ER-kaavion [palaveri](#palaveri) entiteettiä.
 
 ## Meetings_students
 _Meetings_students_ relaatio vastaa ER-kaavion
-[opiskelija kuuluu ryhmään](#opiskelija-ryhmä) suhdetta.
+[opiskelija-osallistuu-palaveriin](#opiskelija-palaveri) suhdetta.
 
 \insertRelation{Relaatio-meetings-students}{Meetings{\_}students relaatio}
 
@@ -424,7 +424,7 @@ _Meetings_students_ relaatio vastaa ER-kaavion
 
 ## Course
 
-_Course_ relaatio vastaa ER-kaavion [kurssi](#kurssi) entiteettiä.
+_Course_ relaatio vastaa ER-kaavion [opintojakso](#opintojakso) entiteettiä.
 
 \insertRelation{Relaatio-course}{Course relaatio}
 
@@ -464,7 +464,7 @@ _Course_type_ relaatio vastaa ER-kaavion [kurssityyppi](#kurssityyppi) entiteett
 ## courses_course_types
 
 _Courses_course_types_ relaatio vastaa ER-kaavion
-[kurssin ja kurssityypin](#kurssi-kurssityyppi) välistä suhdetta.
+[kurssin ja kurssityypin](#kurssi-tyyppi) välistä suhdetta.
 
 \insertRelation{Relaatio-courses-course-types}{Courses{\_}course{\_}types relaatio}
 
@@ -476,7 +476,7 @@ _Courses_course_types_ relaatio vastaa ER-kaavion
 
 ## Form
 
-_Form_ relaatio vastaa ER-Kaavion [lomake](#lomake) entiteettiä.
+_Form_ relaatio vastaa ER-Kaavion [lomake](#form) entiteettiä.
 
 \insertRelation{Relaatio-form}{Form relaatio}
 
@@ -525,7 +525,7 @@ _Form_ relaatio vastaa ER-Kaavion [lomake](#lomake) entiteettiä.
 ## Courses_students
 
 _Courses_students_ relaatio vastaa ER_kaavion
-[opiskelija-suorittaa-kurssin](#opiskelija-suorittaa-kurssin) suhdetta.
+[opiskelija aikoo suorittaa opintojakson](#opiskelija-kurssi) suhdetta.
 
 \insertRelation{Relaatio-courses-students}{Courses{\_}students relaatio}
 
@@ -577,7 +577,7 @@ entiteettiä.
 ## Courses_program_structures
 
 _Courses_program_structures_ relaatio vastaa ER-kaavion
-[kurssi-kuuluu-tutkintoon](#kurssi-kuuluu-tutkintoon) suhdetta.
+[kurssi-kuuluu-tutkintoon](#kurssi-tkr) suhdetta.
 
 \insertRelation{Relaatio-courses-program-structures}{Courses{\_}program{\_}structures relaatio}
 
