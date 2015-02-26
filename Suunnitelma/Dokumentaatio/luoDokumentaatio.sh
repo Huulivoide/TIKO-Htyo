@@ -32,6 +32,7 @@ if [ -e "${DOKUMENTTI}.pan" ]; then
            --template=tiko.latex \
            --latex-engine=xelatex \
            --table-of-contents \
+           --toc-depth=6 \
            -o "${DOKUMENTTI}.pdf" \
            "${DOKUMENTTI}.pan"
 else
