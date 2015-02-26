@@ -9,53 +9,63 @@
 Tässä luvussa esitellään digitaalisessa HOPS-järjestelmässä tarvittava tietokanta ER-kaaviona.
 Ensimmäiseksi käsitellään kaavion entiteetit ja sen jälkeen niiden väliset suhteet.
 
+\insertDiagram{ER-kaavio}{ER-kaavio}
+
 Kaaviossa \ref{fig:ER-kaavio} on esiteltynä kaikki projektiin liittyvät
 ER-entiteetit ja niiden keskinäiset suhteet. Sama kaavio löytyy koko sivun kokoisena
-tämän dokumentin lopusta.  
+ja käännettynä tämän dokumentin lopusta.
+
+
 
 ## ER-kaavion entiteetit
 
 Esittelyssä ER-kaaviossa esiintyvät entiteetit.
 
+
 ### Käyttäjä
 
-Sähköisen HOPS-lomakkeen käyttäjä, opiskelija tai tuutori.
+Sähköisen HOPS-järjestelmän käyttäjä, opiskelija tai tuutori.
 
 \insertDiagram{ER-entiteetti-käyttäjä}{Käyttäjä entiteetti}
 
-- ID: Numeerinen käyttäjän tunnus.
-- PPT: Uniikki tunnus, jota käytetään sisäänkirjausuttaessa.
-- Tyyppi: Tutor/Opiskelija.
+- ID: Numeerinen tunnus viiteavaimia varten.
+- PPT: Varsinainen käyttäjän tunniste, jota käytetään sisäänkirjausuttaessa.
+- Tyyppi: Onko käyttäjä opiskelija, tutori vai ylituutori.
 - Salasana: Suolattu ja hash-funtionläpi viety salasana.
 - Puhelin: Käyttäjän puhelinnumero.
 - Sposti:  Käyttäjän sähköpostiosoite, käytetään esimerkiksi ryhmäläisille
   tapaamiskutsua lähetettäessä.
 - Nimi
     * etu-: Käyttäjän etunimi.
-    * toinen-: Käyttäjän muut nimet, kuten toinen etunimi.
+    * toinen-: Käyttäjän muut mahdolliset nimet, kuten toinen etunimi.
     * suku-: Käyttäjän sukunimi.
-    
+
+
 #### Opiskelija
-Käyttäjän aliluokka, opiskelija.
+Käyttäjän aliluokka. Kuvaa tietoja ja suhteita jotka liittyvät opiskelijoihin,
+mutteivät tuutoreihin.
 
 \insertDiagram{ER-entiteetti-opiskelija}{Opiskelija entiteetti}
 
-- Aloitusvuosi: Opintojen aloitusvuosi kokonaislukuna.
+- Aloitusvuosi: Nykyisen tutkintorakenteen suorittamisen aloitusvuosi.
+
 
 #### Tuutori
+
 Käyttäjän aliluokka, tuutori.
 
 \insertDiagram{ER-entiteetti-opettajatuutori}{Tuutori entiteetti}
 
 - On ylituutori: Kertoo onko tuutori ylituutori.
 
+
 ### Ryhmä
 
-Ryhmä, johon kuuluu tuutori sekä opiskelijoita. Ryhmä palaveeraa.
+Ryhmä, johon kuuluu tuutori sekä opiskelijoita.
 
 \insertDiagram{ER-entiteetti-ryhma}{Ryhmä entiteetti}
 
-- ID: Numeerinen ryhmän tunnus.
+- ID: Ryhmän tunnus.
 - Koko: Ryhmän koko, johdettu opiskelija-taulusta.
 
 
@@ -65,12 +75,13 @@ Tampereen yliopistossa suoritettavissa oleva kurssi.
 
 \insertDiagram{ER-entiteetti-opintojakso}{Opintojakso entiteetti}
 
-- ID: Numeerinen kurssitunnus.
+- ID: Numeerinen tunniste viiteavaimia varten, yksilöi kurssin.
 - Nimi: Kurssin nimi, muodossa "KURSSITUNNUS Kurssin nimi kokonaisuudessaan".
-- Vuosi: Vuosi, jolloin kurssi on järjesttetty ensimmäisen kerran. Uniikki.
+- Vuosi: Vuosi, jolloin kurssi on järjesttetty ensimmäisen kerran.
   Kurssin laajuus voi muuttua, jonka seurauksena opintopistemäärä muuttuu,
   vuoden avulla voidaan tietokannasta etsiä tuoreimman kurssin tiedot.
 - OP-pisteet: Kurssista saatavien opintopisteiden määrä.
+
 
 ### TK-Rakenne
 
@@ -81,31 +92,45 @@ Tampereen yliopistossa suoritettavissa oleva tutkintorakenne, koostuu opintojaks
 - ID: Numeerinen tutkintorakenteen tunnus.
 - Nimi: Tutkinnon nimi.
 - Vuosi: Tutkinnon alkamisvuosi.
-- Vaatimukset: Rakenteen pakolliset kurssit.
+- Vaatimukset: TK-rakenteeseen "ohjelmoituja" opintopiste vaatimuksia.
+  Tutkintoon kuuluu joitakin kaille pakollisia kursseja, mutta esimerkiksi
+  kieliopintoja saa valita vapaasti, kunhan opintopisetemäärällisesti niitä
+  tulee tarpeeksi. Tutkiintoon voidaan esimerkiksi ohjelmoida 20p kieliopintoja.
+  Toinen simerkki voisi olla vaikka 30p matematiikan aineopintoja.
+
 
 ### Kurssityyppi
 
-Kertoo mihin opintokokonaisuuteen opintojakso kuuluu.
+Opintojaksoon liitettävä tarra (tägi), joka antaa lisätietoja opintojaksosta,
+esimerkiksi minkä oppiaineen alle opintojakso kuuluu, onko se perus vai maisteritason
+opinto ja/tai onko se vapaa valintainen Kieliopinto. Tyypitysjärjestelmä tuo
+tekee "löyhien" TK-rakenteiden ohjelmoimisen tietokantaan mahdolliseksi.
 
 \insertDiagram{ER-entiteetti-kurssityyppi}{Kurssityyppi entiteetti}
 
 - ID: Numeerinen kurssityypin tunnus.
-- Nimi: Perus-/aine-/syventävät-/muut opinnot, uniikki
+- Nimi: Tägin nimi esim perusopinto, matematiikanopinto, kieliopinto
+
 
 ### Palaveri
 
-Kokous, jossa opiskelijat ja tuutori keskustelevat. Ryhmä- tai henkilökohtainen.
+Kokous, jossa opiskelijat ja tuutori keskustelevat. Palaveri voi olla joko
+ryhmä palaveri tai yksityispalaveri.
 
 \insertDiagram{ER-entiteetti-palaveri}{Palaveri entiteetti}
 
 - ID: Numeerinen palaverin tunnus.
-- Palaverityyppi: Ryhmä-/Henkilökohtainen palaveri, johdettu attribuutti.
-- Päivämäärä: Päivämäärä, jolloin palaveri on pidetty.
-- Raportti: Raportti palaverissa käsitellyistä asioista.
+- Palaverityyppi: Ryhmä-/Henkilökohtainen palaveri, johdettu osallistuvien
+  opiskelijoiden määrästä.
+- Päivämäärä: Milloj palaveri on pidetty.
+- Raportti: Mitä palaverissa on käsitelty.
+
 
 ### Täytetty lomake
 
-Opiskelijan täyttämä ja tuutorin tarkastettava jokavuotinen HOPS-lomake.
+Opiskelijan täyttämä ja tuutorin tarkastama jokavuotinen HOPS-lomake.
+Lomaketta voi "muokata" jälkikäteen, mutta silloin järjestelmään
+tallentuu kokonaan uusi lomake.
 
 \insertDiagram{ER-entiteetti-täytetty_lomake}{TK-rakenne täytetty lomake}
 
@@ -121,91 +146,102 @@ Opiskelijan täyttämä ja tuutorin tarkastettava jokavuotinen HOPS-lomake.
 - Päivämäärä/aika: Lomakkeen palautusajankohta
 
 
+
 ## ER-kaavion suhteet
 
 Seuraavaksi kuvataan entiteettien välisiä suhteita.
 
-### Opintojakso kuuluu kurssityyppiin
 
-Jokainen opintojakso kuuluu johonkin kurssityyppiin.
+### Opintojaksolla on kurssityyppejä
 
 \insertDiagram{ER-suhde-opintojakso-kuuluu-kurssityyppiin}{Opintojakso kuuluu kurssityyppiin -suhde}
 
-### Opintojakso kuuluu TK-rakenteeseen
+Opintojaksoon täytyy olla liitettynä vähintään yksi kurssityyppi,
+käytänössä suurimmalla osalla opintojaksoja on vähintään kaksi tyyppiä
+opintojakson taso ja oppiaine.
 
-Opintojakso voi kuulua tutkintorakenteeseen.
+
+### Opintojakso kuuluu TK-rakenteeseen
 
 \insertDiagram{ER-suhde-opintojakso-kuuluu-tk-rakenteeseen}{Opintojakso kuuluu TK-rakenteeseen -suhde}
 
+Opintojakso voi kuulua pakollisena kurssina joihinkin tutkintorakenteisiin.
+
+
 ### Opiskelija aikoo suorittaa opintojakson
 
-Opiskelijoiden ilmoittaa suoritettaviksi suunnittelemansa kurssit HOPS-lomakkeessa.
-
 \insertDiagram{ER-suhde-opiskelija-aikoo_suorittaa-opintojakson}{Opiskelija aikoo suorittaa opintojakson -suhde}
+
+Kurssit jotka opiskelija aikoo suorittaa kuluvan lukuvuoden aikana.
+Seuraavana vuonna järjestelmä kysyy opiskelijalta, että mitkä kaikki
+kurssit opiskelija on saanut suoritetuksi.
 
 - Suoritettu: Onko opintojakso suoritettu vai ei?
 - Milloin: Suoritusajankohta.
 
-### Opiskelija kuuluu ryhmään
 
-Opiskelijat kuuluvat tutor-ryhmiin.
+### Opiskelija kuuluu ryhmään
 
 \insertDiagram{ER-suhde-opiskelija-kuuluu-ryhmään}{Opiskelija kuuluu ryhmään -suhde}
 
-### Opiskelija osallistuu palaveriin
+Jokainen opiskelija kuuluu johonkin ryhmään.
 
-Opiskelijat osallistuvat palavereihin opintojensa aikana.
-
-\insertDiagram{ER-suhde-opiskelija-osallistuu-palaveriin}{Opiskelija osallistuu palaveriin -suhde}
-
-### Opiskelija suorittaa tutkintorakenteen
-
-Opiskelijoiden on tarkoitus suorittaa jokin tutkintorakenne.
-
-\insertDiagram{ER-suhde-opiskelija-suorittaa-tutkintorakenteen}{Opiskelija suorittaa tutkintorakenteen -suhde}
-
-### Opiskelija täyttää lomakkeen
-
-Opiskelijat vastaavat sähköisissä HOPS-lomakkeissa esitettyihin kysymyksiin.
-
-\insertDiagram{ER-suhde-opiskelija-täyttää-lomakkeen}{Opiskelija täyttää lomakkeen -suhde}
-
-### Ryhmä palaveeraa palaverissa
-
-Ryhmät käyvät palavereissa.
-
-\insertDiagram{ER-suhde-ryhmä-palaveeraa-palaverissa}{Ryhmä palaveeraa palaverissa -suhde}
 
 ### Tutor ohjaa ryhmää
 
+\insertDiagram{ER-suhde-tutor-ohjaa-ryhmää}{Tutor ohjaa ryhmää -suhde}
+
 Jokaisella ryhmällä on ohjaava opettajatuutori.
 
-\insertDiagram{ER-suhde-tutor-ohjaa-ryhmää}{Tutor ohjaa ryhmää -suhde}
+
+### Opiskelija osallistuu palaveriin
+
+\insertDiagram{ER-suhde-opiskelija-osallistuu-palaveriin}{Opiskelija osallistuu palaveriin -suhde}
+
+Opiskelijat osallistuvat sekä ryhmä että yksityispalavereihin. Palaveriin osallistuu
+aina vähintään yksi opiskelija, jolloin kyseessä on yksityispalaveri.
+
 
 ### Tutor osallistuu palaveriin
 
-Tutor on aina osallisena palaverissa.
-
 \insertDiagram{ER-suhde-tutor-osallistuu-palaveriin}{Tutor osallistuu palaveriin -suhde}
+
+Palaveria on aina vetämässä yksi tuutori.
+
+
+### Opiskelija suorittaa tutkintorakenteen
+
+\insertDiagram{ER-suhde-opiskelija-suorittaa-tutkintorakenteen}{Opiskelija suorittaa tutkintorakenteen -suhde}
+
+Opiskelijoiden on tarkoitus suorittaa jokin tutkintorakenne.
+
+
+### Opiskelija täyttää lomakkeen
+
+\insertDiagram{ER-suhde-opiskelija-täyttää-lomakkeen}{Opiskelija täyttää lomakkeen -suhde}
+
+Opiskelijat vastaavat sähköisissä HOPS-lomakkeissa esitettyihin kysymyksiin.
+
+
+### Ryhmä palaveeraa palaverissa
+
+\insertDiagram{ER-suhde-ryhmä-palaveeraa-palaverissa}{Ryhmä palaveeraa palaverissa -suhde}
+
+Ryhmät käyvät palavereissa.
+
 
 ### Tutor tarkastaa lomakkeen
 
-Tutorit tarkastavat oppilaiden täyttämät sähköiset HOPS-lomakkeet.
-
 \insertDiagram{ER-suhde-tutor-tarkastaa-lomakkeen}{Tutor tarkastaa lomakkeen -suhde}
+
+Tutorit tarkastavat mitä heidän tuutoroitavansa ovat kirjoittaneet HOPS:eihinsa
+
 
 ### Tutor tuutoroi opiskelijaa
 
-Opiskelijalla on oma opettajatuutori.
-
 \insertDiagram{ER-suhde-tutor-tuutoroi-opiskelijaa}{Tutor tuutoroi opiskelijaa -suhde}
 
-
-## ER-kaavio kokonaisuudessaan
-\insertDiagram{ER-kaavio}{ER-kaavio}
-
-Pitkät pätkät selitystä ER-kaavion sisällöstä,
-ja kaikesta muusta mahdollisesta
+Opiskelijalla on oma opettajatuutori.
 
 
 
@@ -583,14 +619,6 @@ moniarvoista vaatimus-attribuuttia.
 * Relaatio1(Attr1, attr2, attr3)
 * Relaatio2(nimi, kurssi, vuosi)
 * X(y, z)
-
-
-
-# ER-kaavion muunnos tietokantakaavioksi
-
-Kappale 1 selittää kuun liikkeiden vaikutusta dokumentaation kirjoittamiseen
-
-Kappale 2 käy taas puolestaan itse asian kimppuun
 
 
 
