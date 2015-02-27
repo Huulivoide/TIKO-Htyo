@@ -346,7 +346,7 @@ _Student_ relaatio on [_user_](#user) relaation aliluokka. Vastaa ER-kaavion
     * 2012
     * 2000
     * 2037
-- _tutor_id_: Viiteavain [_tutor_](#tutor) relaatoon id attribuuttiin.
+- _user_id_: Viiteavain [_tutor_](#tutor) relaatoon id attribuuttiin.
     * 198
     * 88790
     * __NULL__: Käyttäjällä ei ole vielä määritelty opettajatuutoria.
@@ -371,7 +371,7 @@ _Group_ relaatio vastaa ER-kaavion [ryhmä](#ryhmä) entiteettiä.
     * 1
     * 2
     * 123
-* _tutor_id_: Viiteavain [_tutor_](#tutor) entiteettin id-atribuuttiin.
+* _user_id_: Viiteavain [_tutor_](#tutor) entiteettin id-atribuuttiin.
     * 0
     * 123
     * 975858
@@ -397,7 +397,7 @@ _Meeting_ relaatio vastaa ER-kaavion [palaveri](#palaveri) entiteettiä.
     * 123
     * __NULL__: Palaveri oli henkilökohtainen palveri opiskelijan ja hänen
       tuutorinsa kanssa.
-* _tutor_id_: Viiteavain [_tutor_](#tutor) relaation id-attribuuttiin, kertoo
+* _user_id_: Viiteavain [_tutor_](#tutor) relaation id-attribuuttiin, kertoo
   kuka on pitänyt palverin.
     * 1
     * 123
@@ -641,10 +641,10 @@ moniarvoista vaatimus-attribuuttia.
 ## Access_level
 
 ~~~~~~ {#SQL-user .sqlpostgresql}
-CREATE TABLE user
+CREATE TABLE "access_level"
 (
-    id SERIAL PRIMARY KEY,
-    name TEXT NOT NULL
+    "id" SERIAL PRIMARY KEY,
+    "name" TEXT NOT NULL
 );
 ~~~~~~
 
@@ -652,28 +652,17 @@ CREATE TABLE user
 ## User
 
 ~~~~~~ {#SQL-user .sqlpostgresql}
-CREATE TABLE user
+CREATE TABLE "user"
 (
-    id SERIAL PRIMARY KEY,
-    login TEXT NOT NULL UNIQUE,
-    password TEXT NOT NULL,
-    access_level_id INTEGER REFERENCES access_level(id)
-    phone TEXT NOT NULL UNIQUE,
-    email TEXT NOT NULL UNIQUE,
-    first_name TEXT NOT NULL,
-    other_name TEXT,
-    last_name TEXT NOT NULL
-);
-~~~~~~
-
-
-## Tutor
-
-~~~~~~ {#SQL-tutor .sqlpostgresql}
-CREATE TABLE tutor
-(
-    user_id INTEGER PRIMARY KEY REFERENCES user(id),
-    is_god BOOLEAN NOT NULL
+    "id" SERIAL PRIMARY KEY,
+    "login" TEXT NOT NULL UNIQUE,
+    "password" TEXT NOT NULL,
+    "access_level_id" INTEGER REFERENCES "access_level"("id"),
+    "phone" TEXT NOT NULL UNIQUE,
+    "email" TEXT NOT NULL UNIQUE,
+    "first_name" TEXT NOT NULL,
+    "other_name" TEXT,
+    "last_name" TEXT NOT NULL
 );
 ~~~~~~
 
@@ -681,10 +670,10 @@ CREATE TABLE tutor
 ## Group
 
 ~~~~~~ {#SQL-group .sqlpostgresql}
-CREATE TABLE group
+CREATE TABLE "group"
 (
-    id SERIAL PRIMARY KEY,
-    tutor_id INTEGER NOT NULL REFERENCES tutor(user_id)
+    "id" SERIAL PRIMARY KEY,
+    "tutor_id" INTEGER NOT NULL REFERENCES "user"("id")
 );
 ~~~~~~
 
@@ -692,12 +681,12 @@ CREATE TABLE group
 ## Program_structure
 
 ~~~~~~ {#SQL-program_structure .sqlpostgresql}
-CREATE TABLE program_structure
+CREATE TABLE "program_structure"
 (
-    id SERIAL PRIMARY KEY,
-    name TEXT NOT NULL,
-    year INTEGER NOT NULL,
-    CONSTARINT UNIQUE(name, year)
+    "id" SERIAL PRIMARY KEY,
+    "name" TEXT NOT NULL,
+    "year" INTEGER NOT NULL,
+    UNIQUE("name", "year")
 );
 ~~~~~~
 
@@ -705,13 +694,13 @@ CREATE TABLE program_structure
 ## Student
 
 ~~~~~~ {#SQL-student .sqlpostgresql}
-CREATE TABLE student
+CREATE TABLE "student"
 (
-    user_id INTEGER PRIMARY KEY REFERENCES user(id),
-    entry_year INTEGER NOT NULL,
-    tutor_id INTEGER REFERENCES tutor(user_id),
-    program_structure_id INTEGER NOT NULL REFERENCES program_structure(id),
-    group_id INTEGER REFERENCES group(id)
+    "user_id" INTEGER PRIMARY KEY REFERENCES "user"("id"),
+    "entry_year" INTEGER NOT NULL,
+    "turor_id" INTEGER REFERENCES "user"("id"),
+    "program_structure_id" INTEGER NOT NULL REFERENCES "program_structure"("id"),
+    "group_id" INTEGER REFERENCES "group"("id")
 );
 ~~~~~~
 
@@ -719,13 +708,13 @@ CREATE TABLE student
 ## Meeting
 
 ~~~~~~ {#SQL-meeting .sqlpostgresql}
-CREATE TABLE meeting
+CREATE TABLE "meeting"
 (
-    id SERIAL PRIMARY KEY,
-    date DATE NOT NULL,
-    group_id INTEGER REFERENCES group(id),
-    tutor_id INTEGER REFERENCES tutor(user_id),
-    report TEXT NOT NULL
+    "id" SERIAL PRIMARY KEY,
+    "date" DATE NOT NULL,
+    "group_id" INTEGER REFERENCES "group"("id"),
+    "user_id" INTEGER REFERENCES "user"("id"),
+    "report" TEXT NOT NULL
 );
 ~~~~~~
 
@@ -733,11 +722,11 @@ CREATE TABLE meeting
 ## Meetings_students
 
 ~~~~~~ {#SQL-meeting_students .sqlpostgresql}
-CREATE TABLE meeting_students
+CREATE TABLE "meeting_students"
 (
-    student_id INTEGER REFERENCES student(user_id),
-    meeting_id INTEGER REFERENCES meeting(id),
-    PRIMARY KEY(student_id, meeting_id)
+    "student_id" INTEGER REFERENCES "student"("user_id"),
+    "meeting_id" INTEGER REFERENCES "meeting"("id"),
+    PRIMARY KEY("student_id", "meeting_id")
 );
 ~~~~~~
 
@@ -745,13 +734,13 @@ CREATE TABLE meeting_students
 ## Course
 
 ~~~~~~ {#SQL-course .sqlpostgresql}
-CREATE TABLE course
+CREATE TABLE "course"
 (
-    id SERIAL PRIMARY KEY,
-    name TEXT NOT NULL,
-    year INTEGER NOT NULL,
-    credits INTEGER NOT NULL,
-    CONSTRAINT UNIQUE(name, year)
+    "id" SERIAL PRIMARY KEY,
+    "name" TEXT NOT NULL,
+    "year" INTEGER NOT NULL,
+    "credits" INTEGER NOT NULL,
+    UNIQUE("name", "year")
 );
 ~~~~~~
 
@@ -759,10 +748,10 @@ CREATE TABLE course
 ## Course_type
 
 ~~~~~~ {#SQL-course_type .sqlpostgresql}
-CREATE TABLE course_type
+CREATE TABLE "course_type"
 (
-    id SERIAL PRIMARY KEY,
-    name TEXT NOT NULL UNIQUE
+    "id" SERIAL PRIMARY KEY,
+    "name" TEXT NOT NULL UNIQUE
 );
 ~~~~~~
 
@@ -770,11 +759,11 @@ CREATE TABLE course_type
 ## Courses_course_types
 
 ~~~~~~ {#SQL-courses_course_types .sqlpostgresql}
-CREATE TABLE courses_course_types
+CREATE TABLE "courses_course_types"
 (
-    course_id INTEGER REFERENCES course(id),
-    course_type_id INTEGER REFERENCES course_type(id),
-    PRIMARY KEY(course_id, course_type_id)
+    "course_id" INTEGER REFERENCES "course"("id"),
+    "course_type_id" INTEGER REFERENCES "course_type"("id"),
+    PRIMARY KEY("course_id", "course_type_id")
 );
 ~~~~~~
 
@@ -782,11 +771,11 @@ CREATE TABLE courses_course_types
 ## Courses_program_structures
 
 ~~~~~~ {#SQL-courses_program_structures .sqlpostgresql}
-CREATE TABLE courses_program_structures
+CREATE TABLE "courses_program_structures"
 (
-    course_id INTEGER REFERENCES course(id),
-    program_structure_id INTEGER REFERENCES program_structure(id),
-    PRIMARY KEY(course_id, program_structure_id)
+    "course_id" INTEGER REFERENCES "course"("id"),
+    "program_structure_id" INTEGER REFERENCES "program_structure"("id"),
+    PRIMARY KEY("course_id", "program_structure_id")
 );
 ~~~~~~
 
@@ -794,12 +783,12 @@ CREATE TABLE courses_program_structures
 ## Program_requirement
 
 ~~~~~~ {#SQL-program_requirement .sqlpostgresql}
-CREATE TABLE program_requirement
+CREATE TABLE "program_requirement"
 (
-    course_type_id INTEGER REFERENCES course_type(id),
-    program_structure_id INTEGER REFERENCES program_structure(id),
-    credits INTEGER NOT NULL,
-    PRIMARY KEY(course_type_id, program_structure_id)
+    "course_type_id" INTEGER REFERENCES "course_type"("id"),
+    "program_structure_id" INTEGER REFERENCES "program_structure"("id"),
+    "credits" INTEGER NOT NULL,
+    PRIMARY KEY("course_type_id", "program_structure_id")
 );
 ~~~~~~
 
@@ -807,18 +796,18 @@ CREATE TABLE program_requirement
 ## Form
 
 ~~~~~~ {#SQL-form .sqlpostgresql}
-CREATE TABLE form
+CREATE TABLE "form"
 (
-    id SERIAL PRIMARY KEY,
-    student_id INTEGER NOT NULL REFERENCES student(user_id),
-    time TIMESTAMP NOT NULL,
-    works BOOLEAN NOT NULL,
-    weekly_hours INTEGER NOT NULL,
-    working_reason TEXT NOT NULL,
-    interest TEXT NOT NULL,
-    secondary_interest TEXT NOT NULL,
-    last_year_positive TEXT NOT NULL,
-    last_year_negative TEXT NOT NULL
+    "id" SERIAL PRIMARY KEY,
+    "student_id" INTEGER NOT NULL REFERENCES "student"("user_id"),
+    "time" TIMESTAMP NOT NULL,
+    "works" BOOLEAN NOT NULL,
+    "weekly_hours" INTEGER NOT NULL,
+    "working_reason" TEXT NOT NULL,
+    "interest" TEXT NOT NULL,
+    "secondary_interest" TEXT NOT NULL,
+    "last_year_positive" TEXT NOT NULL,
+    "last_year_negative" TEXT NOT NULL
 );
 ~~~~~~
 
@@ -826,14 +815,14 @@ CREATE TABLE form
 ## Courses_students
 
 ~~~~~~ {#SQL-courses_students .sqlpostgresql}
-CREATE TABLE courses_students
+CREATE TABLE "courses_students"
 (
-    course_id INTEGER REFERENCES course(id),
-    form_id INTEGER REFERENCES form(id),
-    student_id INTEGER REFERENCES student(user_id),
-    planned_finishing_date DATE NOT NULL,
-    finishing_date DATE NOT NULL,
-    PRIMARY KEY(course_id, form_id, student_id)
+    "course_id" INTEGER REFERENCES "course"("id"),
+    "form_id" INTEGER REFERENCES "form"("id"),
+    "student_id" INTEGER REFERENCES "student"("user_id"),
+    "planned_finishing_date" DATE NOT NULL,
+    "finishing_date" DATE NOT NULL,
+    PRIMARY KEY("course_id", "student_id")
 );
 ~~~~~~
 
