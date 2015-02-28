@@ -270,12 +270,14 @@ Kaavion selitteet:
 * □: __UNIQUE__ määre on voimassa ja __NULL__ arvot ovat sallittuja.
 
 
-## Access_level
+## Access_levels
 
 _Access_level_ relaatio vastaa ER-kaavion [käyttäjä](#käyttäjä) entiteetin
 tyyppi attribuuttia. Tulevaisuudessa relaatio olisi helposti laajennettavissa
 monipuolisemmaksi ja listata yksittäiset oikeudet attribuutteina, sen sijaan
 että järjstelmään on kova koodattuna kolme käyttäjä tyyppiä.
+
+\insertRelation{Relaatio-access_level}{Access{\_}levels relaatio}
 
 * id: Pääavain
     * 1: opiskelija
@@ -286,9 +288,9 @@ että järjstelmään on kova koodattuna kolme käyttäjä tyyppiä.
     * tuutori
     * ylituutori
 
-## User
+## Users
 
-_User_ relaatio vastaa ER-kaavion [käyttäjä](#käyttäjä) entiteettiä
+_Users_ relaatio vastaa ER-kaavion [käyttäjä](#käyttäjä) entiteettiä
 
 \insertRelation{Relaatio-user}{User relaatio}
 
@@ -304,7 +306,7 @@ _User_ relaatio vastaa ER-kaavion [käyttäjä](#käyttäjä) entiteettiä
 - password: 
     * 'Vahva salalause nro 78' => $2970968|dfas879da7g908u98adf7hg89fd897h8fd9h^
     * 'salasana' => $9892194|jlksdg86afga897d9a8hadfhdgmleälwäfioo49^
-- access_level_id: Viiteavain [_access_level_](#access_level) relaation id-attribuuttii
+- access_level_id: Viiteavain [_access_levels_](#access_levels) relaation id-attribuuttii
     * 1: opiskelija
     * 2: tuutori
     * 3: ylituutori
@@ -330,14 +332,14 @@ _User_ relaatio vastaa ER-kaavion [käyttäjä](#käyttäjä) entiteettiä
     * Aku
 
 
-### Student
+### Students
 
-_Student_ relaatio on [_user_](#user) relaation aliluokka. Vastaa ER-kaavion
+_Students_ relaatio on [_users_](#users) relaation aliluokka. Vastaa ER-kaavion
 [opiskelija](#opiskelija) entiteettiä.
 
 \insertRelation{Relaatio-student}{Student relaatio}
 
-- _user_id_: Pääavaimena toimiva viiteavain [_user_](#user) relaatioon
+- _user_id_: Pääavaimena toimiva viiteavain [_users_](#users) relaatioon
   id-attribuuttiin.
     * 0
     * 123
@@ -346,7 +348,7 @@ _Student_ relaatio on [_user_](#user) relaation aliluokka. Vastaa ER-kaavion
     * 2012
     * 2000
     * 2037
-- _user_id_: Viiteavain [_tutor_](#tutor) relaatoon id attribuuttiin.
+- _tutor_id_: Viiteavain [_users_](#users) relaatoon id attribuuttiin.
     * 198
     * 88790
     * __NULL__: Käyttäjällä ei ole vielä määritelty opettajatuutoria.
@@ -355,15 +357,15 @@ _Student_ relaatio on [_user_](#user) relaation aliluokka. Vastaa ER-kaavion
     * 1
     * 7
     * 14
-- _group_id_: Viiteavain [_group_](#group) relaatioon, kertoo mihin ryhmään
+- _group_id_: Viiteavain [_groups_](#groups) relaatioon, kertoo mihin ryhmään
   käyttäjä kuuluu.
     * 676
     * 12
     * __NULL__: Opiskelijaa ei ole vielä lisätty mihinkään ryhmään
 
 
-## Group
-_Group_ relaatio vastaa ER-kaavion [ryhmä](#ryhmä) entiteettiä.
+## Groups
+_Groups_ relaatio vastaa ER-kaavion [ryhmä](#ryhmä) entiteettiä.
 
 \insertRelation{Relaatio-group}{Group relaatio}
 
@@ -371,15 +373,15 @@ _Group_ relaatio vastaa ER-kaavion [ryhmä](#ryhmä) entiteettiä.
     * 1
     * 2
     * 123
-* _user_id_: Viiteavain [_tutor_](#tutor) entiteettin id-atribuuttiin.
+* _user_id_: Viiteavain [_tutors_](#tutors) entiteettin id-atribuuttiin.
     * 0
     * 123
     * 975858
 
 
-## Meeting
+## Meetings
 
-_Meeting_ relaatio vastaa ER-kaavion [palaveri](#palaveri) entiteettiä.
+_Meetings_ relaatio vastaa ER-kaavion [palaveri](#palaveri) entiteettiä.
 
 \insertRelation{Relaatio-meeting}{Meeting relaatio}
 
@@ -391,13 +393,13 @@ _Meeting_ relaatio vastaa ER-kaavion [palaveri](#palaveri) entiteettiä.
     * 12.9.2013
     * 10.1.2015
     * 29.11.2016
-* _group_id_: Viiteavain [_group_](#group) relaation id-attribuuttiin. Kertoo
+* _group_id_: Viiteavain [_groups_](#groups) relaation id-attribuuttiin. Kertoo
   minkä ryhmän jäsenet(iä) osallistui palaveriin.
     * 1
     * 123
     * __NULL__: Palaveri oli henkilökohtainen palveri opiskelijan ja hänen
       tuutorinsa kanssa.
-* _user_id_: Viiteavain [_tutor_](#tutor) relaation id-attribuuttiin, kertoo
+* _user_id_: Viiteavain [_tutors_](#tutors) relaation id-attribuuttiin, kertoo
   kuka on pitänyt palverin.
     * 1
     * 123
@@ -413,21 +415,21 @@ _Meetings_students_ relaatio vastaa ER-kaavion
 
 \insertRelation{Relaatio-meetings-students}{Meetings{\_}students relaatio}
 
-* _student_id_: Viiteavain [_student_](#student) relaation id-attribuuttiin
+* _student_id_: Viiteavain [_students_](#students) relaation id-attribuuttiin
   osittaisena pääavaimena.
     * 1
     * 123
     * 975858
-* _meeting_id_: Viiteavain [_meeting_](#meeting) relaation id-attribuuttiin
+* _meeting_id_: Viiteavain [_meetings_](#meetings) relaation id-attribuuttiin
   osittaisena viiteavaimena.
     * 1
     * 2
     * 3
 
 
-## Course
+## Courses
 
-_Course_ relaatio vastaa ER-kaavion [opintojakso](#opintojakso) entiteettiä.
+_Courses_ relaatio vastaa ER-kaavion [opintojakso](#opintojakso) entiteettiä.
 
 \insertRelation{Relaatio-course}{Course relaatio}
 
@@ -449,9 +451,9 @@ _Course_ relaatio vastaa ER-kaavion [opintojakso](#opintojakso) entiteettiä.
     * 10
 
 
-## Course_type
+## Course_types
 
-_Course_type_ relaatio vastaa ER-kaavion [kurssityyppi](#kurssityyppi) entiteettiä.
+_Course_types_ relaatio vastaa ER-kaavion [kurssityyppi](#kurssityyppi) entiteettiä.
 
 \insertRelation{Relaatio-course-type}{Course{\_}type relaatio}
 
@@ -471,15 +473,15 @@ _Courses_course_types_ relaatio vastaa ER-kaavion
 
 \insertRelation{Relaatio-courses-course-types}{Courses{\_}course{\_}types relaatio}
 
-* _course_id_: Osittaisena pääavaimena toimiva viiteavain [_course_](#course)
+* _course_id_: Osittaisena pääavaimena toimiva viiteavain [_courses_](#courses)
   relaation.
 * _course_type_id_: Osittaisena pääavaimena toimiva viiteavain
-  [_course_type_](#course_type) relaation.
+  [_course_types_](#course_types) relaation.
 
 
-## Form
+## Forms
 
-_Form_ relaatio vastaa ER-Kaavion [lomake](#form) entiteettiä.
+_Forms_ relaatio vastaa ER-Kaavion [lomake](#forms) entiteettiä.
 
 \insertRelation{Relaatio-form}{Form relaatio}
 
@@ -487,7 +489,7 @@ _Form_ relaatio vastaa ER-Kaavion [lomake](#form) entiteettiä.
     * 1
     * 2
     * 123
-* _student_id_: Viiteavain [_student_](#student) relaation id-attribuuttiin.
+* _student_id_: Viiteavain [_students_](#students) relaation id-attribuuttiin.
   Kertoo lomakkeen täyttäjän.
     * 0
     * 123
@@ -532,17 +534,17 @@ _Courses_students_ relaatio vastaa ER_kaavion
 
 \insertRelation{Relaatio-courses-students}{Courses{\_}students relaatio}
 
-* _course_id_: Viiteavain relaation [_course_](#course) id-attribuuttiin,
+* _course_id_: Viiteavain relaation [_courses_](#courses) id-attribuuttiin,
   toimii osittaisena pääavaimena.
     * 0
     * 2
     * 123
-* _form_id_: Viiteavain relaation [_form_](#form) id-attribuuttiin,
+* _form_id_: Viiteavain relaation [_forms_](#forms) id-attribuuttiin,
   toimii osittaisena pääavaimena.
     * 1
     * 2
     * 123
-* _student_id_: Viiteavain relaation [_student_](#student) id-attribuuttiin,
+* _student_id_: Viiteavain relaation [_students_](#students) id-attribuuttiin,
   toimii osittaisena pääavaimena.
     * 0
     * 1
@@ -556,9 +558,9 @@ _Courses_students_ relaatio vastaa ER_kaavion
     * __NULL__: Kurssia ei ole suoritettu
 
 
-## Program_structure
+## Program_structures
 
-_Program_structure_ relaatio vastaa ER-kaavion [TK-rakenne](#tk-rakenne)
+_Program_structures_ relaatio vastaa ER-kaavion [TK-rakenne](#tk-rakenne)
 entiteettiä.
 
 \insertRelation{Relaatio-program-structure}{Program{\_}structure relaatio}
@@ -584,12 +586,12 @@ _Courses_program_structures_ relaatio vastaa ER-kaavion
 
 \insertRelation{Relaatio-courses-program-structures}{Courses{\_}program{\_}structures relaatio}
 
-* _course_id_: Viiteavain relaation [_course_](#course) id-attribuuttiin,
+* _course_id_: Viiteavain relaation [_courses_](#courses) id-attribuuttiin,
   toimii osittaisena pääavaimena.
     * 1
     * 2
     * 123
-* _program_structure_: Viiteavain relaation [_program_structure_](#program_structure)
+* _program_structure_: Viiteavain relaation [_program_structures_](#program_structures)
   id-attribuuttiin, toimii osittaisena pääavaimena.
     * 1
     * 2
@@ -600,9 +602,9 @@ _Courses_program_structures_ relaatio vastaa ER-kaavion
     * 30
 
 
-## Program_requirement
+## Program_requirements
 
-_Program_requirement_ relaatio vastaa ER-kaavion [TK-rakenne](#tk-rakenne)
+_Program_requirements_ relaatio vastaa ER-kaavion [TK-rakenne](#tk-rakenne)
 moniarvoista vaatimus-attribuuttia.
 
 \insertRelation{Relaatio-program-requirement}{Program{\_}requirement relaatio}
@@ -611,13 +613,13 @@ moniarvoista vaatimus-attribuuttia.
     * 1
     * 2
     * 123
-* _course_type_id_: Viiteavain relaation [_course_type_](#course_type)
+* _course_type_id_: Viiteavain relaation [_course_types_](#course_types)
   id-attribuuttiin, kertoo vaditun kurssi tyypin.
     * 1
     * 2
     * 123
 * _program_structure_id_: Viiteavain relaation
-  [_program_structure_](#program_structure)
+  [_program_structures_](#program_structures)
   id-attribuuttiin, kertoo vaditun kurssi tyypin.
 
 # Tietokantakaavio tekstimuodossa
@@ -638,10 +640,10 @@ moniarvoista vaatimus-attribuuttia.
 
 # Tietokannan luontilauseet
 
-## Access_level
+## Access_levels
 
 ~~~~~~ {#SQL-user .sqlpostgresql}
-CREATE TABLE "access_level"
+CREATE TABLE "access_levels"
 (
     "id" SERIAL PRIMARY KEY,
     "name" TEXT NOT NULL
@@ -649,15 +651,15 @@ CREATE TABLE "access_level"
 ~~~~~~
 
 
-## User
+## Users
 
 ~~~~~~ {#SQL-user .sqlpostgresql}
-CREATE TABLE "user"
+CREATE TABLE "users"
 (
     "id" SERIAL PRIMARY KEY,
     "login" TEXT NOT NULL UNIQUE,
     "password" TEXT NOT NULL,
-    "access_level_id" INTEGER REFERENCES "access_level"("id"),
+    "access_level_id" INTEGER REFERENCES "access_levels"("id"),
     "phone" TEXT NOT NULL UNIQUE,
     "email" TEXT NOT NULL UNIQUE,
     "first_name" TEXT NOT NULL,
@@ -667,21 +669,21 @@ CREATE TABLE "user"
 ~~~~~~
 
 
-## Group
+## Groups
 
 ~~~~~~ {#SQL-group .sqlpostgresql}
-CREATE TABLE "group"
+CREATE TABLE "groups"
 (
     "id" SERIAL PRIMARY KEY,
-    "tutor_id" INTEGER NOT NULL REFERENCES "user"("id")
+    "tutor_id" INTEGER NOT NULL REFERENCES "users"("id")
 );
 ~~~~~~
 
 
-## Program_structure
+## Program_structures
 
 ~~~~~~ {#SQL-program_structure .sqlpostgresql}
-CREATE TABLE "program_structure"
+CREATE TABLE "program_structures"
 (
     "id" SERIAL PRIMARY KEY,
     "name" TEXT NOT NULL,
@@ -691,29 +693,29 @@ CREATE TABLE "program_structure"
 ~~~~~~
 
 
-## Student
+## Students
 
 ~~~~~~ {#SQL-student .sqlpostgresql}
-CREATE TABLE "student"
+CREATE TABLE "students"
 (
-    "user_id" INTEGER PRIMARY KEY REFERENCES "user"("id"),
+    "user_id" INTEGER PRIMARY KEY REFERENCES "users"("id"),
     "entry_year" INTEGER NOT NULL,
-    "turor_id" INTEGER REFERENCES "user"("id"),
-    "program_structure_id" INTEGER NOT NULL REFERENCES "program_structure"("id"),
-    "group_id" INTEGER REFERENCES "group"("id")
+    "turor_id" INTEGER REFERENCES "users"("id"),
+    "program_structure_id" INTEGER NOT NULL REFERENCES "program_structures"("id"),
+    "group_id" INTEGER REFERENCES "groups"("id")
 );
 ~~~~~~
 
 
-## Meeting
+## Meetings
 
 ~~~~~~ {#SQL-meeting .sqlpostgresql}
-CREATE TABLE "meeting"
+CREATE TABLE "meetings"
 (
     "id" SERIAL PRIMARY KEY,
     "date" DATE NOT NULL,
-    "group_id" INTEGER REFERENCES "group"("id"),
-    "user_id" INTEGER REFERENCES "user"("id"),
+    "group_id" INTEGER REFERENCES "groups"("id"),
+    "user_id" INTEGER REFERENCES "users"("id"),
     "report" TEXT NOT NULL
 );
 ~~~~~~
@@ -722,19 +724,19 @@ CREATE TABLE "meeting"
 ## Meetings_students
 
 ~~~~~~ {#SQL-meeting_students .sqlpostgresql}
-CREATE TABLE "meeting_students"
+CREATE TABLE "meetings_students"
 (
-    "student_id" INTEGER REFERENCES "student"("user_id"),
-    "meeting_id" INTEGER REFERENCES "meeting"("id"),
+    "student_id" INTEGER REFERENCES "students"("user_id"),
+    "meeting_id" INTEGER REFERENCES "meetings"("id"),
     PRIMARY KEY("student_id", "meeting_id")
 );
 ~~~~~~
 
 
-## Course
+## Courses
 
 ~~~~~~ {#SQL-course .sqlpostgresql}
-CREATE TABLE "course"
+CREATE TABLE "courses"
 (
     "id" SERIAL PRIMARY KEY,
     "name" TEXT NOT NULL,
@@ -745,10 +747,10 @@ CREATE TABLE "course"
 ~~~~~~
 
 
-## Course_type
+## Course_types
 
 ~~~~~~ {#SQL-course_type .sqlpostgresql}
-CREATE TABLE "course_type"
+CREATE TABLE "course_types"
 (
     "id" SERIAL PRIMARY KEY,
     "name" TEXT NOT NULL UNIQUE
@@ -761,8 +763,8 @@ CREATE TABLE "course_type"
 ~~~~~~ {#SQL-courses_course_types .sqlpostgresql}
 CREATE TABLE "courses_course_types"
 (
-    "course_id" INTEGER REFERENCES "course"("id"),
-    "course_type_id" INTEGER REFERENCES "course_type"("id"),
+    "course_id" INTEGER REFERENCES "courses"("id"),
+    "course_type_id" INTEGER REFERENCES "course_types"("id"),
     PRIMARY KEY("course_id", "course_type_id")
 );
 ~~~~~~
@@ -773,33 +775,33 @@ CREATE TABLE "courses_course_types"
 ~~~~~~ {#SQL-courses_program_structures .sqlpostgresql}
 CREATE TABLE "courses_program_structures"
 (
-    "course_id" INTEGER REFERENCES "course"("id"),
-    "program_structure_id" INTEGER REFERENCES "program_structure"("id"),
+    "course_id" INTEGER REFERENCES "courses"("id"),
+    "program_structure_id" INTEGER REFERENCES "program_structures"("id"),
     PRIMARY KEY("course_id", "program_structure_id")
 );
 ~~~~~~
 
 
-## Program_requirement
+## Program_requirements
 
 ~~~~~~ {#SQL-program_requirement .sqlpostgresql}
-CREATE TABLE "program_requirement"
+CREATE TABLE "program_requirements"
 (
-    "course_type_id" INTEGER REFERENCES "course_type"("id"),
-    "program_structure_id" INTEGER REFERENCES "program_structure"("id"),
+    "course_type_id" INTEGER REFERENCES "course_types"("id"),
+    "program_structure_id" INTEGER REFERENCES "program_structures"("id"),
     "credits" INTEGER NOT NULL,
     PRIMARY KEY("course_type_id", "program_structure_id")
 );
 ~~~~~~
 
 
-## Form
+## Forms
 
 ~~~~~~ {#SQL-form .sqlpostgresql}
-CREATE TABLE "form"
+CREATE TABLE "forms"
 (
     "id" SERIAL PRIMARY KEY,
-    "student_id" INTEGER NOT NULL REFERENCES "student"("user_id"),
+    "student_id" INTEGER NOT NULL REFERENCES "students"("user_id"),
     "time" TIMESTAMP NOT NULL,
     "works" BOOLEAN NOT NULL,
     "weekly_hours" INTEGER NOT NULL,
@@ -817,9 +819,9 @@ CREATE TABLE "form"
 ~~~~~~ {#SQL-courses_students .sqlpostgresql}
 CREATE TABLE "courses_students"
 (
-    "course_id" INTEGER REFERENCES "course"("id"),
-    "form_id" INTEGER REFERENCES "form"("id"),
-    "student_id" INTEGER REFERENCES "student"("user_id"),
+    "course_id" INTEGER REFERENCES "courses"("id"),
+    "form_id" INTEGER REFERENCES "forms"("id"),
+    "student_id" INTEGER REFERENCES "students"("user_id"),
     "planned_finishing_date" DATE NOT NULL,
     "finishing_date" DATE NOT NULL,
     PRIMARY KEY("course_id", "student_id")

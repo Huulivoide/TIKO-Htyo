@@ -133,7 +133,7 @@
         <dia:real val="5.4000000000000004"/>
       </dia:attribute>
       <dia:attribute name="name">
-        <dia:string>#program_requirement#</dia:string>
+        <dia:string>#program_requirements#</dia:string>
       </dia:attribute>
       <dia:attribute name="comment">
         <dia:string>##</dia:string>

@@ -84,7 +84,7 @@
       </dia:composite>
     </dia:attribute>
   </dia:diagramdata>
-  <dia:layer name="rajat" visible="true" connectable="true" active="true">
+  <dia:layer name="rajat" visible="true" connectable="true">
     <dia:object type="Standard - Box" version="0" id="O0">
       <dia:attribute name="obj_pos">
         <dia:point val="0,0"/>
@@ -112,13 +112,13 @@
       </dia:attribute>
     </dia:object>
   </dia:layer>
-  <dia:layer name="Tausta" visible="true" connectable="true">
+  <dia:layer name="Tausta" visible="true" connectable="true" active="true">
     <dia:object type="Database - Table" version="0" id="O1">
       <dia:attribute name="obj_pos">
         <dia:point val="0,0"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="0,0;7.2175,7.4"/>
+        <dia:rectangle val="0,0;8.185,4.4"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -127,19 +127,19 @@
         <dia:point val="0,0"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
-        <dia:real val="7.2174999999999994"/>
+        <dia:real val="8.1849999999999987"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
-        <dia:real val="7.4000000000000004"/>
+        <dia:real val="4.4000000000000004"/>
       </dia:attribute>
       <dia:attribute name="name">
-        <dia:string>#program_structure#</dia:string>
+        <dia:string>#   program_structures#</dia:string>
       </dia:attribute>
       <dia:attribute name="comment">
         <dia:string>##</dia:string>
       </dia:attribute>
       <dia:attribute name="visible_comment">
-        <dia:boolean val="true"/>
+        <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="underline_primary_key">
         <dia:boolean val="true"/>

@@ -1,17 +1,16 @@
-
-CREATE TABLE "access_level"
+CREATE TABLE "access_levels"
 (
     "id" SERIAL PRIMARY KEY,
     "name" TEXT NOT NULL
 );
 
 
-CREATE TABLE "user"
+CREATE TABLE "users"
 (
     "id" SERIAL PRIMARY KEY,
     "login" TEXT NOT NULL UNIQUE,
     "password" TEXT NOT NULL,
-    "access_level_id" INTEGER REFERENCES "access_level"("id"),
+    "access_level_id" INTEGER REFERENCES "access_levels"("id"),
     "phone" TEXT NOT NULL UNIQUE,
     "email" TEXT NOT NULL UNIQUE,
     "first_name" TEXT NOT NULL,
@@ -20,14 +19,14 @@ CREATE TABLE "user"
 );
 
 
-CREATE TABLE "group"
+CREATE TABLE "groups"
 (
     "id" SERIAL PRIMARY KEY,
-    "tutor_id" INTEGER NOT NULL REFERENCES "user"("id")
+    "tutor_id" INTEGER NOT NULL REFERENCES "users"("id")
 );
 
 
-CREATE TABLE "program_structure"
+CREATE TABLE "program_structures"
 (
     "id" SERIAL PRIMARY KEY,
     "name" TEXT NOT NULL,
@@ -36,35 +35,35 @@ CREATE TABLE "program_structure"
 );
 
 
-CREATE TABLE "student"
+CREATE TABLE "students"
 (
-    "user_id" INTEGER PRIMARY KEY REFERENCES "user"("id"),
+    "user_id" INTEGER PRIMARY KEY REFERENCES "users"("id"),
     "entry_year" INTEGER NOT NULL,
-    "turor_id" INTEGER REFERENCES "user"("id"),
-    "program_structure_id" INTEGER NOT NULL REFERENCES "program_structure"("id"),
-    "group_id" INTEGER REFERENCES "group"("id")
+    "turor_id" INTEGER REFERENCES "users"("id"),
+    "program_structure_id" INTEGER NOT NULL REFERENCES "program_structures"("id"),
+    "group_id" INTEGER REFERENCES "groups"("id")
 );
 
 
-CREATE TABLE "meeting"
+CREATE TABLE "meetings"
 (
     "id" SERIAL PRIMARY KEY,
     "date" DATE NOT NULL,
-    "group_id" INTEGER REFERENCES "group"("id"),
-    "user_id" INTEGER REFERENCES "user"("id"),
+    "group_id" INTEGER REFERENCES "groups"("id"),
+    "user_id" INTEGER REFERENCES "users"("id"),
     "report" TEXT NOT NULL
 );
 
 
-CREATE TABLE "meeting_students"
+CREATE TABLE "meetings_students"
 (
-    "student_id" INTEGER REFERENCES "student"("user_id"),
-    "meeting_id" INTEGER REFERENCES "meeting"("id"),
+    "student_id" INTEGER REFERENCES "students"("user_id"),
+    "meeting_id" INTEGER REFERENCES "meetings"("id"),
     PRIMARY KEY("student_id", "meeting_id")
 );
 
 
-CREATE TABLE "course"
+CREATE TABLE "courses"
 (
     "id" SERIAL PRIMARY KEY,
     "name" TEXT NOT NULL,
@@ -74,7 +73,7 @@ CREATE TABLE "course"
 );
 
 
-CREATE TABLE "course_type"
+CREATE TABLE "course_types"
 (
     "id" SERIAL PRIMARY KEY,
     "name" TEXT NOT NULL UNIQUE
@@ -83,33 +82,33 @@ CREATE TABLE "course_type"
 
 CREATE TABLE "courses_course_types"
 (
-    "course_id" INTEGER REFERENCES "course"("id"),
-    "course_type_id" INTEGER REFERENCES "course_type"("id"),
+    "course_id" INTEGER REFERENCES "courses"("id"),
+    "course_type_id" INTEGER REFERENCES "course_types"("id"),
     PRIMARY KEY("course_id", "course_type_id")
 );
 
 
 CREATE TABLE "courses_program_structures"
 (
-    "course_id" INTEGER REFERENCES "course"("id"),
-    "program_structure_id" INTEGER REFERENCES "program_structure"("id"),
+    "course_id" INTEGER REFERENCES "courses"("id"),
+    "program_structure_id" INTEGER REFERENCES "program_structures"("id"),
     PRIMARY KEY("course_id", "program_structure_id")
 );
 
 
-CREATE TABLE "program_requirement"
+CREATE TABLE "program_requirements"
 (
-    "course_type_id" INTEGER REFERENCES "course_type"("id"),
-    "program_structure_id" INTEGER REFERENCES "program_structure"("id"),
+    "course_type_id" INTEGER REFERENCES "course_types"("id"),
+    "program_structure_id" INTEGER REFERENCES "program_structures"("id"),
     "credits" INTEGER NOT NULL,
     PRIMARY KEY("course_type_id", "program_structure_id")
 );
 
 
-CREATE TABLE "form"
+CREATE TABLE "forms"
 (
     "id" SERIAL PRIMARY KEY,
-    "student_id" INTEGER NOT NULL REFERENCES "student"("user_id"),
+    "student_id" INTEGER NOT NULL REFERENCES "students"("user_id"),
     "time" TIMESTAMP NOT NULL,
     "works" BOOLEAN NOT NULL,
     "weekly_hours" INTEGER NOT NULL,
@@ -123,9 +122,9 @@ CREATE TABLE "form"
 
 CREATE TABLE "courses_students"
 (
-    "course_id" INTEGER REFERENCES "course"("id"),
-    "form_id" INTEGER REFERENCES "form"("id"),
-    "student_id" INTEGER REFERENCES "student"("user_id"),
+    "course_id" INTEGER REFERENCES "courses"("id"),
+    "form_id" INTEGER REFERENCES "forms"("id"),
+    "student_id" INTEGER REFERENCES "students"("user_id"),
     "planned_finishing_date" DATE NOT NULL,
     "finishing_date" DATE NOT NULL,
     PRIMARY KEY("course_id", "student_id")

@@ -84,7 +84,7 @@
       </dia:composite>
     </dia:attribute>
   </dia:diagramdata>
-  <dia:layer name="rajat" visible="true" connectable="true" active="true">
+  <dia:layer name="rajat" visible="true" connectable="true">
     <dia:object type="Standard - Box" version="0" id="O0">
       <dia:attribute name="obj_pos">
         <dia:point val="0,0"/>
@@ -112,7 +112,7 @@
       </dia:attribute>
     </dia:object>
   </dia:layer>
-  <dia:layer name="Tausta" visible="true" connectable="true">
+  <dia:layer name="Tausta" visible="true" connectable="true" active="true">
     <dia:object type="Database - Table" version="0" id="O1">
       <dia:attribute name="obj_pos">
         <dia:point val="0,0"/>
@@ -133,7 +133,7 @@
         <dia:real val="3.4000000000000004"/>
       </dia:attribute>
       <dia:attribute name="name">
-        <dia:string>#group#</dia:string>
+        <dia:string>#groups#</dia:string>
       </dia:attribute>
       <dia:attribute name="comment">
         <dia:string>##</dia:string>
