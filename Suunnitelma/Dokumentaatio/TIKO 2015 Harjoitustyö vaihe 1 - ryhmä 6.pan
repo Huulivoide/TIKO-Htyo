@@ -657,6 +657,29 @@ moniarvoista vaatimus-attribuuttia.
     - x = y;
     - talleta x relaatioon students
 
+* Tapaamisen lisäys
+    - Lue user_id relaatiosta students
+    - Talleta user_id relaatioon meetings_students
+    - Lue id relaatiosta meetings
+    - Talleta id relaatioon meetings_students
+    
+* Kurssin lisäys
+    - Lue id relaatiosta courses
+    - course_id = id
+    - Talleta course_id relaatioon courses_course_types
+    - Lue id relaatiosta course_types
+    - course_type_id = id
+    - Talleta course_type_id relaatioon courses_course_types
+    
+* HOPS:n täyttö
+    - Lue user_id relaatiosta students
+    - Tallenna user_id relaatioon forms
+    - Tallenna user_id relaatioon courses_students
+    - Lue id relaatiosta forms
+    - Tallenna id relaatioon courses_students
+    - Lue id relaatiosta courses
+    - Tallenna id relaatioon courses_students
+
 
 
 # Tietokannan luontilauseet
