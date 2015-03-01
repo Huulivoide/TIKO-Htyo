@@ -644,41 +644,23 @@ moniarvoista vaatimus-attribuuttia.
 
 # Tapahtuma kuvaukset
 
-* Uusien oppilaiden jakaminen ryhmiin
-    - Lue entry_year relaatiosta students
-    - Lue user_id relaatiosta students
-    - Lue group_id relaatiosta students
-    - Lue id relaatiosta groups
-    - group_id = id
-    - Talleta relaatioon students
-
-* Oppilaan tietojen päivitys
-    - Lue x relaatiosta students
-    - x = y;
-    - talleta x relaatioon students
-
 * Tapaamisen lisäys
-    - Lue user_id relaatiosta students
-    - Talleta user_id relaatioon meetings_students
-    - Lue id relaatiosta meetings
-    - Talleta id relaatioon meetings_students
+    - Tallenna (meetings->id, date, group_id, report, tutor_id)
+    - Kirjoita (students->user_id) tapaamiseen (meetings_students->student_id)
+    - Kirjoita (meetings->id) tapaamiseen (meetings_students->meeting_id)
     
 * Kurssin lisäys
-    - Lue id relaatiosta courses
-    - course_id = id
-    - Talleta course_id relaatioon courses_course_types
-    - Lue id relaatiosta course_types
-    - course_type_id = id
-    - Talleta course_type_id relaatioon courses_course_types
+    - Tallenna (courses->id, name, year, credits)
+    - Kirjoita (courses->id) jokaiselle kurssityypille (courses_course_types->course_id)
+    - Kirjoita (course_types->id) jokaiselle kurssityypille (courses_course_types->course_type_id)
     
 * HOPS:n täyttö
-    - Lue user_id relaatiosta students
-    - Tallenna user_id relaatioon forms
-    - Tallenna user_id relaatioon courses_students
-    - Lue id relaatiosta forms
-    - Tallenna id relaatioon courses_students
-    - Lue id relaatiosta courses
-    - Tallenna id relaatioon courses_students
+    - Tallenna (forms->id, student_id, time, works, weekly_hours, working_reason, interests,
+      secondary_interests, last_year_positive, last_year_negative)
+    - Kirjoita (students->user_id) oppilaan lomakkeeseen (forms->user_id)
+    - Kirjoita (students->user_id) oppilaan suunnitelmaan (courses_students->user_id)
+    - Kirjoita (forms->id) oppilaan suunnitelmaan (courses_students->user_id)
+    - Kirjoita (courses->id) oppilaan suunnitelmaan (courses_students->course_id)
 
 
 
