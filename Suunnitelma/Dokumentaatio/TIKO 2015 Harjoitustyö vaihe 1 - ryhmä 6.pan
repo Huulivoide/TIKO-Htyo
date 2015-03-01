@@ -15,7 +15,7 @@ Kaaviossa \ref{fig:ER-kaavio} on esiteltynä kaikki projektiin liittyvät
 ER-entiteetit ja niiden keskinäiset suhteet. Sama kaavio löytyy koko sivun kokoisena
 ja käännettynä tämän dokumentin lopusta.
 
-
+\clearpage
 
 ## ER-kaavion entiteetit
 
@@ -49,6 +49,7 @@ mutteivät tuutoreihin.
 
 - Aloitusvuosi: Nykyisen tutkintorakenteen suorittamisen aloitusvuosi.
 
+\clearpage
 
 #### Tuutori
 
@@ -83,6 +84,7 @@ Tampereen yliopistossa suoritettavissa oleva kurssi.
   vuoden avulla voidaan tietokannasta etsiä tuoreimman kurssin tiedot.
 - OP-pisteet: Kurssista saatavien opintopisteiden määrä.
 
+\clearpage
 
 ### TK-Rakenne
 
@@ -123,7 +125,7 @@ ryhmä palaveri tai yksityispalaveri.
 - ID: Numeerinen palaverin tunnus.
 - Palaverityyppi: Ryhmä-/Henkilökohtainen palaveri, johdettu osallistuvien
   opiskelijoiden määrästä.
-- Päivämäärä: Milloj palaveri on pidetty.
+- Päivämäärä: Milloin palaveri on pidetty.
 - Raportti: Mitä palaverissa on käsitelty.
 
 
@@ -146,7 +148,7 @@ tallentuu kokonaan uusi lomake.
     * Miinukset: ...kielteiset asiat.
 - Päivämäärä/aika: Lomakkeen palautusajankohta
 
-
+\clearpage
 
 ## ER-kaavion suhteet
 
@@ -180,6 +182,7 @@ kurssit opiskelija on saanut suoritetuksi.
 - Suoritettu: Onko opintojakso suoritettu vai ei?
 - Milloin: Suoritusajankohta.
 
+\clearpage
 
 ### Opiskelija kuuluu ryhmään
 
@@ -202,6 +205,7 @@ Jokaisella ryhmällä on ohjaava opettajatuutori.
 Opiskelijat osallistuvat sekä ryhmä että yksityispalavereihin. Palaveriin osallistuu
 aina vähintään yksi opiskelija, jolloin kyseessä on yksityispalaveri.
 
+\clearpage
 
 ### Tutor osallistuu palaveriin
 
@@ -223,6 +227,7 @@ Opiskelijoiden on tarkoitus suorittaa jokin tutkintorakenne.
 
 Opiskelijat vastaavat sähköisissä HOPS-lomakkeissa esitettyihin kysymyksiin.
 
+\clearpage
 
 ### Ryhmä palaveeraa palaverissa
 
@@ -263,11 +268,36 @@ relaatiot ja niiden keskinäiset suhteet. Sama kaavio löytyy koko sivun kokoise
 tämän dokumentin lopusta.
 
 Kaavion selitteet:
+
+
 * ♦: Pääavain.
 * ●: __NULL__ arvot eivät ole sallittuja.
 * ○: __NULL__ arvot ovat sallittuja.
 * ■: __UNIQUE__ määrä on voimassa, eivätkä __NULL__ arvot ole sallittuja.
 * □: __UNIQUE__ määre on voimassa ja __NULL__ arvot ovat sallittuja.
+
+\clearpage
+
+
+## Program_structures
+
+_Program_structures_ relaatio vastaa ER-kaavion [TK-rakenne](#tk-rakenne)
+entiteettiä.
+
+\insertRelation{Relaatio-program-structure}{Program{\_}structure relaatio}
+
+* id: Automaattisesti kasvava numeerinen pääavain
+    * 1
+    * 2
+    * 123
+* name: 
+    * "Tietojenkäsittelytieteiden kandinaatin tutkonto-ohjelma"
+    * "Venäjän kielen, kulttuurin ja kääntämisen tutkinto-ohjelma"
+    * "Tietojenkäsittelyopin maisterin tutkinto-ohjelma"
+* year: 
+    * 2000
+    * 2005
+    * 2020
 
 
 ## Access_levels
@@ -287,6 +317,8 @@ että järjstelmään on kova koodattuna kolme käyttäjä tyyppiä.
     * opiskelija
     * tuutori
     * ylituutori
+
+\clearpage
 
 ## Users
 
@@ -363,6 +395,7 @@ _Students_ relaatio on [_users_](#users) relaation aliluokka. Vastaa ER-kaavion
     * 12
     * __NULL__: Opiskelijaa ei ole vielä lisätty mihinkään ryhmään
 
+\clearpage
 
 ## Groups
 _Groups_ relaatio vastaa ER-kaavion [ryhmä](#ryhmä) entiteettiä.
@@ -478,6 +511,7 @@ _Courses_course_types_ relaatio vastaa ER-kaavion
 * _course_type_id_: Osittaisena pääavaimena toimiva viiteavain
   [_course_types_](#course_types) relaation.
 
+\clearpage
 
 ## Forms
 
@@ -557,27 +591,7 @@ _Courses_students_ relaatio vastaa ER_kaavion
     * 10.6.2016
     * __NULL__: Kurssia ei ole suoritettu
 
-
-## Program_structures
-
-_Program_structures_ relaatio vastaa ER-kaavion [TK-rakenne](#tk-rakenne)
-entiteettiä.
-
-\insertRelation{Relaatio-program-structure}{Program{\_}structure relaatio}
-
-* id: Automaattisesti kasvava numeerinen pääavain
-    * 1
-    * 2
-    * 123
-* name: 
-    * "Tietojenkäsittelytieteiden kandinaatin tutkonto-ohjelma"
-    * "Venäjän kielen, kulttuurin ja kääntämisen tutkinto-ohjelma"
-    * "Tietojenkäsittelyopin maisterin tutkinto-ohjelma"
-* year: 
-    * 2000
-    * 2005
-    * 2020
-
+\clearpage
 
 ## Courses_program_structures
 
@@ -820,6 +834,7 @@ CREATE TABLE "program_requirements"
 );
 ~~~~~~
 
+\clearpage
 
 ## Forms
 

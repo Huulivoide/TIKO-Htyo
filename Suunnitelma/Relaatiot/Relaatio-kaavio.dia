@@ -1685,7 +1685,7 @@
             <dia:boolean val="true"/>
           </dia:attribute>
           <dia:attribute name="unique">
-            <dia:boolean val="true"/>
+            <dia:boolean val="false"/>
           </dia:attribute>
           <dia:attribute name="default_value">
             <dia:string>##</dia:string>
