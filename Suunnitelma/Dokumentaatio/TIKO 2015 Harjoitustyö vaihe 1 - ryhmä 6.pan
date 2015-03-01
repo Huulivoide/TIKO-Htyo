@@ -624,9 +624,21 @@ moniarvoista vaatimus-attribuuttia.
 
 # Tietokantakaavio tekstimuodossa
 
-* Relaatio1(Attr1, attr2, attr3)
-* Relaatio2(nimi, kurssi, vuosi)
-* X(y, z)
+* access_levels(id, name)
+* courses(id, name, year, credits)
+* courses_course_types(course_id, course_type_id)
+* courses_program_structures(course_id, program_structure_id)
+* courses_students(course_id, form_id, student_id, planned_finishing_date, finishing_date)
+* course_type(id, name)
+* form(id, student_id, time, works, weekly_hours, working_reason, interests, secondary_interest, 
+  last_year_positive, last_year_negative)
+* group(id, tutor_id)
+* meeting(id, date, group_id, tutor_id, report)
+* meetings_students(student_id, meeting_id)
+* program_requirement(id, course_type, program_structure_id, credits)
+* program_structure(id, name, year)
+* student(user_id, entry_year, tutor_id, program_structure, group_id)
+* user(id, login, password, phone, email, first_name, other_name, last_name)
 
 
 
