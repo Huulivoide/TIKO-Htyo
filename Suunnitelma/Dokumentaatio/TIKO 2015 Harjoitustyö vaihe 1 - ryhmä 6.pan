@@ -644,9 +644,18 @@ moniarvoista vaatimus-attribuuttia.
 
 # Tapahtuma kuvaukset
 
-* Tapahtuma 1
-    - Tapahtuma purettuna osiin esitettynä ranskalaisilla viioilla
-    - Osa 2
+* Uusien oppilaiden jakaminen ryhmiin
+    - Lue entry_year relaatiosta students
+    - Lue user_id relaatiosta students
+    - Lue group_id relaatiosta students
+    - Lue id relaatiosta groups
+    - group_id = id
+    - Talleta relaatioon students
+
+* Oppilaan tietojen päivitys
+    - Lue x relaatiosta students
+    - x = y;
+    - talleta x relaatioon students
 
 
 
