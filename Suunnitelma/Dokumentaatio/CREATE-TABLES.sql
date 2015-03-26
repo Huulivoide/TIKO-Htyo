@@ -39,7 +39,7 @@ CREATE TABLE "students"
 (
     "user_id" INTEGER PRIMARY KEY REFERENCES "users"("id"),
     "entry_year" INTEGER NOT NULL,
-    "turor_id" INTEGER REFERENCES "users"("id"),
+    "tutor_id" INTEGER REFERENCES "users"("id"),
     "program_structure_id" INTEGER NOT NULL REFERENCES "program_structures"("id"),
     "group_id" INTEGER REFERENCES "groups"("id")
 );

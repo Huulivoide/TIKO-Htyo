@@ -19,7 +19,7 @@ class StudentsController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Users', 'Turors', 'ProgramStructures', 'Groups']
+            'contain' => ['Users', 'Tutors', 'ProgramStructures', 'Groups']
         ];
         $this->set('students', $this->paginate($this->Students));
         $this->set('_serialize', ['students']);
@@ -35,7 +35,7 @@ class StudentsController extends AppController
     public function view($id = null)
     {
         $student = $this->Students->get($id, [
-            'contain' => ['Users', 'Turors', 'ProgramStructures', 'Groups', 'Courses', 'Meetings', 'Forms']
+            'contain' => ['Users', 'Tutors', 'ProgramStructures', 'Groups', 'Courses', 'Meetings', 'Forms']
         ]);
         $this->set('student', $student);
         $this->set('_serialize', ['student']);
@@ -59,12 +59,12 @@ class StudentsController extends AppController
             }
         }
         $users = $this->Students->Users->find('list', ['limit' => 200]);
-        $turors = $this->Students->Turors->find('list', ['limit' => 200]);
+        $tutors = $this->Students->Tutors->find('list', ['limit' => 200]);
         $programStructures = $this->Students->ProgramStructures->find('list', ['limit' => 200]);
         $groups = $this->Students->Groups->find('list', ['limit' => 200]);
         $courses = $this->Students->Courses->find('list', ['limit' => 200]);
         $meetings = $this->Students->Meetings->find('list', ['limit' => 200]);
-        $this->set(compact('student', 'users', 'turors', 'programStructures', 'groups', 'courses', 'meetings'));
+        $this->set(compact('student', 'users', 'tutors', 'programStructures', 'groups', 'courses', 'meetings'));
         $this->set('_serialize', ['student']);
     }
 
@@ -90,12 +90,12 @@ class StudentsController extends AppController
             }
         }
         $users = $this->Students->Users->find('list', ['limit' => 200]);
-        $turors = $this->Students->Turors->find('list', ['limit' => 200]);
+        $tutors = $this->Students->Tutors->find('list', ['limit' => 200]);
         $programStructures = $this->Students->ProgramStructures->find('list', ['limit' => 200]);
         $groups = $this->Students->Groups->find('list', ['limit' => 200]);
         $courses = $this->Students->Courses->find('list', ['limit' => 200]);
         $meetings = $this->Students->Meetings->find('list', ['limit' => 200]);
-        $this->set(compact('student', 'users', 'turors', 'programStructures', 'groups', 'courses', 'meetings'));
+        $this->set(compact('student', 'users', 'tutors', 'programStructures', 'groups', 'courses', 'meetings'));
         $this->set('_serialize', ['student']);
     }
 
