@@ -29,7 +29,7 @@ class StudentsTable extends Table
         ]);
         $this->belongsTo('Tutors', [
             'className' => 'Users',
-            'foreignKey' => 'turor_id'
+            'foreignKey' => 'tutor_id'
         ]);
         $this->belongsTo('ProgramStructures', [
             'foreignKey' => 'program_structure_id'
@@ -66,8 +66,8 @@ class StudentsTable extends Table
             ->add('entry_year', 'valid', ['rule' => 'numeric'])
             ->requirePresence('entry_year', 'create')
             ->notEmpty('entry_year')
-            ->add('turor_id', 'valid', ['rule' => 'numeric'])
-            ->allowEmpty('turor_id')
+            ->add('tutor_id', 'valid', ['rule' => 'numeric'])
+            ->allowEmpty('tutor_id')
             ->add('program_structure_id', 'valid', ['rule' => 'numeric'])
             ->requirePresence('program_structure_id', 'create')
             ->notEmpty('program_structure_id')
@@ -87,7 +87,7 @@ class StudentsTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['user_id'], 'Users'));
-        $rules->add($rules->existsIn(['turor_id'], 'Turors'));
+        $rules->add($rules->existsIn(['tutor_id'], 'Turors'));
         $rules->add($rules->existsIn(['program_structure_id'], 'ProgramStructures'));
         $rules->add($rules->existsIn(['group_id'], 'Groups'));
         return $rules;

@@ -16,11 +16,11 @@ class Student extends Entity
      */
     protected $_accessible = [
         'entry_year' => true,
-        'turor_id' => true,
+        'tutor_id' => true,
         'program_structure_id' => true,
         'group_id' => true,
         'user' => true,
-        'turor' => true,
+        'tutor' => true,
         'program_structure' => true,
         'group' => true,
         'forms' => true,
