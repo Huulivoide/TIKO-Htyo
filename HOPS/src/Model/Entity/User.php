@@ -27,4 +27,17 @@ class User extends Entity
         'meetings' => true,
         'students' => true,
     ];
+
+    protected function _getName()
+    {
+        $name = $this->_properties['first_name'];
+
+        $second_name = $this->_properties['other_name'];
+        if ($second_name !== null)
+            $name .= " " . $second_name;
+
+        $name .= " " . $this->_properties['last_name'];
+
+        return $name;
+    }
 }
