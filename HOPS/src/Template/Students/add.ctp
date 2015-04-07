@@ -21,12 +21,13 @@
     <fieldset>
         <legend><?= __('Add Student') ?></legend>
         <?php
+            echo $this->Form->input('first_name');
+            echo $this->Form->input('other_name');
+            echo $this->Form->input('last_name');
             echo $this->Form->input('entry_year');
-            echo $this->Form->input('turor_id', ['options' => $tutors, 'empty' => true]);
             echo $this->Form->input('program_structure_id', ['options' => $programStructures]);
-            echo $this->Form->input('group_id', ['options' => $groups, 'empty' => true]);
-            echo $this->Form->input('courses._ids', ['options' => $courses]);
-            echo $this->Form->input('meetings._ids', ['options' => $meetings]);
+            echo $this->Form->input('phone');
+            echo $this->Form->input('email');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
