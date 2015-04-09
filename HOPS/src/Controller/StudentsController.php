@@ -19,7 +19,7 @@ class StudentsController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Users', 'Tutors', 'ProgramStructures', 'Groups']
+            'contain' => ['Users', 'ProgramStructures']
         ];
         $this->set('students', $this->paginate($this->Students));
         $this->set('_serialize', ['students']);
@@ -35,7 +35,7 @@ class StudentsController extends AppController
     public function view($id = null)
     {
         $student = $this->Students->get($id, [
-            'contain' => ['Users', 'Tutors', 'ProgramStructures', 'Groups', 'Courses', 'Meetings', 'Forms']
+            'contain' => ['Users', 'ProgramStructures', 'Forms']
         ]);
         $this->set('student', $student);
         $this->set('_serialize', ['student']);
@@ -46,26 +46,32 @@ class StudentsController extends AppController
      *
      * @return void Redirects on successful add, renders view otherwise.
      */
-    public function add()
+    public function add($username, $password)
     {
-        $student = $this->Students->newEntity();
-        if ($this->request->is('post')) {
+      $student = $this->Students->newEntity();
+        
+      if ($username != NULL && $password != NULL) {
+         $student->user_id = $username;
+         $student->password = $password;
+
+         if ($this->request->is('post')) {
             $student = $this->Students->patchEntity($student, $this->request->data);
             if ($this->Students->save($student)) {
-                $this->Flash->success('The student has been saved.');
-                return $this->redirect(['action' => 'index']);
+               $this->Flash->success('The student has been saved.');
+               return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error('The student could not be saved. Please, try again.');
+               $this->Flash->error('The student could not be saved. Please, try again.');
             }
-        }
-        $users = $this->Students->Users->find('list', ['limit' => 200]);
-        $tutors = $this->Students->Tutors->find('list', ['limit' => 200]);
-        $programStructures = $this->Students->ProgramStructures->find('list', ['limit' => 200]);
-        $groups = $this->Students->Groups->find('list', ['limit' => 200]);
-        $courses = $this->Students->Courses->find('list', ['limit' => 200]);
-        $meetings = $this->Students->Meetings->find('list', ['limit' => 200]);
-        $this->set(compact('student', 'users', 'tutors', 'programStructures', 'groups', 'courses', 'meetings'));
-        $this->set('_serialize', ['student']);
+         }
+      }
+      else {
+         $this->Flash->error('Log in and try again.');
+      }
+         
+      $users = $this->Students->Users->find('list', ['limit' => 200]);
+      $programStructures = $this->Students->ProgramStructures->find('list', ['limit' => 200]);
+      $this->set(compact('student', 'users', 'programStructures'));
+      $this->set('_serialize', ['student']);      
     }
 
     /**
