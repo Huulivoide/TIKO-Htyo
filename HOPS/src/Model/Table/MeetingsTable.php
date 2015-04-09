@@ -28,7 +28,7 @@ class MeetingsTable extends Table
             'foreignKey' => 'group_id'
         ]);
         $this->belongsTo('Users', [
-            'foreignKey' => 'user_id'
+            'foreignKey' => 'tutor_id'
         ]);
         $this->belongsToMany('Students', [
             'foreignKey' => 'meeting_id',
@@ -53,8 +53,8 @@ class MeetingsTable extends Table
             ->notEmpty('date')
             ->add('group_id', 'valid', ['rule' => 'numeric'])
             ->allowEmpty('group_id')
-            ->add('user_id', 'valid', ['rule' => 'numeric'])
-            ->allowEmpty('user_id')
+            ->add('tutor_id', 'valid', ['rule' => 'numeric'])
+            ->allowEmpty('tutor_id')
             ->requirePresence('report', 'create')
             ->notEmpty('report');
 
@@ -71,7 +71,7 @@ class MeetingsTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['group_id'], 'Groups'));
-        $rules->add($rules->existsIn(['user_id'], 'Users'));
+        $rules->add($rules->existsIn(['tutor_id'], 'Users'));
         return $rules;
     }
 }

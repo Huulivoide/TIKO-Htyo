@@ -17,7 +17,7 @@ class Meeting extends Entity
     protected $_accessible = [
         'date' => true,
         'group_id' => true,
-        'user_id' => true,
+        'tutor_id' => true,
         'report' => true,
         'group' => true,
         'user' => true,
