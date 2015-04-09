@@ -22,7 +22,7 @@ class UsersTable extends Table
     public function initialize(array $config)
     {
         $this->table('users');
-        $this->displayField('id');
+        $this->displayField('name');
         $this->primaryKey('id');
         $this->belongsTo('AccessLevels', [
             'foreignKey' => 'access_level_id'
