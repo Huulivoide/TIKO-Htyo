@@ -66,6 +66,44 @@ class MeetingsController extends AppController
     }
 
     /**
+     * Report a new private meeting method
+     *
+     * @param int $student_id user_id of the participating student.
+     * @return void Redirects on successful add, renders view otherwise.
+     */
+    public function newPrivateMeeting($student_id)
+    {
+        $meeting = $this->Meetings->newEntity(null, ['associated' => ['Students']]);
+
+        if ($this->request->is('post'))
+        {
+            $this->request->data['students'][0]['user_id'] = $student_id;
+            $this->request->data['students'][0]['_joinData']['away_reason'] = "";
+
+            $meeting = $this->Meetings->patchEntity($meeting, $this->request->data);
+
+            // TODO: Fetch the tutor_id from the logged-in user
+            // $tutor_id = $this->Auth->user('id');
+            $tutor = $this->Meetings->Users->find('all', ['conditions' => ['Users.access_level_id' => 2]]);
+            $meeting->tutor_id = $tutor->first()->id;
+
+            if ($this->Meetings->save($meeting))
+            {
+                $this->Flash->success(__(''));
+                return $this->redirect(['action' => 'index']);
+            }
+            else
+            {
+                $this->Flash->error('The meeting could not be saved. Please, try again.');
+            }
+        }
+
+        $student = $this->Meetings->Students->Users->findById($student_id)->first();
+        $this->set(compact('meeting', 'student'));
+        $this->set('_serialize', ['meeting']);
+    }
+
+    /**
      * Edit method
      *
      * @param string|null $id Meeting id.
