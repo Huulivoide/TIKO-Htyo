@@ -28,7 +28,8 @@ class MeetingsTable extends Table
             'foreignKey' => 'group_id'
         ]);
         $this->belongsTo('Users', [
-            'foreignKey' => 'tutor_id'
+            'foreignKey' => 'tutor_id',
+            'propertyName' => 'tutor'
         ]);
         $this->belongsToMany('Students', [
             'foreignKey' => 'meeting_id',
