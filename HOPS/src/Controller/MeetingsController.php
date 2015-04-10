@@ -46,22 +46,36 @@ class MeetingsController extends AppController
      *
      * @return void Redirects on successful add, renders view otherwise.
      */
-    public function add()
+    public function newGroupMeeting($group_id)
     {
         $meeting = $this->Meetings->newEntity();
-        if ($this->request->is('post')) {
+        $group = $this->Meetings->Groups->get($group_id);
+
+        //TODO: Check that the group is supervised by the tutor who is logged in.
+
+        if ($this->request->is('post'))
+        {
             $meeting = $this->Meetings->patchEntity($meeting, $this->request->data);
-            if ($this->Meetings->save($meeting)) {
-                $this->Flash->success('The meeting has been saved.');
+            $meeting->tutor_id = $group->tutor_id;
+
+            if ($this->Meetings->save($meeting))
+            {
+                $this->Flash->success(__('Palaveriraportti on nyt tallennettu järjestelmään.'));
                 return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error('The meeting could not be saved. Please, try again.');
+            }
+            else
+            {
+                $this->Flash->error(__('Palaveriraporttia tallennettaessa tapahtui virhe. Yritä uudelleen.'));
             }
         }
-        $groups = $this->Meetings->Groups->find('list', ['limit' => 200]);
-        $users = $this->Meetings->Users->find('list', ['limit' => 200]);
-        $students = $this->Meetings->Students->find('list', ['limit' => 200]);
-        $this->set(compact('meeting', 'groups', 'users', 'students'));
+
+        $students = $this->Meetings->Students->find('all', ['contain' => 'Users',
+                                                            'conditions' => ['group_id' => $group_id],
+                                                            'order' => ['Users.first_name' => 'ASC',
+                                                                        'Users.other_name' => 'ASC',
+                                                                        'Users.last_name' => 'ASC']]);
+
+        $this->set(compact('meeting', 'group', 'students'));
         $this->set('_serialize', ['meeting']);
     }
 
