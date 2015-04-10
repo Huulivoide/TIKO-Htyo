@@ -17,5 +17,6 @@ class MeetingsStudent extends Entity
     protected $_accessible = [
         'student' => true,
         'meeting' => true,
+        'away_reason' => true
     ];
 }
