@@ -22,11 +22,14 @@ class GroupsTable extends Table
     public function initialize(array $config)
     {
         $this->table('groups');
-        $this->displayField('id');
+        $this->displayField('name');
         $this->primaryKey('id');
         $this->belongsTo('Tutors', [
             'className' => 'Users',
             'foreignKey' => 'tutor_id'
+        ]);
+        $this->belongsTo('ProgramStructures', [
+            'foreignKey' => 'program_structure_id'
         ]);
         $this->hasMany('Meetings', [
             'foreignKey' => 'group_id'
@@ -49,7 +52,16 @@ class GroupsTable extends Table
             ->allowEmpty('id', 'create')
             ->add('tutor_id', 'valid', ['rule' => 'numeric'])
             ->requirePresence('tutor_id', 'create')
-            ->notEmpty('tutor_id');
+            ->notEmpty('tutor_id')
+            ->add('program_structure_id', 'valid', ['rule' => 'numeric'])
+            ->requirePresence('program_structure_id', true)
+            ->notEmpty('program_structure_id')
+            ->add('year', 'valid', ['rule' => 'numeric'])
+            ->requirePresence('year', true)
+            ->notEmpty('year')
+            ->add('identifier', 'valid', ['rule' => 'numeric'])
+            ->requirePresence('identifier', true)
+            ->notEmpty('identifier');
 
         return $validator;
     }
@@ -64,6 +76,7 @@ class GroupsTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['tutor_id'], 'Tutors'));
+        $rules->add($rules->existsIn(['program_structure_id'], 'ProgramStructures'));
         return $rules;
     }
 }
