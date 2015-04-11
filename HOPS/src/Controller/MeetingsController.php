@@ -35,7 +35,10 @@ class MeetingsController extends AppController
     public function view($id = null)
     {
         $meeting = $this->Meetings->get($id, [
-            'contain' => ['Groups', 'Users', 'Students']
+            'contain' => ['Groups', 'Users', 'Students' => ['Users']],
+            'order' => ['Users.first_name' => 'ASC',
+                        'Users.other_name' => 'ASC',
+                        'Users.last_name' => 'ASC']
         ]);
         $this->set('meeting', $meeting);
         $this->set('_serialize', ['meeting']);

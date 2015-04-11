@@ -13,65 +13,65 @@
         <li><?= $this->Html->link(__('New Student'), ['controller' => 'Students', 'action' => 'add']) ?> </li>
     </ul>
 </div>
-<div class="meetings view large-10 medium-9 columns">
-    <h2><?= h($meeting->id) ?></h2>
+<div class="meetings view large-10 columns">
+    <h2><?= (count($meeting->students) > 1) ?__('Ryhmäpalaveriraportti') : __('Yksityistapaamisraportti') ?></h2>
     <div class="row">
-        <div class="large-5 columns strings">
-            <h6 class="subheader"><?= __('Group') ?></h6>
-            <p><?= $meeting->has('group') ? $this->Html->link($meeting->group->id, ['controller' => 'Groups', 'action' => 'view', $meeting->group->id]) : '' ?></p>
-            <h6 class="subheader"><?= __('User') ?></h6>
-            <p><?= $meeting->has('user') ? $this->Html->link($meeting->user->id, ['controller' => 'Users', 'action' => 'view', $meeting->user->id]) : '' ?></p>
-        </div>
-        <div class="large-2 columns numbers end">
-            <h6 class="subheader"><?= __('Id') ?></h6>
-            <p><?= $this->Number->format($meeting->id) ?></p>
-        </div>
-        <div class="large-2 columns dates end">
-            <h6 class="subheader"><?= __('Date') ?></h6>
-            <p><?= h($meeting->date) ?></p>
+        <div class="large-12 columns strings">
+            <?php if (count($meeting->students) > 1): ?>
+                <h6 class="subheader"><?= __('Ryhmä') ?></h6>
+                <p><?= $this->Html->link($meeting->group->name, ['controller' => 'Groups', 'action' => 'view', $meeting->group->id]) ?></p>
+            <?php elseif (count($meeting->students) == 1): ?>
+                <h6 class="subheader"><?= __('Opiskelija') ?></h6>
+                <p>
+                    <?php
+                        $studentNumber = $meeting->students[0]->studentNumber;
+                        $studentName = $meeting->students[0]->user->name;
+
+                        echo $this->Html->link($studentNumber.': '.$studentName,[
+                            'controller' => 'Students',
+                            'action' => 'view',
+                            $meeting->students[0]->user_id]);
+                    ?>
+                </>
+            <?php endif; ?>
+            <h6 class="subheader"><?= __('Vastaava tuutori') ?></h6>
+            <p><?= $this->Html->link($meeting->tutor->name, ['controller' => 'Users', 'action' => 'view', $meeting->tutor->id]) ?></p>
+            <h6 class="subheader"><?= __('Päivämäärä') ?></h6>
+            <p><?= h($meeting->date->i18nFormat([\IntlDateFormatter::SHORT, \IntlDateFormatter::NONE])) ?></p>
         </div>
     </div>
     <div class="row texts">
-        <div class="columns large-9">
-            <h6 class="subheader"><?= __('Report') ?></h6>
+        <div class="columns strings large-12">
+            <h4 class="subheader"><?= __('Palaverissa käsitellyt asiat') ?></h4>
             <?= $this->Text->autoParagraph(h($meeting->report)); ?>
 
         </div>
     </div>
-</div>
-<div class="related row">
-    <div class="column large-12">
-    <h4 class="subheader"><?= __('Related Students') ?></h4>
-    <?php if (!empty($meeting->students)): ?>
-    <table cellpadding="0" cellspacing="0">
-        <tr>
-            <th><?= __('User Id') ?></th>
-            <th><?= __('Entry Year') ?></th>
-            <th><?= __('Turor Id') ?></th>
-            <th><?= __('Program Structure Id') ?></th>
-            <th><?= __('Group Id') ?></th>
-            <th class="actions"><?= __('Actions') ?></th>
-        </tr>
-        <?php foreach ($meeting->students as $students): ?>
-        <tr>
-            <td><?= h($students->user_id) ?></td>
-            <td><?= h($students->entry_year) ?></td>
-            <td><?= h($students->turor_id) ?></td>
-            <td><?= h($students->program_structure_id) ?></td>
-            <td><?= h($students->group_id) ?></td>
 
-            <td class="actions">
-                <?= $this->Html->link(__('View'), ['controller' => 'Students', 'action' => 'view', $students->user_id]) ?>
+    <?php if (count($meeting->students) > 1): ?>
+        <div class="row texts">
+            <div class="columns strings large-12">
+                <h4 class="subheader"><?= __('Palaverissa mukana ja poissa olleet ryhmän opiskelijat') ?></h4>
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <th class="medium-3"><?= __('Opiskelijanumero') ?></th>
+                        <th class="medium-3"><?= __('Nimi') ?></th>
+                        <th class="medium-6"><?= __('Mahdollisen poissaolon syy') ?></th>
+                    </tr>
+                    <?php foreach ($meeting->students as $student): ?>
+                        <tr>
+                            <td><?= $this->Html->link($student->studentNumber,['controller' => 'Students', 'action' => 'view', $meeting->students[0]->user_id]) ?></td>
+                            <td><?= $this->Html->link($student->user->name,['controller' => 'Students', 'action' => 'view', $meeting->students[0]->user_id]) ?></td>
+                            <?php if ($student->_joinData->away_reason !== ""): ?>
+                                <td class="errorbg"><?= $student->_joinData->away_reason ?></td>
+                            <?php else: ?>
+                                <td><?= $student->_joinData->away_reason ?></td>
+                            <?php endif; ?>
+                        </tr>
 
-                <?= $this->Html->link(__('Edit'), ['controller' => 'Students', 'action' => 'edit', $students->user_id]) ?>
-
-                <?= $this->Form->postLink(__('Delete'), ['controller' => 'Students', 'action' => 'delete', $students->user_id], ['confirm' => __('Are you sure you want to delete # {0}?', $students->user_id)]) ?>
-
-            </td>
-        </tr>
-
-        <?php endforeach; ?>
-    </table>
+                    <?php endforeach; ?>
+                </table>
+            </div>
+        </div>
     <?php endif; ?>
-    </div>
 </div>
