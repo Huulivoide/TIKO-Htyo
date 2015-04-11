@@ -57,6 +57,7 @@ class MeetingsController extends AppController
         {
             $meeting = $this->Meetings->patchEntity($meeting, $this->request->data);
             $meeting->tutor_id = $group->tutor_id;
+            $meeting->group_id = $group->id;
 
             if ($this->Meetings->save($meeting))
             {
