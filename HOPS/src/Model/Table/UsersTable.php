@@ -81,4 +81,9 @@ class UsersTable extends Table
         $rules->add($rules->existsIn(['access_level_id'], 'AccessLevels'));
         return $rules;
     }
+
+    public function findTutors(Query $query, array $options)
+    {
+        return $query->where(['access_level_id' => 2]);
+    }
 }
