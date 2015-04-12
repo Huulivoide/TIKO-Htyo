@@ -43,7 +43,7 @@
     <div class="row texts">
         <div class="columns strings large-12">
             <h4 class="subheader"><?= __('Palaverissa käsitellyt asiat') ?></h4>
-            <?= $this->Text->autoParagraph(h($meeting->report)); ?>
+            <?= $meeting->report ?>
 
         </div>
     </div>

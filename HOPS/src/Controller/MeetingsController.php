@@ -107,12 +107,12 @@ class MeetingsController extends AppController
 
             if ($this->Meetings->save($meeting))
             {
-                $this->Flash->success(__(''));
+                $this->Flash->success(__('Palaveriraportti on nyt tallennettu järjestelmään.'));
                 return $this->redirect(['action' => 'index']);
             }
             else
             {
-                $this->Flash->error('The meeting could not be saved. Please, try again.');
+                $this->Flash->error(__('Raportin tallentaminen ei onnistunut, tarkasta että olet täyttänyt kaikki vaaditut kentät.'));
             }
         }
 
