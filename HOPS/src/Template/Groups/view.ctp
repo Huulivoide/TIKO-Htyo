@@ -14,87 +14,128 @@
     </ul>
 </div>
 <div class="groups view large-10 medium-9 columns">
-    <h2><?= h($group->id) ?></h2>
+    <h2><?= __('Tuutorointi ryhmän tiedot') ?></h2>
+<!-- Group information -->
+    <div class="row" style="margin-bottom: 1rem">
+        <div class="large-8 columns strings">
+            <h6 class="subheader"><?= __('Ryhmän pääasiallinen pääaine') ?></h6>
+            <p><?= $group->program_structure->name ?></p>
+
+            <h6 class="subheader"><?= __('Ryhmän perustamisvuosi') ?></h6>
+            <p><?= $group->year ?></p>
+
+            <h6 class="subheader"><?= __('Ryhmän numero') ?></h6>
+            <p><?= $group->identifier ?></p>
+
+            <h6 class="subheader"><?= __('Ryhmän vastaava tuutori') ?></h6>
+            <p>
+                <?=
+                    $this->Html->link($group->tutor->name, [
+                        'controller' => 'Users',
+                        'action' => 'view',
+                        $group->tutor->id])
+                ?>
+            </p>
+        </div>
+        <div class="large-2 columns numbers">
+            <h6 class="subheader"><?= __('Ryhmän koko') ?></h6>
+            <p><?= $students->count() ?></p>
+        </div>
+        <div class="columns end"></div>
+    </div>
+
+<!-- Group meetings- -->
+    <div class="row" style="margin-bottom: 1rem">
+        <div class="columns strings large-8 medium-7">
+            <h4 class="subheader"><?= __('Ryhmäpalaverit') ?></h4>
+            <table cellpadding="0" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th><?= __('Päivämäärä') ?></th>
+                        <th><?= __('Osallistuja määrä') ?></th>
+                        <th><?= __('Linkki') ?></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($group->meetings as $meeting): ?>
+                        <tr> <!-- Show date, but hide time as it is not even stored in the DB, but Cake shows 0:00 by default anyway -->
+                            <td><?= $meeting->date->i18nFormat([\IntlDateFormatter::SHORT, \IntlDateFormatter::NONE]) ?></td>
+                            <td>
+                                <?= // (Number of students present)/(number of students who should have been present [group's size at the moment of creating the meeting])
+                                    ($meeting->totalStudents - $meeting->absentStudents) . '/' . $meeting->totalStudents
+                                ?>
+                            </td>
+                            <td>
+                                <?= // Link to the meetings info page.
+                                    $this->Html->link(__('Tarkastele'), [
+                                        'controller' => 'Meetings',
+                                        'action' => 'view',
+                                        $meeting->id])
+                                ?>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+        <div class="columns end"></div>
+    </div>
+
+<!-- List of students in the group -->
     <div class="row">
-        <div class="large-5 columns strings">
-            <h6 class="subheader"><?= __('Tutor') ?></h6>
-            <p><?= $group->has('tutor') ? $this->Html->link($group->tutor->id, ['controller' => 'Users', 'action' => 'view', $group->tutor->id]) : '' ?></p>
+        <div class="columns strings large-12 medium-12">
+            <h4 class="subheader"><?= __('Ryhmän jäsenet') ?></h4>
+            <table cellpadding="0" cellspacing="0">
+                <thead>
+                <tr>
+                    <th><?= __('Opiskelijanumero') ?></th>
+                    <th><?= __('Nimi') ?></th>
+                    <th><?= __('Tuutori') ?></th>
+                    <th><?= __('Yksityispalaverit') ?></th>
+                    <th><?= __('Ryhmäpalaverit') ?></th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($students as $student): ?>
+                    <tr>
+                        <td><?= $student->studentNumber ?></td>
+                        <td>
+                            <?= // Link to student page
+                                $this->Html->link($student->user->name, [
+                                    'controller' => 'Students',
+                                    'action' => 'view',
+                                    $student->user_id])
+                            ?>
+                        </td>
+                        <td>
+                            <?php // If has tutor, link to his user page, else tell that student has no tutor
+                                if ($student->tutor !== null)
+                                {
+                                    echo $this->Html->link($student->tutor->name, [
+                                            'controller' => 'Users',
+                                            'action' => 'view',
+                                            $student->tutor_id]);
+                                }
+                                else
+                                {
+                                    echo __('Opiskelijalla ei ole tuutoria');
+                                }
+                            ?>
+                        </td>
+                        <td><?= count($student->PrivateMeetings) ?></td>
+                        <td>
+                            <?php
+                                $total = count($student->GroupMeetings);
+                                $absent = count($student->AbsentGroupMeetings);
+                                echo ($total - $absent) . '/' . $total;
+                            ?>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
         </div>
-        <div class="large-2 columns numbers end">
-            <h6 class="subheader"><?= __('Id') ?></h6>
-            <p><?= $this->Number->format($group->id) ?></p>
-        </div>
+        <div class="columns end"></div>
     </div>
 </div>
-<div class="related row">
-    <div class="column large-12">
-    <h4 class="subheader"><?= __('Related Meetings') ?></h4>
-    <?php if (!empty($group->meetings)): ?>
-    <table cellpadding="0" cellspacing="0">
-        <tr>
-            <th><?= __('Id') ?></th>
-            <th><?= __('Date') ?></th>
-            <th><?= __('Group Id') ?></th>
-            <th><?= __('User Id') ?></th>
-            <th><?= __('Report') ?></th>
-            <th class="actions"><?= __('Actions') ?></th>
-        </tr>
-        <?php foreach ($group->meetings as $meetings): ?>
-        <tr>
-            <td><?= h($meetings->id) ?></td>
-            <td><?= h($meetings->date) ?></td>
-            <td><?= h($meetings->group_id) ?></td>
-            <td><?= h($meetings->user_id) ?></td>
-            <td><?= h($meetings->report) ?></td>
 
-            <td class="actions">
-                <?= $this->Html->link(__('View'), ['controller' => 'Meetings', 'action' => 'view', $meetings->id]) ?>
-
-                <?= $this->Html->link(__('Edit'), ['controller' => 'Meetings', 'action' => 'edit', $meetings->id]) ?>
-
-                <?= $this->Form->postLink(__('Delete'), ['controller' => 'Meetings', 'action' => 'delete', $meetings->id], ['confirm' => __('Are you sure you want to delete # {0}?', $meetings->id)]) ?>
-
-            </td>
-        </tr>
-
-        <?php endforeach; ?>
-    </table>
-    <?php endif; ?>
-    </div>
-</div>
-<div class="related row">
-    <div class="column large-12">
-    <h4 class="subheader"><?= __('Related Students') ?></h4>
-    <?php if (!empty($group->students)): ?>
-    <table cellpadding="0" cellspacing="0">
-        <tr>
-            <th><?= __('User Id') ?></th>
-            <th><?= __('Entry Year') ?></th>
-            <th><?= __('Turor Id') ?></th>
-            <th><?= __('Program Structure Id') ?></th>
-            <th><?= __('Group Id') ?></th>
-            <th class="actions"><?= __('Actions') ?></th>
-        </tr>
-        <?php foreach ($group->students as $students): ?>
-        <tr>
-            <td><?= h($students->user_id) ?></td>
-            <td><?= h($students->entry_year) ?></td>
-            <td><?= h($students->turor_id) ?></td>
-            <td><?= h($students->program_structure_id) ?></td>
-            <td><?= h($students->group_id) ?></td>
-
-            <td class="actions">
-                <?= $this->Html->link(__('View'), ['controller' => 'Students', 'action' => 'view', $students->user_id]) ?>
-
-                <?= $this->Html->link(__('Edit'), ['controller' => 'Students', 'action' => 'edit', $students->user_id]) ?>
-
-                <?= $this->Form->postLink(__('Delete'), ['controller' => 'Students', 'action' => 'delete', $students->user_id], ['confirm' => __('Are you sure you want to delete # {0}?', $students->user_id)]) ?>
-
-            </td>
-        </tr>
-
-        <?php endforeach; ?>
-    </table>
-    <?php endif; ?>
-    </div>
-</div>

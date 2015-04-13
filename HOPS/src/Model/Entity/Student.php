@@ -42,4 +42,51 @@ class Student extends Entity
 
         return substr($user->login, 2);
     }
+
+    /**
+     * Get list of private meetings the student has attended
+     *
+     * @return array
+     */
+    public function _getPrivateMeetings()
+    {
+        $meetings = [];
+        foreach ($this->meetings as $meeting)
+            if ($meeting->IsPrivateMeeting)
+                $meetings[] = $meeting;
+
+        return $meetings;
+    }
+
+    /**
+     * Get list of all group meetings the student should have attended.
+     *
+     * @return array
+     */
+    public function _getGroupMeetings()
+    {
+        $meetings = [];
+        foreach ($this->meetings as $meeting)
+            if ($meeting->IsGroupMeeting)
+                $meetings[] = $meeting;
+
+        return $meetings;
+    }
+
+    /**
+     * Get list of all group meetings the student should have attended,
+     * but was absent for a reason or another.
+     *
+     * @return array
+     */
+    public function _getAbsentGroupMeetings()
+    {
+        $meetings = [];
+        foreach ($this->meetings as $meeting)
+            if ($meeting->IsGroupMeeting)
+                if ($meeting->_joinData->away_reason !== '')
+                    $meetings[] = $meeting;
+
+        return $meetings;
+    }
 }

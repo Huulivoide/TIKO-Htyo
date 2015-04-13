@@ -34,10 +34,12 @@ class GroupsController extends AppController
      */
     public function view($id = null)
     {
-        $group = $this->Groups->get($id, [
-            'contain' => ['Tutors', 'Meetings', 'Students']
+        $group = $this->Groups->get($id, ['contain' => ['Tutors', 'Meetings', 'ProgramStructures']]);
+        $students = $this->Groups->Students->find('all', [
+            'conditions' => ['group_id' => $id],
+            'contain' => ['Users', 'Tutors', 'Meetings']
         ]);
-        $this->set('group', $group);
+        $this->set(compact('group', 'students'));
         $this->set('_serialize', ['group']);
     }
 
