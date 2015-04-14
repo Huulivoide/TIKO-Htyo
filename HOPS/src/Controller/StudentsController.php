@@ -48,30 +48,34 @@ class StudentsController extends AppController
      */
     public function add($username, $password)
     {
-      $student = $this->Students->newEntity();
-        
-      if ($username != NULL && $password != NULL) {
-         $student->user_id = $username;
-         $student->password = $password;
+        $student = $this->Students->newEntity();
 
-         if ($this->request->is('post')) {
+        if ($this->request->is('post'))
+        {
+            // Patch the request data pass entry_year as a pure one value integer,
+            // instead of a date array.
+            $this->request->data['entry_year'] = $this->request->data['entry_year']['year'];
+
             $student = $this->Students->patchEntity($student, $this->request->data);
-            if ($this->Students->save($student)) {
-               $this->Flash->success('The student has been saved.');
-               return $this->redirect(['action' => 'index']);
-            } else {
-               $this->Flash->error('The student could not be saved. Please, try again.');
+            $student->user->login = $username;
+            $student->user->password = $password;
+            $student->user->access_level = 1;
+
+            debug($this->request->data);
+            if ($this->Students->save($student))
+            {
+                $this->Flash->success('The student has been saved.');
+                return $this->redirect(['action' => 'index']);
             }
-         }
-      }
-      else {
-         $this->Flash->error('Log in and try again.');
-      }
-         
-      $users = $this->Students->Users->find('list', ['limit' => 200]);
+            else
+            {
+                $this->Flash->error('The student could not be saved. Please, try again.');
+            }
+        }
+
       $programStructures = $this->Students->ProgramStructures->find('list', ['limit' => 200]);
       $this->set(compact('student', 'users', 'programStructures'));
-      $this->set('_serialize', ['student']);      
+      $this->set('_serialize', ['student']);
     }
 
     /**
