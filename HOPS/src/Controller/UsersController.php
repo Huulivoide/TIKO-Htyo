@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\ORM\TableRegistry;
 
 /**
  * Users Controller
@@ -26,18 +27,30 @@ class UsersController extends AppController
     }
 
     /**
-     * View method
+     * View method for displaying tutor's information
      *
      * @param string|null $id User id.
      * @return void
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
-    public function view($id = null)
+    public function viewTutor($id = null)
     {
-        $user = $this->Users->get($id, [
-            'contain' => ['AccessLevels', 'Meetings', 'Students']
+        $tutor = $this->Users->get($id);
+        $students = $this->Users->Students->find('all', [
+            'conditions' => ['tutor_id' => $id],
+            'contain' => ['Users', 'ProgramStructures'],
+            'order' => ['Users.first_name' => 'DESC',
+                        'Users.other_name' => 'DESC',
+                        'Users.last_name' => 'DESC']
         ]);
-        $this->set('user', $user);
+        $groups = TableRegistry::get('Groups')->find('all', [
+            'conditions' => ['tutor_id' => $id],
+            'order' => [
+                'Groups.year' => 'DESC',
+                'Groups.identifier' => 'DESC']
+        ]);
+
+        $this->set(compact('tutor', 'students', 'groups'));
         $this->set('_serialize', ['user']);
     }
 
