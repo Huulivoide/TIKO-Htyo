@@ -46,20 +46,24 @@ class UsersController extends AppController
      *
      * @return void Redirects on successful add, renders view otherwise.
      */
-    public function add()
+    public function addTutor()
     {
         $user = $this->Users->newEntity();
-        if ($this->request->is('post')) {
+        if ($this->request->is('post'))
+        {
             $user = $this->Users->patchEntity($user, $this->request->data);
-            if ($this->Users->save($user)) {
-                $this->Flash->success('The user has been saved.');
+            if ($this->Users->save($user))
+            {
+                $this->Flash->success('Tuutorikäyttäjä on tallennettu järjestelmään');
                 return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error('The user could not be saved. Please, try again.');
+            }
+            else
+            {
+                $this->Flash->error('Tuutorikäyttäjää tallennettaessa tapahtui virhe.');
             }
         }
-        $accessLevels = $this->Users->AccessLevels->find('list', ['limit' => 200]);
-        $this->set(compact('user', 'accessLevels'));
+
+        $this->set(compact('user'));
         $this->set('_serialize', ['user']);
     }
 
