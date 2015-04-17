@@ -38,7 +38,6 @@
             echo $this->Form->input('user.email', [
                 'type' => 'email',
                 'label' => __('Sähköpostiosoite'),
-                'value' => '@student.uta.fi'
             ]);
         ?>
     </fieldset>
@@ -58,7 +57,7 @@
         if (firstNameInput.val() != '')
             email += '.' + firstNameInput.val();
         if (otherNameInput.val() != '')
-            email += '.' + otherNameInput.val();
+            email += '.' + otherNameInput.val().charAt(0);
         else
             email += '.' + 'x';
 

@@ -78,6 +78,7 @@ class UsersTable extends Table
     {
         $rules->add($rules->isUnique(['login']));
         $rules->add($rules->isUnique(['email']));
+        $rules->add($rules->isUnique(['phone']));
         $rules->add($rules->existsIn(['access_level_id'], 'AccessLevels'));
         return $rules;
     }

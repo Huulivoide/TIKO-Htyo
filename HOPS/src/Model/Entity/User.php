@@ -1,6 +1,7 @@
 <?php
 namespace App\Model\Entity;
 
+use Cake\Auth\DefaultPasswordHasher;
 use Cake\ORM\Entity;
 
 /**
@@ -39,5 +40,10 @@ class User extends Entity
         $name .= " " . $this->_properties['last_name'];
 
         return $name;
+    }
+
+    public function _setPassword($password)
+    {
+        return (new DefaultPasswordHasher)->hash($password);
     }
 }

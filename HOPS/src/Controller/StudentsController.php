@@ -46,22 +46,28 @@ class StudentsController extends AppController
      *
      * @return void Redirects on successful add, renders view otherwise.
      */
-    public function add($username, $password)
+    public function add($username)
     {
         $student = $this->Students->newEntity();
 
         if ($this->request->is('post'))
         {
+            $data = $this->request->data;
             // Patch the request data pass entry_year as a pure one value integer,
             // instead of a date array.
-            $this->request->data['entry_year'] = $this->request->data['entry_year']['year'];
+            $data['entry_year'] = $data['entry_year']['year'];
 
-            $student = $this->Students->patchEntity($student, $this->request->data);
-            $student->user->login = $username;
-            $student->user->password = $password;
-            $student->user->access_level = 1;
+            // Set access_level to student
+            $data['user']['access_level_id'] = 1;
 
-            debug($this->request->data);
+            // Set username
+            $data['user']['login'] = $username;
+
+            // Set password to (firstname + lastname)
+            $data['user']['password'] = $data['user']['first_name'] . $data['user']['last_name'];
+
+            $student = $this->Students->patchEntity($student, $data);
+            debug($student);
             if ($this->Students->save($student))
             {
                 $this->Flash->success('The student has been saved.');
