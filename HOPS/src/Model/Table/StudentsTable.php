@@ -87,7 +87,7 @@ class StudentsTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['user_id'], 'Users'));
-        $rules->add($rules->existsIn(['tutor_id'], 'Turors'));
+        $rules->add($rules->existsIn(['tutor_id'], 'Tutors'));
         $rules->add($rules->existsIn(['program_structure_id'], 'ProgramStructures'));
         $rules->add($rules->existsIn(['group_id'], 'Groups'));
         return $rules;

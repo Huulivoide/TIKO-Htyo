@@ -63,8 +63,9 @@ class GroupsController extends AppController
             $students = [];
             foreach ($this->request->data['students'] as $student)
             {
-                $student['tutor_id'] = $this->request->data['tutor_id'];
-                $students[] = $this->Groups->Students->get($student['user_id']);
+                $studentEntity = $this->Groups->Students->get($student['user_id']);
+                $studentEntity->tutor_id = $this->request->data['tutor_id'];
+                $students[] = $studentEntity;
             }
             unset($this->request->data['students']);
 
@@ -72,12 +73,12 @@ class GroupsController extends AppController
             $group->identifier = 1;
             $group->students = $students;
 
-            debug($this->request->data);
+
             if ($this->Groups->save($group)) {
-                $this->Flash->success('The group has been saved.');
+                $this->Flash->success('Ryhmän kokoonpano on tallennettu jätjestelmään.');
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error('The group could not be saved. Please, try again.');
+                $this->Flash->error('Ryhmän kokoonpanon tallentaminen ei onnistunut. Yritä uudelleen.');
             }
         }
         $tutors = $this->Groups->Tutors->find('list', [
