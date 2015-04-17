@@ -57,9 +57,15 @@ class GroupsController extends AppController
             $this->request->data['year'] = $this->request->data['year']['year'];
 
             // Don't create new students. (This should not be needed, there is a bug somewhere)
+            // Could be due to using students[x] syntax in inputs instead of _ids. Javasctipt
+            // and array should do it, but leave it for now.
+            // Also set the tutor of each student to that one of the group's
             $students = [];
             foreach ($this->request->data['students'] as $student)
+            {
+                $student['tutor_id'] = $this->request->data['tutor_id'];
                 $students[] = $this->Groups->Students->get($student['user_id']);
+            }
             unset($this->request->data['students']);
 
             $group = $this->Groups->patchEntity($group, $this->request->data);
