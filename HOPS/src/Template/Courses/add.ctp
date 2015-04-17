@@ -20,7 +20,6 @@
             echo $this->Form->input('credits');
             echo $this->Form->input('course_types._ids', ['options' => $courseTypes]);
             echo $this->Form->input('program_structures._ids', ['options' => $programStructures]);
-            echo $this->Form->input('students._ids', ['options' => $students]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
