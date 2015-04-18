@@ -26,11 +26,11 @@
             <h6 class="subheader"><?= __('Oppilaan nimi') ?></h6>
             <p><?= $student->has('user') ? $this->Html->link($student->user->first_name . ' ' . $student->user->other_name . ' ' . $student->user->last_name, ['controller' => 'Users', 'action' => 'view', $student->user->id]) : '' ?></p>
             <h6 class="subheader"><?= __('Tutor') ?></h6>
-            <p><?= $student->has('tutor') ? $this->Html->link($student->tutor->first_name . ' ' . $student->tutor->last_name, ['controller' => 'Users', 'action' => 'view', $student->tutor->id]) : '' ?></p>
+            <p><?= $student->has('tutor') ? $this->Html->link($student->tutor->name, ['controller' => 'Users', 'action' => 'view', $student->tutor->name]) : '' ?></p>
             <h6 class="subheader"><?= __('Tutkinto-ohjelma') ?></h6>
             <p><?= $student->has('program_structure') ? $this->Html->link($student->program_structure->name, ['controller' => 'ProgramStructures', 'action' => 'view', $student->program_structure->id]) : '' ?></p>
             <h6 class="subheader"><?= __('Ryhmä') ?></h6>
-            <p><?= $student->has('group') ? $this->Html->link($student->group->id, ['controller' => 'Groups', 'action' => 'view', $student->group->id]) : '' ?></p>
+            <p><?= $student->has('group') ? $this->Html->link($student->group->name, ['controller' => 'Groups', 'action' => 'view', $student->group->name]) : '' ?></p>
         </div>
         <div class="large-2 columns numbers end">
             <h6 class="subheader"><?= __('Aloitusvuosi') ?></h6>

@@ -35,7 +35,7 @@ class StudentsController extends AppController
     public function view($id = null)
     {
         $student = $this->Students->get($id, [
-            'contain' => ['Users', 'ProgramStructures', 'Forms']
+            'contain' => ['Users', 'ProgramStructures', 'Forms', 'Groups', 'Tutors']
         ]);
         $this->set('student', $student);
         $this->set('_serialize', ['student']);
