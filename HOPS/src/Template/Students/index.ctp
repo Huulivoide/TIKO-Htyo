@@ -24,7 +24,7 @@
             <th><?= $this->Paginator->sort('Aloitusvuosi') ?></th>
             <th><?= $this->Paginator->sort('Tutor') ?></th>
             <th><?= $this->Paginator->sort('Tutkinto-ohjelma') ?></th>
-            <th><?= $this->Paginator->sort('Ryhmä') ?></th>
+            <th><?= $this->Paginator->sort('RyhmÃ¤') ?></th>
             <th class="actions"><?= __('Toiminnot') ?></th>
         </tr>
     </thead>

@@ -30,7 +30,7 @@
             echo $this->Form->input('Aloitusvuosi');
             echo $this->Form->input('tutor_id', ['options' => $tutors, 'empty' => true]);
             echo $this->Form->input('program_structure_id', ['options' => $programStructures, 'label' => ('Tutkinto-ohjelma')]);
-            echo $this->Form->input('group_id', ['options' => $groups, 'empty' => true, 'label' => ('Ryhmä')]);
+            echo $this->Form->input('group_id', ['options' => $groups, 'empty' => true, 'label' => ('RyhmÃ¤')]);
             echo $this->Form->input('courses._ids', ['options' => $courses, 'label' => ('Kurssit')]);
             echo $this->Form->input('meetings._ids', ['options' => $meetings, 'label' => ('Tapaamiset')]);
         ?>
