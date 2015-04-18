@@ -19,7 +19,7 @@
             echo $this->Form->input('year', [
                 'label' => __('Minä vuonna kurssi on järjesttetty ensimmäisen kerran kyseisellä op-määrällä.')
             ]);
-            echo $this->Form->input('credits', ['lable' => __('Opintopisteet')]);
+            echo $this->Form->input('credits', ['label' => __('Opintopisteet')]);
             echo $this->Form->input('course_types._ids', [
                 'options' => $courseTypes,
                 'label' => __('Mitkä alla olevista tageistä liittyvät kurssiin?')
