@@ -20,12 +20,12 @@
     <table cellpadding="0" cellspacing="0">
     <thead>
         <tr>
-            <th><?= $this->Paginator->sort('user_id') ?></th>
-            <th><?= $this->Paginator->sort('entry_year') ?></th>
-            <th><?= $this->Paginator->sort('turor_id') ?></th>
-            <th><?= $this->Paginator->sort('program_structure_id') ?></th>
-            <th><?= $this->Paginator->sort('group_id') ?></th>
-            <th class="actions"><?= __('Actions') ?></th>
+            <th><?= $this->Paginator->sort('Peruspalvelutunnus') ?></th>
+            <th><?= $this->Paginator->sort('Aloitusvuosi') ?></th>
+            <th><?= $this->Paginator->sort('Tutor') ?></th>
+            <th><?= $this->Paginator->sort('Tutkinto-ohjelma') ?></th>
+            <th><?= $this->Paginator->sort('Ryhmä') ?></th>
+            <th class="actions"><?= __('Toiminnot') ?></th>
         </tr>
     </thead>
     <tbody>

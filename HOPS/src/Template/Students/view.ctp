@@ -23,17 +23,17 @@
     <h2><?= h($student->user_id) ?></h2>
     <div class="row">
         <div class="large-5 columns strings">
-            <h6 class="subheader"><?= __('User') ?></h6>
+            <h6 class="subheader"><?= __('Käyttäjä') ?></h6>
             <p><?= $student->has('user') ? $this->Html->link($student->user->id, ['controller' => 'Users', 'action' => 'view', $student->user->id]) : '' ?></p>
             <h6 class="subheader"><?= __('Tutor') ?></h6>
             <p><?= $student->has('tutor') ? $this->Html->link($student->tutor->id, ['controller' => 'Users', 'action' => 'view', $student->tutor->id]) : '' ?></p>
-            <h6 class="subheader"><?= __('Program Structure') ?></h6>
+            <h6 class="subheader"><?= __('Tutkinto-ohjelma') ?></h6>
             <p><?= $student->has('program_structure') ? $this->Html->link($student->program_structure->name, ['controller' => 'ProgramStructures', 'action' => 'view', $student->program_structure->id]) : '' ?></p>
-            <h6 class="subheader"><?= __('Group') ?></h6>
+            <h6 class="subheader"><?= __('Ryhmä') ?></h6>
             <p><?= $student->has('group') ? $this->Html->link($student->group->id, ['controller' => 'Groups', 'action' => 'view', $student->group->id]) : '' ?></p>
         </div>
         <div class="large-2 columns numbers end">
-            <h6 class="subheader"><?= __('Entry Year') ?></h6>
+            <h6 class="subheader"><?= __('Aloitusvuosi') ?></h6>
             <p><?= $this->Number->format($student->entry_year) ?></p>
         </div>
     </div>

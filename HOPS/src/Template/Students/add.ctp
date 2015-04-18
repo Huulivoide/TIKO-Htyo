@@ -26,7 +26,7 @@
             echo $this->Form->input('user.other_name', ['type' => 'string', 'label' => __('Toinen etunimi')]);
             echo $this->Form->input('entry_year', [
                 'type' => 'year',
-                'label' => __('Minä vuonna aloitit opinto ohjelmassa?'),
+                'label' => __('Minä vuonna aloitit tutkinto-ohjelmassa?'),
                 'maxYear' => date('Y'),
                 'minYear' => 2012
             ]);
