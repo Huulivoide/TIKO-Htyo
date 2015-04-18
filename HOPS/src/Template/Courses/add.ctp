@@ -13,15 +13,19 @@
 <div class="courses form large-10 medium-9 columns">
     <?= $this->Form->create($course); ?>
     <fieldset>
-        <legend><?= __('Add Course') ?></legend>
+        <legend><?= __('Lisää uusi kurssi') ?></legend>
         <?php
-            echo $this->Form->input('name');
-            echo $this->Form->input('year');
-            echo $this->Form->input('credits');
-            echo $this->Form->input('course_types._ids', ['options' => $courseTypes]);
-            echo $this->Form->input('program_structures._ids', ['options' => $programStructures]);
+            echo $this->Form->input('name', ['type' => 'string', 'label' => __('Kurssin nimi')]);
+            echo $this->Form->input('year', [
+                'label' => __('Minä vuonna kurssi on järjesttetty ensimmäisen kerran kyseisellä op-määrällä.')
+            ]);
+            echo $this->Form->input('credits', ['lable' => __('Opintopisteet')]);
+            echo $this->Form->input('course_types._ids', [
+                'options' => $courseTypes,
+                'label' => __('Mitkä alla olevista tageistä liittyvät kurssiin?')
+            ]);
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->button(__('Tallenna')) ?>
     <?= $this->Form->end() ?>
 </div>

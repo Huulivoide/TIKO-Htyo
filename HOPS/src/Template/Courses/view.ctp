@@ -17,11 +17,11 @@
     <h2><?= h($course->name) ?></h2>
     <div class="row">
         <div class="large-2 columns numbers end">
-            <h6 class="subheader"><?= __('Id') ?></h6>
+            <h6 class="subheader"><?= __('Nimi') ?></h6>
             <p><?= $this->Number->format($course->id) ?></p>
-            <h6 class="subheader"><?= __('Year') ?></h6>
+            <h6 class="subheader"><?= __('Alkamisvuosi') ?></h6>
             <p><?= $this->Number->format($course->year) ?></p>
-            <h6 class="subheader"><?= __('Credits') ?></h6>
+            <h6 class="subheader"><?= __('Opintopisteet') ?></h6>
             <p><?= $this->Number->format($course->credits) ?></p>
         </div>
     </div>

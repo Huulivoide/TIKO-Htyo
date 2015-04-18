@@ -14,16 +14,16 @@
     <table cellpadding="0" cellspacing="0">
     <thead>
         <tr>
-            <th><?= $this->Paginator->sort('id') ?></th>
-            <th><?= $this->Paginator->sort('year') ?></th>
-            <th><?= $this->Paginator->sort('credits') ?></th>
+            <th><?= $this->Paginator->sort('Nimi') ?></th>
+            <th><?= $this->Paginator->sort('Vuosi') ?></th>
+            <th><?= $this->Paginator->sort('Opintopisteet') ?></th>
             <th class="actions"><?= __('Actions') ?></th>
         </tr>
     </thead>
     <tbody>
     <?php foreach ($courses as $course): ?>
         <tr>
-            <td><?= $this->Number->format($course->id) ?></td>
+            <td><?= $course->name ?></td>
             <td><?= $this->Number->format($course->year) ?></td>
             <td><?= $this->Number->format($course->credits) ?></td>
             <td class="actions">

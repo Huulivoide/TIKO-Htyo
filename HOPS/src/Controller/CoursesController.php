@@ -56,8 +56,7 @@ class CoursesController extends AppController
             }
         }
         $courseTypes = $this->Courses->CourseTypes->find('list', ['limit' => 200]);
-        $programStructures = $this->Courses->ProgramStructures->find('list', ['limit' => 200]);
-        $this->set(compact('course', 'courseTypes', 'programStructures', 'students'));
+        $this->set(compact('course', 'courseTypes'));
         $this->set('_serialize', ['course']);
     }
 
