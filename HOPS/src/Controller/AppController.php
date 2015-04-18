@@ -15,6 +15,7 @@
 namespace App\Controller;
 
 use Cake\Controller\Controller;
+use Cake\Event\Event;
 
 /**
  * Application Controller
@@ -37,5 +38,37 @@ class AppController extends Controller
     public function initialize()
     {
         $this->loadComponent('Flash');
+        $this->loadComponent('Auth', [
+            'loginRedirect' => [
+                'controller' => 'Pages',
+                'action' => 'display',
+                'home'
+            ],
+            'logoutRedirect' => [
+                'controller' => 'Pages',
+                'action' => 'display',
+                'home'
+            ]
+       ]);
+
+        $this->Auth->config('authenticate', [
+            'Form' => [
+                'userModel' => 'Users',
+                'fields' => [
+                    'username' => 'login',
+                    'password' => 'password'
+                ]
+            ]
+        ]);
+    }
+
+    public function beforeFilter(Event $event)
+    {
+        $this->Auth->allow();
+    }
+
+    public function beforeRender(Event $event)
+    {
+        $this->set('loggedUser', $this->Auth->user());
     }
 }
