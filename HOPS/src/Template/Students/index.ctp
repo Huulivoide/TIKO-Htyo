@@ -20,7 +20,8 @@
     <table cellpadding="0" cellspacing="0">
     <thead>
         <tr>
-            <th><?= $this->Paginator->sort('Peruspalvelutunnus') ?></th>
+            <th><?= $this->Paginator->sort('Id') ?></th>
+            <th><?= $this->Paginator->sort('Nimi') ?></th>
             <th><?= $this->Paginator->sort('Aloitusvuosi') ?></th>
             <th><?= $this->Paginator->sort('Tutor') ?></th>
             <th><?= $this->Paginator->sort('Tutkinto-ohjelma') ?></th>
@@ -33,6 +34,9 @@
         <tr>
             <td>
                 <?= $student->has('user') ? $this->Html->link($student->user->id, ['controller' => 'Users', 'action' => 'view', $student->user->id]) : '' ?>
+            </td>
+            <td>
+                <?= $student->has('user') ? $this->Html->link($student->user->first_name . ' ' . $student->user->last_name, ['controller' => 'Users', 'action' => 'view', $student->user->id]) : '' ?>
             </td>
             <td><?= $this->Number->format($student->entry_year) ?></td>
             <td>
