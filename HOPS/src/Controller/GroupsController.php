@@ -94,6 +94,26 @@ class GroupsController extends AppController
     }
 
     /**
+     * "Lähetä" viesti ryhmän jäsenille.
+     * Pääasiassa funktio vastaa raporttia R3 Listää kolmannen
+     * vuoden opiskelijoiden sähköpostiosoitteet.
+     *
+     * Funktio ei lähetä mitään oikeasti.
+     */
+    public function sendMail($group_id)
+    {
+        $group = $this->Groups->get($group_id, ['contain' => ['Students' => ['Users']]]);
+
+        if ($this->request->is('post'))
+        {
+            $this->Flash->success(__('Viesti on lähetetty kaikille ryhmän jäsenille'));
+            return $this->redirect(['action' => 'view', $group_id]);
+        }
+
+        $this->set(compact('group'));
+    }
+
+    /**
      * Edit method
      *
      * @param string|null $id Group id.

@@ -14,6 +14,15 @@
                 ])
             ?>
         </li>
+        <li>
+            <?=
+                $this->Html->link(__('Lähetä ryhmäläisille viesti'), [
+                    'controller' => 'Groups',
+                    'action' => 'sendMail',
+                    $group->id
+                ])
+            ?>
+        </li>
     </ul>
 </div>
 <div class="groups view large-10 medium-9 columns">
