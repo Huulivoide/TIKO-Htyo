@@ -21,12 +21,14 @@
     <fieldset>
         <legend><?= __('Edit Course') ?></legend>
         <?php
-            echo $this->Form->input('name');
-            echo $this->Form->input('year');
-            echo $this->Form->input('credits');
-            echo $this->Form->input('course_types._ids', ['options' => $courseTypes]);
+            echo $this->Form->input('name', ['type' => 'string', 'label' => __('Kurssin nimi')]);
+            echo $this->Form->input('year', [
+            ]);
+            echo $this->Form->input('credits', ['label' => __('Opintopisteet')]);
+            echo $this->Form->input('course_types._ids', [ 
+               'options' => $courseTypes,
+            ]);
             echo $this->Form->input('program_structures._ids', ['options' => $programStructures]);
-            echo $this->Form->input('students._ids', ['options' => $students]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
