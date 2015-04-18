@@ -19,7 +19,7 @@ class StudentsController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Users', 'ProgramStructures']
+            'contain' => ['Users', 'ProgramStructures', 'Tutors', 'Groups']
         ];
         $this->set('students', $this->paginate($this->Students));
         $this->set('_serialize', ['students']);
