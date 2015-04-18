@@ -1,16 +1,19 @@
 <div class="actions columns large-2 medium-3">
     <h3><?= __('Actions') ?></h3>
     <ul class="side-nav">
-        <li><?= $this->Html->link(__('Edit Group'), ['action' => 'edit', $group->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Group'), ['action' => 'delete', $group->id], ['confirm' => __('Are you sure you want to delete # {0}?', $group->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Groups'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Group'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Tutors'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Tutor'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Meetings'), ['controller' => 'Meetings', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Meeting'), ['controller' => 'Meetings', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Students'), ['controller' => 'Students', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Student'), ['controller' => 'Students', 'action' => 'add']) ?> </li>
+        <?php if ($loggedUser['access_level_id'] == 3): ?>
+            <li><?= $this->Html->link(__('Näytä kaikki ryhmät'), ['action' => 'index']) ?> </li>
+            <li><?= $this->Html->link(__('Luo uusi ryhmä'), ['action' => 'add']) ?> </li>
+        <?php endif; ?>
+        <li>
+            <?=
+                $this->Html->link(__('Raportoi uusi tapaaminen'), [
+                    'controller' => 'Meetings',
+                    'action' => 'newGroupMeeting',
+                    $group->id
+                ])
+            ?>
+        </li>
     </ul>
 </div>
 <div class="groups view large-10 medium-9 columns">
