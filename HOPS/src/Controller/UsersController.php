@@ -138,6 +138,7 @@ class UsersController extends AppController
             $user = $this->Auth->identify();
             if ($user)
             {
+                $user['name'] = $this->Users->get($user['id'])->name;
                 $this->Auth->setUser($user);
                 return $this->redirect($this->Auth->redirectUrl());
             }

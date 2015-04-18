@@ -40,8 +40,37 @@ $cakeDescription = 'TIKO-HOPS – Ryhmä 6: ';
             <span><?= $this->fetch('title') ?></span>
         </div>
         <div class="header-help">
-            <span><a target="_blank" href="http://book.cakephp.org/3.0/">Documentation</a></span>
-            <span><a target="_blank" href="http://api.cakephp.org/3.0/">API</a></span>
+                <?php if ($loggedUser !== null): ?>
+                <span>
+                    <?php
+                        {
+                            $type = __('Oppilas');
+                            if ($loggedUser['access_level_id'] == 2)
+                                $type = __('Tuutori');
+                            else if ($loggedUser['access_level_id'] == 3)
+                                $type = __('Ylituutori');
+
+                            if ($loggedUser['access_level_id'] == 1)
+                                echo $this->Html->link($loggedUser['name'] . " ($type)", [
+                                    'controller' => 'Students',
+                                    'action' => 'view',
+                                    $loggedUser['id']
+                                ]);
+                            else
+                                echo $this->Html->link($loggedUser['name'] . " ($type)", [
+                                   'controller' => 'Users',
+                                    'action' => 'viewTutor',
+                                    $loggedUser['id']
+                                ]);
+
+                        }
+                    ?>
+                </span>
+                <span><?= $this->Html->link(__('Kirjaudu ulos'), ['controller' => 'Users', 'action' => 'logout']) ?></span>
+                <?php else: ?>
+                    <span><?= $this->Html->link(__('Kirjaudu sisään'), ['controller' => 'Users', 'action' => 'login']) ?></span>
+                <?php endif; ?>
+
         </div>
     </header>
     <div id="container">
