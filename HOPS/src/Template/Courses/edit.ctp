@@ -23,10 +23,12 @@
         <?php
             echo $this->Form->input('name', ['type' => 'string', 'label' => __('Kurssin nimi')]);
             echo $this->Form->input('year', [
+                'label' => __('Minä vuonna kurssi on järjesttetty ensimmäisen kerran kyseisellä op-määrällä.')
             ]);
             echo $this->Form->input('credits', ['label' => __('Opintopisteet')]);
             echo $this->Form->input('course_types._ids', [ 
                'options' => $courseTypes,
+               'label' => __('Mitkä alla olevista tageista liittyvät kurssiin?')
             ]);
             echo $this->Form->input('program_structures._ids', ['options' => $programStructures]);
         ?>
