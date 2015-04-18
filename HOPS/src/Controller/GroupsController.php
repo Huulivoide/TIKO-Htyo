@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\I18n\Time;
 
 /**
  * Groups Controller
@@ -39,7 +40,14 @@ class GroupsController extends AppController
             'conditions' => ['group_id' => $id],
             'contain' => ['Users', 'Tutors', 'Meetings']
         ]);
-        $this->set(compact('group', 'students'));
+
+        $currentYear = Time::Now()->year;
+        $currentYearStartDate = new Time("$currentYear-09-01 00:00");
+        if ($currentYearStartDate->isFuture())
+            $currentYear -= 1; //We are currently in spring semester, calculate from autumn instead
+        $yearsStudied = $currentYear - $group->year + 1;
+
+        $this->set(compact('group', 'students', 'yearsStudied'));
         $this->set('_serialize', ['group']);
     }
 

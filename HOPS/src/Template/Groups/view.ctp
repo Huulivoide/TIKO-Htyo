@@ -36,6 +36,9 @@
             <h6 class="subheader"><?= __('Ryhmän perustamisvuosi') ?></h6>
             <p><?= $group->year ?></p>
 
+            <h6 class="subheader"><?= __('Minkä vuosikurssin oppilaita oppilaat ovat') ?></h6>
+            <p><?= $yearsStudied ?></p>
+
             <h6 class="subheader"><?= __('Ryhmän numero') ?></h6>
             <p><?= $group->identifier ?></p>
 
@@ -44,7 +47,7 @@
                 <?=
                     $this->Html->link($group->tutor->name, [
                         'controller' => 'Users',
-                        'action' => 'view',
+                        'action' => 'viewTutor',
                         $group->tutor->id])
                 ?>
             </p>

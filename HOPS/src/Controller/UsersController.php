@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\ORM\TableRegistry;
+use Cake\I18n\Time;
 
 /**
  * Users Controller
@@ -50,7 +51,12 @@ class UsersController extends AppController
                 'Groups.identifier' => 'DESC']
         ]);
 
-        $this->set(compact('tutor', 'students', 'groups'));
+        $currentYear = Time::Now()->year;
+        $currentYearStartDate = new Time("$currentYear-09-01 00:00");
+        if ($currentYearStartDate->isFuture())
+            $currentYear -= 1; //We are currently in spring semester, calculate from autumn instead
+
+        $this->set(compact('tutor', 'students', 'groups', 'currentYear'));
         $this->set('_serialize', ['user']);
     }
 

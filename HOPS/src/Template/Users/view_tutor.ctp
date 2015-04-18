@@ -30,9 +30,23 @@
 
     <div class="row large-10 medium-9">
         <h4 class="subheader"><?= __('Tuutorointiryhmät') ?></h4>
+        <p>
+            <span style="background-color: beige">Ensimmäisen vuoden ryhmä</span>,
+            <span style="background-color: deeppink">Toisen vuoden ryhmä</span>,
+            <span style="background-color: coral">Kolmannen vuoden ryhmä</span>
+        </p>
         <ul>
             <?php foreach ($groups as $group): ?>
-                <li>
+                <?php
+                    $yearsStudied = $currentYear - $group->year + 1;
+                    $color = "beige";
+                    if ($yearsStudied == 2)
+                        $color = "deeppink";
+                    else if ($yearsStudied == 3)
+                        $color = "coral";
+
+                ?>
+                <li style="background-color: <?= $color ?>">
                     <?=
                     $this->Html->link($group->name, [
                         'controller' => 'Groups',
