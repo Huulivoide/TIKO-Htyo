@@ -39,6 +39,19 @@ class CoursesController extends AppController
     }
 
     /**
+     * Search for courses matching the query.
+     * Result is outputted as json data.
+     *
+     * @return string json data
+     */
+    public function search()
+    {
+        $term = $this->request->query['term'];
+        $courses = $this->Courses->find('all', ['conditions' => ['LOWER(name) LIKE' => strtolower("%$term%")]]);
+        $this->set(compact('courses'));
+    }
+
+    /**
      * Add method
      *
      * @return void Redirects on successful add, renders view otherwise.
