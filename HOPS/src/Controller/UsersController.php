@@ -55,8 +55,13 @@ class UsersController extends AppController
         $currentYearStartDate = new Time("$currentYear-09-01 00:00");
         if ($currentYearStartDate->isFuture())
             $currentYear -= 1; //We are currently in spring semester, calculate from autumn instead
+            
+        $numOfStudents = 0;
+        foreach ($students as $student) {
+           $numOfStudents += 1;
+        }
 
-        $this->set(compact('tutor', 'students', 'groups', 'currentYear'));
+        $this->set(compact('tutor', 'students', 'groups', 'currentYear', 'numOfStudents'));
         $this->set('_serialize', ['user']);
     }
 
