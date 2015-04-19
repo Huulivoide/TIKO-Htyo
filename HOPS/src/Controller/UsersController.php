@@ -56,10 +56,7 @@ class UsersController extends AppController
         if ($currentYearStartDate->isFuture())
             $currentYear -= 1; //We are currently in spring semester, calculate from autumn instead
             
-        $numOfStudents = 0;
-        foreach ($students as $student) {
-           $numOfStudents += 1;
-        }
+        $numOfStudents = $students->count();
 
         $this->set(compact('tutor', 'students', 'groups', 'currentYear', 'numOfStudents'));
         $this->set('_serialize', ['user']);
