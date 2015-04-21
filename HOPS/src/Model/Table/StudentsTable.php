@@ -45,6 +45,13 @@ class StudentsTable extends Table
             'targetForeignKey' => 'course_id',
             'joinTable' => 'courses_students'
         ]);
+        $this->belongsToMany('UnFinishedCourses', [
+            'className' => 'Courses',
+            'foreignKey' => 'student_id',
+            'targetForeignKey' => 'course_id',
+            'joinTable' => 'courses_students',
+            'conditions' => ['finishing_date IS NULL']
+        ]);
         $this->belongsToMany('Meetings', [
             'foreignKey' => 'student_id',
             'targetForeignKey' => 'meeting_id',
