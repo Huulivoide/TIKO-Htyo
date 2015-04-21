@@ -11,6 +11,7 @@
         "cakephp/migrations": "~1.0",
         "cakephp/plugin-installer": "*",
         "components/jquery": "2.*",
+        "components/jqueryui": "~1.11",
         "ckeditor/ckeditor": "~4.4.0"
     },
     "require-dev": {
