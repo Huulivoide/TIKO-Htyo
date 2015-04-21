@@ -1,6 +1,7 @@
 <?php
 namespace App\Model\Entity;
 
+use Cake\I18n\Time;
 use Cake\ORM\Entity;
 use Cake\ORM\TableRegistry;
 
@@ -88,5 +89,16 @@ class Student extends Entity
                     $meetings[] = $meeting;
 
         return $meetings;
+    }
+
+    public function _getNthYear()
+    {
+        $currentYear = Time::Now()->year;
+        $currentYearStartDate = new Time("$currentYear-09-01 00:00");
+        if ($currentYearStartDate->isFuture())
+            $currentYear -= 1; //We are currently in spring semester, calculate from autumn instead
+
+
+        return $currentYear - $this->entry_year + 1;
     }
 }
