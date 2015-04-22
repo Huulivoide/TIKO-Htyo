@@ -27,7 +27,7 @@
             <p><?= $this->Text->autoLinkEmails($tutor->email) ?></p>
             
             <h6 class="subheader"><?= __('Tutoroitavia') ?></h6>
-            <p><?= $numOfStudents ?></p>
+            <p><?= $tutor->_getNumOfTutored(); ?></p>
             
         </div>
     </div>
