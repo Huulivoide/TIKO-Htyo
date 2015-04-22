@@ -21,20 +21,18 @@
     </thead>
     <tbody>
     <?php foreach ($users as $user): ?>
-    <?php if ($user->access_level_id != 1 && $user->access_level_id != null): ?>
         <tr>
             <td><?= $this->Number->format($user->id) ?></td>
             <td>
                 <?= $user->has('access_level') ? $this->Html->link($user->access_level->name, ['controller' => 'AccessLevels', 'action' => 'view', $user->access_level->id]) : '' ?>
             </td>
             <td class="actions">
-                <?= $this->Html->link(__('View'), ['action' => 'viewTutor', $user->id]) ?>
+                <?= $this->Html->link(__('View'), ['action' => 'view', $user->id]) ?>
                 <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id]) ?>
                 <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?>
             </td>
         </tr>
 
-    <?php endif; ?>
     <?php endforeach; ?>
     </tbody>
     </table>
