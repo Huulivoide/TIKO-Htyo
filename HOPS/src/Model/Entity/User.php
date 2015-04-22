@@ -3,6 +3,7 @@ namespace App\Model\Entity;
 
 use Cake\Auth\DefaultPasswordHasher;
 use Cake\ORM\Entity;
+use Cake\ORM\TableRegistry;
 
 /**
  * User Entity.
@@ -45,5 +46,16 @@ class User extends Entity
     public function _setPassword($password)
     {
         return (new DefaultPasswordHasher)->hash($password);
+    }
+    
+    public function _getNumOfTutored()
+    {
+        $students = TableRegistry::get('Students');
+        
+        $num = $students->find('all', [
+            'conditions' => ['tutor_id' => $this->id],
+        ]);
+        
+        return $num->count();
     }
 }

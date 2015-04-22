@@ -23,6 +23,7 @@ class UsersController extends AppController
         $this->paginate = [
             'contain' => ['AccessLevels']
         ];
+    
         $this->set('users', $this->paginate($this->Users));
         $this->set('_serialize', ['users']);
     }
@@ -55,10 +56,8 @@ class UsersController extends AppController
         $currentYearStartDate = new Time("$currentYear-09-01 00:00");
         if ($currentYearStartDate->isFuture())
             $currentYear -= 1; //We are currently in spring semester, calculate from autumn instead
-            
-        $numOfStudents = $students->count();
 
-        $this->set(compact('tutor', 'students', 'groups', 'currentYear', 'numOfStudents'));
+        $this->set(compact('tutor', 'students', 'groups', 'currentYear'));
         $this->set('_serialize', ['user']);
     }
 
@@ -152,5 +151,21 @@ class UsersController extends AppController
     public function logout()
     {
         return $this->redirect($this->Auth->logout());
+    }
+    
+    /**
+     * For listing tutors and the number of their tutorees
+     *
+     * @return void
+     */
+    public function listTutors()
+    {
+        $this->paginate = [
+            'conditions' => ['access_level_id >' => 1],
+            'contain' => ['AccessLevels']
+        ];
+    
+        $this->set('users', $this->paginate($this->Users));
+        $this->set('_serialize', ['users']);
     }
 }
