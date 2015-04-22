@@ -4,6 +4,7 @@ namespace App\Controller;
 use App\Controller\AppController;
 use App\Model\Entity\CoursesStudent;
 use Cake\I18n\Time;
+use Cake\ORM\TableRegistry;
 
 /**
  * Forms Controller
@@ -48,17 +49,19 @@ class FormsController extends AppController
         if (isset($this->request->data['unfinished']))
         {
             // Fill in the finishing dates to unfinished courses
-            foreach ($student->un_finished_courses as $course)
+            foreach ($student->courses as $course)
             {
                 foreach ($this->request->data['unfinished'] as $key => $unfinished)
                 {
                     if ($course->id == $unfinished['course_id'] && $unfinished['finishing_date'] != "")
+                    {
                         $course->_joinData->finishing_date = Time::createFromFormat('d.m.Y', $unfinished['finishing_date'], 'Europe/Helsinki');
-
-                    // So we don't have to iterate over it again
-                    unset($this->request->data['unfinished'][$key]);
+                        $course->dirty('_joinData', true);
+                    }
                 }
             }
+
+            $student->dirty('courses', true);
         }
     }
 
@@ -74,9 +77,12 @@ class FormsController extends AppController
                 $newCourse->_joinData = new CoursesStudent();
                 $newCourse->_joinData->planned_finishing_date = Time::createFromTimestampUTC(0);
                 $newCourse->_joinData->finishing_date = Time::createFromFormat('d.m.Y', $course['date'], 'Europe/Helsinki');
+                $newCourse->dirty('_joinData', true);
 
                 $student->courses[] = $newCourse;
             }
+
+            $student->dirty('courses', true);
         }
     }
 
@@ -90,23 +96,25 @@ class FormsController extends AppController
         return $currentYear;
     }
 
-    private function processSemesterCourses($student, $key, $finishingDate, $plannedDate)
+    private function processThisSemesterCourses($student, $form, $key, $plannedDate)
     {
         if (isset($this->request->data[$key]))
         {
+            $csTable = TableRegistry::get('CoursesStudents');
             foreach ($this->request->data[$key] as $course)
             {
-                $newCourse = $this->Forms->Students->Courses->get($course['id']);
-                $newCourse->_joinData = new CoursesStudent();
-                $newCourse->_joinData->planned_finishing_date = $plannedDate;
-                $newCourse->_joinData->finishing_date = $finishingDate;
+                $newCourse = $csTable->newEntity();
+                $newCourse->course_id = $course['id'];
+                $newCourse->student_id = $student->user_id;
+                $newCourse->planned_finishing_date = $plannedDate;
+                $newCourse->finishing_date = null;
 
-                $student->courses[] = $newCourse;
+                $form->courses_students[] = $newCourse;
             }
         }
     }
 
-    private function processCourses($student)
+    private function processCourses($student, $form)
     {
         // Last year planned courses
         $this->processUnfinishedCourses($student);
@@ -116,12 +124,12 @@ class FormsController extends AppController
 
         // Autumn semester
         $currentYear = $this->getCurrentSemesterStartYear();
-        $this->processSemesterCourses($student, 'thisAutumnCourses', null,
+        $this->processThisSemesterCourses($student, $form,'thisAutumnCourses',
             Time::createFromDate($currentYear, 12, 31, "Europe/Helsinki"));
 
         // Spring semester
         $currentYear = $this->getCurrentSemesterStartYear();
-        $this->processSemesterCourses($student, 'thisSpringCourses', null,
+        $this->processThisSemesterCourses($student, $form, 'thisSpringCourses',
             Time::createFromDate($currentYear + 1, 6, 30, "Europe/Helsinki"));
     }
 
@@ -134,13 +142,20 @@ class FormsController extends AppController
     public function add()
     {
         $form = $this->Forms->newEntity();
+        $form->courses_students = [];
 
         $student = $this->Forms->Students->get($this->Auth->user('id'), ['contain' => ['Users', 'UnFinishedCourses']]);
-        $student->courses = [];
+
+        if (isset($student->courses) == false)
+            $student->courses = [];
 
         if ($this->request->is('post'))
         {
-            $this->processCourses($student);
+            $student = $this->Forms->Students->get($this->Auth->user('id'), ['contain' => ['Users', 'Courses']]);
+            if (isset($student->courses) == false)
+                $student->courses = [];
+
+            $this->processCourses($student, $form);
 
             if ($this->request->data['works'] == 1)
                 $this->request->data['works'] = true;
