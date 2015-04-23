@@ -3,5 +3,4 @@
 
 # Dokumentaatio scripti muuntaa dia tiedostot PGF: tikz-makroiksi
 *.tikz
-*.png 
 *.pdf
