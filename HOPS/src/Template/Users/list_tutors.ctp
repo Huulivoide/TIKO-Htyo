@@ -35,7 +35,7 @@
                 <?= $user->has('access_level') ? $this->Html->link($user->access_level->name, ['controller' => 'AccessLevels', 'action' => 'view', $user->access_level->id]) : '' ?>
             </td>
             <td>
-                <?= $user->_getNumOfTutored(); ?>
+                <?= $user->num_of_tutored ?>
             </td>
             <td class="actions">
                 <?= $this->Html->link(__('View'), ['action' => 'viewTutor', $user->id]) ?>
