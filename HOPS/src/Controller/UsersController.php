@@ -23,7 +23,7 @@ class UsersController extends AppController
         $this->paginate = [
             'contain' => ['AccessLevels']
         ];
-    
+
         $this->set('users', $this->paginate($this->Users));
         $this->set('_serialize', ['users']);
     }
@@ -136,6 +136,10 @@ class UsersController extends AppController
     {
         if ($this->request->is('post'))
         {
+            // If user doesn't exist at all redirect to "registering" page
+            if ($this->Users->find('all', ['conditions' => ['login' => $this->request->data['login']]])->count() != 1)
+                return $this->redirect(['controller' => 'Students', 'action' => 'add', $this->request->data['login']]);
+
             $user = $this->Auth->identify();
             if ($user)
             {
@@ -152,7 +156,7 @@ class UsersController extends AppController
     {
         return $this->redirect($this->Auth->logout());
     }
-    
+
     /**
      * For listing tutors and the number of their tutorees
      *
@@ -164,7 +168,7 @@ class UsersController extends AppController
             'conditions' => ['access_level_id >' => 1],
             'contain' => ['AccessLevels']
         ];
-    
+
         $this->set('users', $this->paginate($this->Users));
         $this->set('_serialize', ['users']);
     }
