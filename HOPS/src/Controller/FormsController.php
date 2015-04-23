@@ -38,9 +38,24 @@ class FormsController extends AppController
     public function view($id = null)
     {
         $form = $this->Forms->get($id, [
-            'contain' => ['Students', 'CoursesStudents']
+            'contain' => ['Students' => ['Users', 'Courses'], 'CoursesStudents' => ['Courses']]
         ]);
-        $this->set('form', $form);
+
+        $autumnCourses = [];
+        $springCourses = [];
+
+        foreach ($form->student->courses as $course)
+        {
+            if ($course->_joinData->form_id == $id)
+            {
+                if ($course->_joinData->isAutumnCourse())
+                    $autumnCourses[] = $course;
+                else
+                    $springCourses[] = $course;
+            }
+        }
+
+        $this->set(compact('form', 'autumnCourses', 'springCourses'));
         $this->set('_serialize', ['form']);
     }
 

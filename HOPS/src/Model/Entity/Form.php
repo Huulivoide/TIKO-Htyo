@@ -1,6 +1,7 @@
 <?php
 namespace App\Model\Entity;
 
+use Cake\I18n\Time;
 use Cake\ORM\Entity;
 
 /**
@@ -27,4 +28,14 @@ class Form extends Entity
         'student' => true,
         'courses_students' => true,
     ];
+
+    public function _getSemester()
+    {
+        $currentYear = $this->time->year;
+        $currentYearStartDate = new Time("$currentYear-09-01 00:00");
+        if ($currentYearStartDate->isFuture())
+            $currentYear -= 1; //We are currently in spring semester, calculate from autumn instead
+
+        return $currentYear . '–' . ($currentYear + 1);
+    }
 }

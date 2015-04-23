@@ -1,6 +1,7 @@
 <?php
 namespace App\Model\Entity;
 
+use Cake\I18n\Time;
 use Cake\ORM\Entity;
 
 /**
@@ -22,4 +23,38 @@ class CoursesStudent extends Entity
         'form' => true,
         'student' => true,
     ];
+
+    public function isAutumnCourse()
+    {
+        $year = $this->planned_finishing_date->year;
+        $autumnSemesterEndDate = new Time("$year-12-30 23:59");
+
+        return $autumnSemesterEndDate->lt($this->planned_finishing_date);
+    }
+
+    public function _getPlannedSemester()
+    {
+        $year = $this->planned_finishing_date->year;
+
+        $autumnSemesterEndDate = new Time("$year-12-30 23:59");
+
+        if ($this->planned_finishing_date->eq(Time::createFromTimestampUTC(0)))
+            return __('Ei ole ollut osa HOPS:ia');
+        else if ($autumnSemesterEndDate->lt($this->planned_finishing_date))
+            return $year . __('(syksy)');
+        else
+            return $year . __('(kevät)');
+    }
+
+    public function _getFinishedSemester()
+    {
+        $year = $this->finishing_date->year;
+
+        $autumnSemesterEndDate = new Time("$year-12-30 23:59");
+
+        if ($autumnSemesterEndDate->lt($this->finishing_date))
+            return $year . ' ' . __('(syksy)');
+        else
+            return $year . ' ' . __('(kevät)');
+    }
 }

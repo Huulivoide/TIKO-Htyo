@@ -1,107 +1,121 @@
 <div class="actions columns large-2 medium-3">
-    <h3><?= __('Actions') ?></h3>
+    <h3><?= __('Toiminnot') ?></h3>
     <ul class="side-nav">
-        <li><?= $this->Html->link(__('Edit Form'), ['action' => 'edit', $form->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Form'), ['action' => 'delete', $form->id], ['confirm' => __('Are you sure you want to delete # {0}?', $form->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Forms'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Form'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Students'), ['controller' => 'Students', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Student'), ['controller' => 'Students', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Courses Students'), ['controller' => 'CoursesStudents', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Courses Student'), ['controller' => 'CoursesStudents', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('Näytä oppilaan tiedot'), ['controller' => 'Students', 'action' => 'view', $form->student->user_id]) ?> </li>
     </ul>
 </div>
 <div class="forms view large-10 medium-9 columns">
-    <h2><?= h($form->id) ?></h2>
+    <h2><?= __('HOPS') ?></h2>
     <div class="row">
-        <div class="large-5 columns strings">
-            <h6 class="subheader"><?= __('Student') ?></h6>
-            <p><?= $form->has('student') ? $this->Html->link($form->student->user_id, ['controller' => 'Students', 'action' => 'view', $form->student->user_id]) : '' ?></p>
+        <div class="large-5 medium-5 columns strings">
+            <h6 class="subheader"><?= __('Opiskelija') ?></h6>
+            <p><?= $this->Html->link($form->student->user->name, ['controller' => 'Students', 'action' => 'view', $form->student->user_id])  ?></p>
+
+            <h6 class="subheader"><?= __('Opiskelijanumero') ?></h6>
+            <p><?= $form->student->student_number ?></p>
+
+            <h6 class="subheader"><?= __('Vuosikurssi') ?></h6>
+            <p><?= $form->student->nth_year ?></p>
         </div>
-        <div class="large-2 columns numbers end">
-            <h6 class="subheader"><?= __('Id') ?></h6>
-            <p><?= $this->Number->format($form->id) ?></p>
-            <h6 class="subheader"><?= __('Weekly Hours') ?></h6>
-            <p><?= $this->Number->format($form->weekly_hours) ?></p>
-        </div>
-        <div class="large-2 columns dates end">
-            <h6 class="subheader"><?= __('Time') ?></h6>
-            <p><?= h($form->time) ?></p>
-        </div>
-        <div class="large-2 columns booleans end">
-            <h6 class="subheader"><?= __('Works') ?></h6>
-            <p><?= $form->works ? __('Yes') : __('No'); ?></p>
+
+        <div class="large-5 medium-5 columns strings end">
+            <h6 class="subheader"><?= __('Lukuvuosi') ?></h6>
+            <p><?= $form->semester ?></p>
+
+            <h6 class="subheader"><?= __('Palautusaika') ?></h6>
+            <p><?= $form->time ?></p>
         </div>
     </div>
+
     <div class="row texts">
-        <div class="columns large-9">
-            <h6 class="subheader"><?= __('Working Reason') ?></h6>
-            <?= $this->Text->autoParagraph(h($form->working_reason)); ?>
+        <div class="columns strings large-9 medium-12">
+            <h6 class="subheader"><?= __('Työskentely lukuvuoden aikana') ?></h6>
+            <?php if ($form->wors): ?>
+                <p class="suheader"><?= __('Aion työskennellä {0} tuntia viikossa lukuvuoden aikana koska', $form->working_hours) ?></p>
+            <?php else: ?>
+                <p class="suheader"><?= __('En aio työskennellä lukuvuoden aikana koska') ?></p>
+            <?php endif; ?>
+
+            <?= $this->Text->autoParagraph(h(   $form->working_reason)); ?>
 
         </div>
     </div>
+
     <div class="row texts">
-        <div class="columns large-9">
-            <h6 class="subheader"><?= __('Interest') ?></h6>
+        <div class="columns strings large-9 medium-12">
+            <h6 class="subheader"><?= __('Syyslukukaudella aion suorittaa seuraavat kurssit') ?></h6>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th><?= __('Kurssin nimi') ?></th>
+                        <th class="large-3"><?= __('Opintopisteet') ?></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($autumnCourses as $course): ?>
+                        <tr>
+                            <td><?= $course->name ?></td>
+                            <td><?= $course->credits ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row texts">
+        <div class="columns strings large-9 medium-12">
+            <h6 class="subheader"><?= __('Kevätlukukaudella aion suorittaa seuraavat kurssit') ?></h6>
+
+            <table>
+                <thead>
+                <tr>
+                    <th><?= __('Kurssin nimi') ?></th>
+                    <th class="large-3"><?= __('Opintopisteet') ?></th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($springCourses as $course): ?>
+                    <tr>
+                        <td><?= $course->name ?></td>
+                        <td><?= $course->credits ?></td>
+                    </tr>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row texts">
+        <div class="columns strings large-9 medium-12">
+            <h6 class="subheader"><?= __('Oman alani kiinnostavat aihealueet') ?></h6>
             <?= $this->Text->autoParagraph(h($form->interest)); ?>
 
         </div>
     </div>
+
     <div class="row texts">
-        <div class="columns large-9">
-            <h6 class="subheader"><?= __('Secondary Interest') ?></h6>
+        <div class="columns strings large-9 medium-12">
+            <h6 class="subheader"><?= __('Muiden alojen kiinnostavat aihealuuet') ?></h6>
             <?= $this->Text->autoParagraph(h($form->secondary_interest)); ?>
 
         </div>
     </div>
+
     <div class="row texts">
-        <div class="columns large-9">
+        <div class="columns strings large-9 medium-12">
             <h6 class="subheader"><?= __('Last Year Positive') ?></h6>
             <?= $this->Text->autoParagraph(h($form->last_year_positive)); ?>
 
         </div>
     </div>
+
     <div class="row texts">
-        <div class="columns large-9">
+        <div class="columns strings large-9 medium-12">
             <h6 class="subheader"><?= __('Last Year Negative') ?></h6>
             <?= $this->Text->autoParagraph(h($form->last_year_negative)); ?>
 
         </div>
-    </div>
-</div>
-<div class="related row">
-    <div class="column large-12">
-    <h4 class="subheader"><?= __('Related CoursesStudents') ?></h4>
-    <?php if (!empty($form->courses_students)): ?>
-    <table cellpadding="0" cellspacing="0">
-        <tr>
-            <th><?= __('Course Id') ?></th>
-            <th><?= __('Form Id') ?></th>
-            <th><?= __('Student Id') ?></th>
-            <th><?= __('Planned Finishing Date') ?></th>
-            <th><?= __('Finishing Date') ?></th>
-            <th class="actions"><?= __('Actions') ?></th>
-        </tr>
-        <?php foreach ($form->courses_students as $coursesStudents): ?>
-        <tr>
-            <td><?= h($coursesStudents->course_id) ?></td>
-            <td><?= h($coursesStudents->form_id) ?></td>
-            <td><?= h($coursesStudents->student_id) ?></td>
-            <td><?= h($coursesStudents->planned_finishing_date) ?></td>
-            <td><?= h($coursesStudents->finishing_date) ?></td>
-
-            <td class="actions">
-                <?= $this->Html->link(__('View'), ['controller' => 'CoursesStudents', 'action' => 'view', $coursesStudents->course_id]) ?>
-
-                <?= $this->Html->link(__('Edit'), ['controller' => 'CoursesStudents', 'action' => 'edit', $coursesStudents->course_id]) ?>
-
-                <?= $this->Form->postLink(__('Delete'), ['controller' => 'CoursesStudents', 'action' => 'delete', $coursesStudents->course_id], ['confirm' => __('Are you sure you want to delete # {0}?', $coursesStudents->course_id)]) ?>
-
-            </td>
-        </tr>
-
-        <?php endforeach; ?>
-    </table>
-    <?php endif; ?>
     </div>
 </div>
