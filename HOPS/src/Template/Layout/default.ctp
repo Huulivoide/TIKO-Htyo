@@ -77,6 +77,7 @@ $cakeDescription = 'TIKO-HOPS – Ryhmä 6: ';
 
         <div id="content">
             <?= $this->Flash->render() ?>
+            <?= $this->Flash->render('auth') ?>
 
             <div class="row">
                 <?= $this->fetch('content') ?>

@@ -15,7 +15,6 @@
 namespace App\Controller;
 
 use Cake\Controller\Controller;
-use Cake\Event\Event;
 
 /**
  * Application Controller
@@ -40,6 +39,7 @@ class AppController extends Controller
         $this->loadComponent('Flash');
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Auth', [
+            'authorize' => 'Controller',
             'loginRedirect' => [
                 'controller' => 'Pages',
                 'action' => 'display',
@@ -49,7 +49,8 @@ class AppController extends Controller
                 'controller' => 'Pages',
                 'action' => 'display',
                 'home'
-            ]
+            ],
+            'unauthorizedRedirect' => $this->referer()
        ]);
 
         $this->Auth->config('authenticate', [
@@ -65,7 +66,7 @@ class AppController extends Controller
 
     public function beforeFilter(Event $event)
     {
-        $this->Auth->allow();
+        $this->Auth->deny();
     }
 
     public function beforeRender(Event $event)

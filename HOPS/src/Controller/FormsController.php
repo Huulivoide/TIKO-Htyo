@@ -244,4 +244,25 @@ class FormsController extends AppController
         }
         return $this->redirect(['action' => 'index']);
     }
+
+    public function isAuthorized($user)
+    {
+        $allowed = [];
+
+
+        if ($this->Auth->user('access_level_id') == 1)
+        {
+            $allowed[] = 'add';
+            $allowed[] = 'view';
+        }
+        if ($this->Auth->user('access_level_id') >= 2)
+        {
+            $allowed[] = 'view';
+        }
+
+        if (in_array($this->request->param('action'), $allowed))
+            return true;
+
+        return false;
+    }
 }

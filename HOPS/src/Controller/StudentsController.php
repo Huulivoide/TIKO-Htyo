@@ -133,4 +133,23 @@ class StudentsController extends AppController
         }
         return $this->redirect(['action' => 'index']);
     }
+
+    public function isAuthorized($user)
+    {
+        $allowed = ['add'];
+
+        if ($this->Auth->user('access_level_id') >= 1)
+        {
+            $allowed[] = 'view';
+        }
+        if ($this->Auth->user('access_level_id') >= 3)
+        {
+            $allowed[] = 'index';
+        }
+
+        if (in_array($this->request->param('action'), $allowed))
+            return true;
+
+        return false;
+    }
 }

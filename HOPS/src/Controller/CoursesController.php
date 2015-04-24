@@ -119,4 +119,20 @@ class CoursesController extends AppController
         }
         return $this->redirect(['action' => 'index']);
     }
+
+    public function isAuthorized($user)
+    {
+        $allowed = [];
+
+        if ($this->Auth->user('access_level_id') >= 2)
+        {
+            $allowed[] = 'view';
+            $allowed[] = 'add';
+        }
+
+        if (in_array($this->request->param('action'), $allowed))
+            return true;
+
+        return false;
+    }
 }

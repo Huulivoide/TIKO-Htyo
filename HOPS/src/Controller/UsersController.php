@@ -172,4 +172,24 @@ class UsersController extends AppController
         $this->set('users', $this->paginate($this->Users));
         $this->set('_serialize', ['users']);
     }
+
+    public function isAuthorized($user)
+    {
+        $allowed = [];
+
+        if ($user['access_level_id'] >= 2)
+        {
+            $allowed[] = 'viewTutor';
+        }
+        if ($user['access_level_id'] >= 3)
+        {
+            $allowed[] = 'index';
+            $allowed[] = 'addTutor';
+        }
+
+        if (in_array($this->request->param('action'), $allowed))
+            return true;
+
+        return false;
+    }
 }

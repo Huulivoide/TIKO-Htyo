@@ -167,4 +167,22 @@ class MeetingsController extends AppController
         }
         return $this->redirect(['action' => 'index']);
     }
+
+    public function isAuthorized($user)
+    {
+        return true;
+        $allowed = [];
+
+        if ($this->Auth->user('access_level_id') >= 2)
+        {
+            $allowed[] = 'newGroupMeeting';
+            $allowed[] = 'newPrivateMeeting';
+            $allowed[] = 'view';
+        }
+
+        if (in_array($this->request->param('action'), $allowed))
+            return true;
+
+        return false;;
+    }
 }
