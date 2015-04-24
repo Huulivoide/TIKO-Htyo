@@ -8,23 +8,21 @@
     <table cellpadding="0" cellspacing="0">
     <thead>
         <tr>
-            <th><?= $this->Paginator->sort('id') ?></th>
-            <th><?= $this->Paginator->sort('date') ?></th>
-            <th><?= $this->Paginator->sort('group_id') ?></th>
-            <th><?= $this->Paginator->sort('user_id') ?></th>
+            <th><?= $this->Paginator->sort('Päivämäärä') ?></th>
+            <th><?= $this->Paginator->sort('Ryhmä') ?></th>
+            <th><?= $this->Paginator->sort('Oppilas') ?></th>
             <th class="actions"><?= __('Toiminnot') ?></th>
         </tr>
     </thead>
     <tbody>
     <?php foreach ($meetings as $meeting): ?>
         <tr>
-            <td><?= $this->Number->format($meeting->id) ?></td>
             <td><?= h($meeting->date) ?></td>
             <td>
-                <?= $meeting->has('group') ? $this->Html->link($meeting->group->id, ['controller' => 'Groups', 'action' => 'view', $meeting->group->id]) : '' ?>
+                <?= $meeting->has('group') ? $this->Html->link($meeting->group->name, ['controller' => 'Groups', 'action' => 'view', $meeting->group->id]) : '' ?>
             </td>
             <td>
-                <?= $meeting->has('user') ? $this->Html->link($meeting->user->id, ['controller' => 'Users', 'action' => 'view', $meeting->user->id]) : '' ?>
+                <?= $meeting->has('user') ? $this->Html->link($meeting->user->name, ['controller' => 'Users', 'action' => 'view', $meeting->user->id]) : '' ?>
             </td>
             <td class="actions">
                 <?= $this->Html->link(__('Tarkastele'), ['action' => 'view', $meeting->id]) ?>

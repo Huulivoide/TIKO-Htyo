@@ -24,7 +24,7 @@
                             'action' => 'view',
                             $meeting->students[0]->user_id]);
                     ?>
-                </>
+                </p>
             <?php endif; ?>
             <h6 class="subheader"><?= __('Vastaava tuutori') ?></h6>
             <p><?= $this->Html->link($meeting->tutor->name, ['controller' => 'Users', 'action' => 'viewTutor', $meeting->tutor->id]) ?></p>
