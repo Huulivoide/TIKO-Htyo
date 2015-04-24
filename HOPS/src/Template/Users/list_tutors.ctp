@@ -1,13 +1,8 @@
 <div class="actions columns large-2 medium-3">
     <h3><?= __('Actions') ?></h3>
     <ul class="side-nav">
-        <li><?= $this->Html->link(__('New User'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Access Levels'), ['controller' => 'AccessLevels', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Access Level'), ['controller' => 'AccessLevels', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Meetings'), ['controller' => 'Meetings', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Meeting'), ['controller' => 'Meetings', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Students'), ['controller' => 'Students', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Student'), ['controller' => 'Students', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('Kaikki käyttäjät'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('Kaikki oppilaat'), ['controller' => 'Students', 'action' => 'index']) ?> </li>
     </ul>
 </div>
 <div class="users index large-10 medium-9 columns">
@@ -15,10 +10,9 @@
     <thead>
         <tr>
             <th><?= $this->Paginator->sort('id') ?></th>
-            <th><?= $this->Paginator->sort('name') ?></th>
-            <th><?= $this->Paginator->sort('access_level_id') ?></th>
-            <th><?=__('Students') ?></th>
-            <th class="actions"><?= __('Actions') ?></th>
+            <th><?= $this->Paginator->sort('Nimi') ?></th>
+            <th><?= $this->Paginator->sort('Käyttäjätyyppi') ?></th>
+            <th><?=__('Tutoroitavia') ?></th>
         </tr>
     </thead>
     <tbody>
@@ -36,11 +30,6 @@
             </td>
             <td>
                 <?= $user->num_of_tutored ?>
-            </td>
-            <td class="actions">
-                <?= $this->Html->link(__('View'), ['action' => 'viewTutor', $user->id]) ?>
-                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id]) ?>
-                <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?>
             </td>
         </tr>
 
