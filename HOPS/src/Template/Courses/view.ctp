@@ -9,8 +9,6 @@
     <h2><?= h($course->name) ?></h2>
     <div class="row">
         <div class="large-2 columns numbers end">
-            <h6 class="subheader"><?= __('ID') ?></h6>
-            <p><?= $this->Number->format($course->id) ?></p>
             <h6 class="subheader"><?= __('Alkamisvuosi') ?></h6>
             <p><?= $this->Number->format($course->year) ?></p>
             <h6 class="subheader"><?= __('Opintopisteet') ?></h6>
@@ -67,18 +65,18 @@
     <?php if (!empty($course->students)): ?>
     <table cellpadding="0" cellspacing="0">
         <tr>
-            <th><?= __('ID') ?></th>
+            <th><?= __('Nimi') ?></th>
             <th><?= __('Aloitusvuosi') ?></th>
-            <th><?= __('Tutor ID') ?></th>
-            <th><?= __('Ryhmä ID') ?></th>
+            <th><?= __('Tutor') ?></th>
+            <th><?= __('Ryhmä') ?></th>
             <th class="actions"><?= __('Actions') ?></th>
         </tr>
         <?php foreach ($course->students as $students): ?>
         <tr>
-            <td><?= h($students->user_id) ?></td>
+            <td><?= h($students->user->name) ?></td>
             <td><?= h($students->entry_year) ?></td>
-            <td><?= h($students->turor_id) ?></td>
-            <td><?= h($students->group_id) ?></td>
+            <td><?= h($students->tutor->name) ?></td>
+            <td><?= h($students->group->name) ?></td>
 
             <td class="actions">
                 <?= $this->Html->link(__('Tarkastele'), ['controller' => 'Students', 'action' => 'view', $students->user_id]) ?>
