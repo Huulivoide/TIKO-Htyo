@@ -1,16 +1,8 @@
 <div class="actions columns large-2 medium-3">
     <h3><?= __('Actions') ?></h3>
     <ul class="side-nav">
-        <li><?= $this->Html->link(__('Edit Meeting'), ['action' => 'edit', $meeting->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Meeting'), ['action' => 'delete', $meeting->id], ['confirm' => __('Are you sure you want to delete # {0}?', $meeting->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Meetings'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Meeting'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Groups'), ['controller' => 'Groups', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Group'), ['controller' => 'Groups', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Students'), ['controller' => 'Students', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Student'), ['controller' => 'Students', 'action' => 'add']) ?> </li>
+        <li><?= $this->Form->postLink(__('Poista palaveri'), ['action' => 'delete', $meeting->id], ['confirm' => __('Are you sure you want to delete # {0}?', $meeting->id)]) ?> </li>
+        <li><?= $this->Html->link(__('Kaikki palaverit'), ['action' => 'index']) ?> </li>
     </ul>
 </div>
 <div class="meetings view large-10 columns">
@@ -35,7 +27,7 @@
                 </>
             <?php endif; ?>
             <h6 class="subheader"><?= __('Vastaava tuutori') ?></h6>
-            <p><?= $this->Html->link($meeting->tutor->name, ['controller' => 'Users', 'action' => 'view', $meeting->tutor->id]) ?></p>
+            <p><?= $this->Html->link($meeting->tutor->name, ['controller' => 'Users', 'action' => 'viewTutor', $meeting->tutor->id]) ?></p>
             <h6 class="subheader"><?= __('Päivämäärä') ?></h6>
             <p><?= h($meeting->date->i18nFormat([\IntlDateFormatter::SHORT, \IntlDateFormatter::NONE])) ?></p>
         </div>
