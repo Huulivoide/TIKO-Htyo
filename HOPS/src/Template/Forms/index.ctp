@@ -8,25 +8,23 @@
     <table cellpadding="0" cellspacing="0">
     <thead>
         <tr>
-            <th><?= $this->Paginator->sort('id') ?></th>
-            <th><?= $this->Paginator->sort('student_id') ?></th>
-            <th><?= $this->Paginator->sort('time') ?></th>
-            <th><?= $this->Paginator->sort('works') ?></th>
-            <th><?= $this->Paginator->sort('weekly_hours') ?></th>
+            <th><?= $this->Paginator->sort('Oppilas') ?></th>
+            <th><?= $this->Paginator->sort('Palautusaika') ?></th>
+            <th><?= $this->Paginator->sort('Tarkastaja') ?></th>
             <th class="actions"><?= __('Toiminnot') ?></th>
         </tr>
     </thead>
     <tbody>
     <?php foreach ($forms as $form): ?>
         <tr>
-            <td><?= $this->Number->format($form->id) ?></td>
             <td>
-                <?= $form->has('student') ? $this->Html->link($form->student->user_id, ['controller' => 'Students', 'action' => 'view', $form->student->user_id]) : '' ?>
+                <?= $form->has('student') ? $this->Html->link($form->student->user->name, ['controller' => 'Students', 'action' => 'view', $form->student->user_id]) : '' ?>
             </td>
             <td><?= h($form->time) ?></td>
-            <td><?= h($form->works) ?></td>
-            <td><?= $this->Number->format($form->weekly_hours) ?></td>
-            <td class="actions">
+            <td>
+                <?= $form->has('student') ? $this->Html->link($form->student->tutor->name, ['controller' => 'Users', 'action' => 'viewTutor', $form->student->tutor_id]) : '' ?>
+            </td>
+            <td>
                 <?= $this->Html->link(__('Tarkastele'), ['action' => 'view', $form->id]) ?>
             </td>
         </tr>

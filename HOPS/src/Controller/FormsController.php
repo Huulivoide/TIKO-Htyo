@@ -22,7 +22,7 @@ class FormsController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Students']
+            'contain' => ['Students' => ['Users', 'Tutors']]
         ];
         $this->set('forms', $this->paginate($this->Forms));
         $this->set('_serialize', ['forms']);
