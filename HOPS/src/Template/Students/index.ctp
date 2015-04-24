@@ -9,11 +9,9 @@
     <table cellpadding="0" cellspacing="0">
     <thead>
         <tr>
-            <th><?= $this->Paginator->sort('Id') ?></th>
             <th><?= $this->Paginator->sort('Nimi') ?></th>
             <th><?= $this->Paginator->sort('Aloitusvuosi') ?></th>
             <th><?= $this->Paginator->sort('Tutor') ?></th>
-            <th><?= $this->Paginator->sort('Tutkinto-ohjelma') ?></th>
             <th><?= $this->Paginator->sort('Ryhmä') ?></th>
         </tr>
     </thead>
@@ -21,20 +19,14 @@
     <?php foreach ($students as $student): ?>
         <tr>
             <td>
-                <?= $student->has('user') ? $this->Html->link($student->user->id, ['controller' => 'Students', 'action' => 'view', $student->user->id]) : '' ?>
-            </td>
-            <td>
                 <?= $student->has('user') ? $this->Html->link($student->user->name, ['controller' => 'Students', 'action' => 'view', $student->user->id]) : '' ?>
             </td>
             <td><?= $this->Number->format($student->entry_year) ?></td>
             <td>
-                <?= $student->has('tutor') ? $this->Html->link($student->tutor->id, ['controller' => 'Users', 'action' => 'viewTutor', $student->tutor->id]) : '' ?>
+                <?= $student->has('tutor') ? $this->Html->link($student->tutor->name, ['controller' => 'Users', 'action' => 'viewTutor', $student->tutor->id]) : '' ?>
             </td>
             <td>
-                <?= $student->program_structure->name ?>
-            </td>
-            <td>
-                <?= $student->has('group') ? $this->Html->link($student->group->id, ['controller' => 'Groups', 'action' => 'view', $student->group->id]) : '' ?>
+                <?= $student->has('group') ? $this->Html->link($student->group->name, ['controller' => 'Groups', 'action' => 'view', $student->group->id]) : '' ?>
             </td>
         </tr>
 

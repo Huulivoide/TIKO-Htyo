@@ -6,11 +6,9 @@
     </ul>
 </div>
 <div class="students view large-10 medium-9 columns">
-    <h2><?= h($student->user_id) ?></h2>
+    <h2><?= h($student->user->name) ?></h2>
     <div class="row">
         <div class="large-5 columns strings">
-            <h6 class="subheader"><?= __('Oppilaan nimi') ?></h6>
-            <p><?= $student->user->name ?></p>
             <h6 class="subheader"><?= __('Tutor') ?></h6>
             <p><?= $student->has('tutor') ? $this->Html->link($student->tutor->name, ['controller' => 'Users', 'action' => 'viewTutor', $student->tutor->id]) : '' ?></p>
             <h6 class="subheader"><?= __('Tutkinto-ohjelma') ?></h6>
