@@ -1,22 +1,8 @@
 <div class="actions columns large-2 medium-3">
     <h3><?= __('Actions') ?></h3>
     <ul class="side-nav">
-        <li><?= $this->Html->link(__('Edit Student'), ['action' => 'edit', $student->user_id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Student'), ['action' => 'delete', $student->user_id], ['confirm' => __('Are you sure you want to delete # {0}?', $student->user_id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Students'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Student'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Program Structures'), ['controller' => 'ProgramStructures', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Program Structure'), ['controller' => 'ProgramStructures', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Groups'), ['controller' => 'Groups', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Group'), ['controller' => 'Groups', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Forms'), ['controller' => 'Forms', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Form'), ['controller' => 'Forms', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Courses'), ['controller' => 'Courses', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Course'), ['controller' => 'Courses', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Meetings'), ['controller' => 'Meetings', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Meeting'), ['controller' => 'Meetings', 'action' => 'add']) ?> </li>
+        <li><?= $this->Form->postLink(__('Poista oppilas'), ['action' => 'delete', $student->user_id], ['confirm' => __('Are you sure you want to delete # {0}?', $student->user_id)]) ?> </li>
+        <li><?= $this->Html->link(__('Kaikki oppilaat'), ['action' => 'index']) ?> </li>
     </ul>
 </div>
 <div class="students view large-10 medium-9 columns">
@@ -24,13 +10,13 @@
     <div class="row">
         <div class="large-5 columns strings">
             <h6 class="subheader"><?= __('Oppilaan nimi') ?></h6>
-            <p><?= $student->has('user') ? $this->Html->link($student->user->first_name . ' ' . $student->user->other_name . ' ' . $student->user->last_name, ['controller' => 'Users', 'action' => 'view', $student->user->id]) : '' ?></p>
+            <p><?= $student->user->name ?></p>
             <h6 class="subheader"><?= __('Tutor') ?></h6>
-            <p><?= $student->has('tutor') ? $this->Html->link($student->tutor->name, ['controller' => 'Users', 'action' => 'view', $student->tutor->name]) : '' ?></p>
+            <p><?= $student->has('tutor') ? $this->Html->link($student->tutor->name, ['controller' => 'Users', 'action' => 'viewTutor', $student->tutor->id]) : '' ?></p>
             <h6 class="subheader"><?= __('Tutkinto-ohjelma') ?></h6>
-            <p><?= $student->has('program_structure') ? $this->Html->link($student->program_structure->name, ['controller' => 'ProgramStructures', 'action' => 'view', $student->program_structure->id]) : '' ?></p>
+            <p><?= $student->program_structure->name ?></p>
             <h6 class="subheader"><?= __('Ryhmä') ?></h6>
-            <p><?= $student->has('group') ? $this->Html->link($student->group->name, ['controller' => 'Groups', 'action' => 'view', $student->group->name]) : '' ?></p>
+            <p><?= $student->has('group') ? $this->Html->link($student->group->name, ['controller' => 'Groups', 'action' => 'view', $student->group->id]) : '' ?></p>
         </div>
         <div class="large-2 columns numbers end">
             <h6 class="subheader"><?= __('Aloitusvuosi') ?></h6>
