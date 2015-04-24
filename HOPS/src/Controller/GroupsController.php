@@ -78,7 +78,9 @@ class GroupsController extends AppController
             unset($this->request->data['students']);
 
             $group = $this->Groups->patchEntity($group, $this->request->data);
-            $group->identifier = 1;
+            // This is a really dirty and quick hack and will blow up things if 2 groups
+            // of same subject and year are created at the same time.
+            $group->identifier = $this->Groups->find('all', ['conditions' => ['year' => $group->year]])->count();
             $group->students = $students;
 
 
