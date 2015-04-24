@@ -1,11 +1,7 @@
 <div class="actions columns large-2 medium-3">
     <h3><?= __('Actions') ?></h3>
     <ul class="side-nav">
-        <li><?= $this->Html->link(__('New Form'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Students'), ['controller' => 'Students', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Student'), ['controller' => 'Students', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Courses Students'), ['controller' => 'CoursesStudents', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Courses Student'), ['controller' => 'CoursesStudents', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('Uusi lomake'), ['action' => 'add']) ?></li>
     </ul>
 </div>
 <div class="forms index large-10 medium-9 columns">
@@ -17,7 +13,7 @@
             <th><?= $this->Paginator->sort('time') ?></th>
             <th><?= $this->Paginator->sort('works') ?></th>
             <th><?= $this->Paginator->sort('weekly_hours') ?></th>
-            <th class="actions"><?= __('Actions') ?></th>
+            <th class="actions"><?= __('Toiminnot') ?></th>
         </tr>
     </thead>
     <tbody>
@@ -31,9 +27,7 @@
             <td><?= h($form->works) ?></td>
             <td><?= $this->Number->format($form->weekly_hours) ?></td>
             <td class="actions">
-                <?= $this->Html->link(__('View'), ['action' => 'view', $form->id]) ?>
-                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $form->id]) ?>
-                <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $form->id], ['confirm' => __('Are you sure you want to delete # {0}?', $form->id)]) ?>
+                <?= $this->Html->link(__('Tarkastele'), ['action' => 'view', $form->id]) ?>
             </td>
         </tr>
 
