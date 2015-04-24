@@ -59,32 +59,3 @@
     <?php endif; ?>
     </div>
 </div>
-<div class="related row">
-    <div class="column large-12">
-    <h4 class="subheader"><?= __('Liittyvät opiskelijat') ?></h4>
-    <?php if (!empty($course->students)): ?>
-    <table cellpadding="0" cellspacing="0">
-        <tr>
-            <th><?= __('Nimi') ?></th>
-            <th><?= __('Aloitusvuosi') ?></th>
-            <th><?= __('Tutor') ?></th>
-            <th><?= __('Ryhmä') ?></th>
-            <th class="actions"><?= __('Actions') ?></th>
-        </tr>
-        <?php foreach ($course->students as $students): ?>
-        <tr>
-            <td><?= h($students->user->name) ?></td>
-            <td><?= h($students->entry_year) ?></td>
-            <td><?= h($students->tutor->name) ?></td>
-            <td><?= h($students->group->name) ?></td>
-
-            <td class="actions">
-                <?= $this->Html->link(__('Tarkastele'), ['controller' => 'Students', 'action' => 'view', $students->user_id]) ?>
-            </td>
-        </tr>
-
-        <?php endforeach; ?>
-    </table>
-    <?php endif; ?>
-    </div>
-</div>
