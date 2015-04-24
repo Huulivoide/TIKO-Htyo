@@ -11,18 +11,14 @@
     <table cellpadding="0" cellspacing="0">
     <thead>
         <tr>
-            <th><?= $this->Paginator->sort('id') ?></th>
-            <th><?= $this->Paginator->sort('tutor_id') ?></th>
+            <th><?= $this->Paginator->sort('Ryhmä') ?></th>
             <th class="actions"><?= __('Toiminnot') ?></th>
         </tr>
     </thead>
     <tbody>
     <?php foreach ($groups as $group): ?>
         <tr>
-            <td><?= $this->Number->format($group->id) ?></td>
-            <td>
-                <?= $group->has('tutor') ? $this->Html->link($group->tutor->id, ['controller' => 'Users', 'action' => 'viewTutor', $group->tutor->id]) : '' ?>
-            </td>
+            <td><?= $this->Html->link($group->name, ['action' => 'view', $group->id]) ?></td>
             <td class="actions">
                 <?= $this->Html->link(__('Tarkastele'), ['action' => 'view', $group->id]) ?>
             </td>

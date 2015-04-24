@@ -26,7 +26,7 @@
     </ul>
 </div>
 <div class="groups view large-10 medium-9 columns">
-    <h2><?= __('Tuutorointi ryhmän tiedot') ?></h2>
+    <h2><?= __('Tuutorointiryhmän tiedot') ?></h2>
 <!-- Group information -->
     <div class="row" style="margin-bottom: 1rem">
         <div class="large-8 columns strings">
