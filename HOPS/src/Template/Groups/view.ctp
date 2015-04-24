@@ -128,7 +128,7 @@
                                 {
                                     echo $this->Html->link($student->tutor->name, [
                                             'controller' => 'Users',
-                                            'action' => 'view',
+                                            'action' => 'viewTutor',
                                             $student->tutor_id]);
                                 }
                                 else
