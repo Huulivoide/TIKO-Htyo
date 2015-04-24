@@ -9,7 +9,6 @@
     <table cellpadding="0" cellspacing="0">
     <thead>
         <tr>
-            <th><?= $this->Paginator->sort('id') ?></th>
             <th><?= $this->Paginator->sort('Nimi') ?></th>
             <th><?= $this->Paginator->sort('Käyttäjätyyppi') ?></th>
             <th><?=__('Tutoroitavia') ?></th>
@@ -19,9 +18,6 @@
     <?php foreach ($users as $user): ?>
 
         <tr>
-            <td>
-                <?= $this->Number->format($user->id) ?>
-            </td>
             <td>
                 <?= $this->Html->link($user->name, ['action' => 'viewTutor', $user->id]) ?>
             </td>

@@ -9,7 +9,6 @@
     <table cellpadding="0" cellspacing="0">
     <thead>
         <tr>
-            <th><?= $this->Paginator->sort('id') ?></th>
             <th><?= $this->Paginator->sort('Nimi') ?></th>
             <th><?= $this->Paginator->sort('Käyttäjätyyppi') ?></th>
         </tr>
@@ -17,7 +16,6 @@
     <tbody>
     <?php foreach ($users as $user): ?>
         <tr>
-            <td><?= $this->Number->format($user->id) ?></td>
             <td>
                 <?php if ($user->access_level_id == 1): ?>
                     <?= $this->Html->link($user->name, ['controller' => 'Students', 'action' => 'view', $user->id]) ?>

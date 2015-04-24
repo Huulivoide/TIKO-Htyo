@@ -2,7 +2,7 @@
     <?= $this->Flash->render('auth') ?>
     <?= $this->Form->create() ?>
     <fieldset>
-        <legend><?= __('Syötä käyttäjä tunnuksesi ja salasanasi') ?></legend>
+        <legend><?= __('Syötä käyttäjätunnuksesi ja salasanasi') ?></legend>
         <?= $this->Form->input('login', ['label' => __('Käyttäjätunnus')]) ?>
         <?= $this->Form->input('password', ['label' => __('Salasana')]) ?>
     </fieldset>
