@@ -84,7 +84,7 @@ class GroupsController extends AppController
                 'conditions' => [
                     'year' => $group->year,
                     'program_structure_id' => $group->program_structure_id
-                ]])->count();
+                ]])->count() + 1;
             $group->students = $students;
 
 
