@@ -89,9 +89,9 @@ Uuden tapaamisen raportointi aloitetaan ryhmän tietosivulta.
 
 ![Ryhmätaapaamisen raportointisivu](img/newGroupMeeting/Lisäys-sivu.png)
 
-1. Anna päivämäärä, jolloin taoaaminen pidettiin
+1. Anna päivämäärä, jolloin tapaaminen pidettiin
 2. Kerro mitä asioita palaverissa käsiteltiin
-3. Jos joku ryhmäläinen ei ollut paikkalla tapaamisessa niin poista merkkintä hänen
+3. Jos joku ryhmäläinen ei ollut paikkalla tapaamisessa, niin poista merkkintä hänen
    kohdaltansa.
 4. Jos oppilas on ilmoittanut poissaololleen syyn, niin kirjoita se ilmestyneeseen kenttään.
 5. Pana __Raportoi__ painiketta tallentaaksesi tapaamisen järjestelmään.
