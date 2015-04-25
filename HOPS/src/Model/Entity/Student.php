@@ -101,4 +101,26 @@ class Student extends Entity
 
         return $currentYear - $this->entry_year + 1;
     }
+
+    public function _getPoints()
+    {
+        $points = [__('Yhteensä') => 0];
+
+        foreach ($this->courses as $course)
+        {
+            if (isset($course->_joinData->finishing_date))
+            {
+                if (isset($points[$course->_joinData->finished_semester]))
+                    $points[$course->_joinData->finished_semester] += $course->credits;
+                else
+                    $points[$course->_joinData->finished_semester] = $course->credits;
+            }
+
+            $points[__('Yhteensä')] += $course->credits;
+        }
+
+        ksort($points);
+
+        return $points;
+    }
 }

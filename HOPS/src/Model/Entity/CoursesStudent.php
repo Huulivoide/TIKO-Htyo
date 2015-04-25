@@ -41,9 +41,9 @@ class CoursesStudent extends Entity
         if ($this->planned_finishing_date->eq(Time::createFromTimestampUTC(0)))
             return __('Ei ole ollut osa HOPS:ia');
         else if ($autumnSemesterEndDate->lt($this->planned_finishing_date))
-            return $year . __('(syksy)');
+            return $year . ' ' . __('(syksy)');
         else
-            return $year . __('(kevät)');
+            return $year . ' ' . __('(kevät)');
     }
 
     public function _getFinishedSemester()
