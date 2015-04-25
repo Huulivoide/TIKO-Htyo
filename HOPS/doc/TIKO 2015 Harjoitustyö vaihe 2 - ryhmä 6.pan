@@ -239,3 +239,8 @@ Työ opetti tietokantaohjelmointia, ja oli siksi hyvä kurssin lopputyöksi.
  wd98645         | WaltDavis          | Opiskelija | 020543965    | Davis.Walt.G@student.uta.fi          | Walt       | George      | Davis
  wh56705         | WillHeggie         | Opiskelija | 0452349584   | Heggie.Will.x@student.uta.fi         | Will       |             | Heggie
  wm98647         | WillieMiller       | Opiskelija | 0409653458   | Miller.Willie.J@student.uta.fi       | Willie     | James       | Miller
+ tuutori6        | AskoKoivu          | Tuutori    | 0418481142   | Koivu.Asko.X@staff.uta.fi            | Asko       |             | Koivu
+ mp95438         | MadelinePerry      | Tuutori    | 040564396    | Perry.Madeline.M@uta.fi              | Madeline   | Maria       | Perry
+ tktope12        | MinnaPostinen      | Tuutori    | 0407486142   | Postinen.Minna.A@staff.uta.fi        | Minna      | Alviira     | Postinen
+ tktope3         | PekkaPuolakka      | Tuutori    | 0557654912   | Puolakka.Pekka.P@staff.uta.fi        | Pekka      | Pouta       | Puolakka
+ supremeoverlord | AnttiKoivunen      | Ylituutori | 020 612 000  | Koivunen.Antti.I@staff.uta.fi        | Antti      | Ilmari      | Koivunen
