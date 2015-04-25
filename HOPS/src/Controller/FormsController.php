@@ -184,12 +184,12 @@ class FormsController extends AppController
 
             if ($this->Forms->save($form))
             {
-                $this->Flash->success('The form has been saved.');
-                return $this->redirect(['action' => 'index']);
+                $this->Flash->success(__('HOPS lomake on tallennettu'));
+                return $this->redirect(['controller' => 'Students', 'action' => 'view', $student->user_id]);
             }
             else
             {
-                $this->Flash->error('The form could not be saved. Please, try again.');
+                $this->Flash->error('HOPS lomakkeen tallennus epäonnistui.');
             }
         }
 
