@@ -176,7 +176,7 @@ class UsersController extends AppController
 
     public function isAuthorized($user)
     {
-        $allowed = [];
+        $allowed = ['logout'];
 
         if ($user['access_level_id'] >= 2)
         {
