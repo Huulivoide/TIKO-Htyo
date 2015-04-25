@@ -1,8 +1,9 @@
 <div class="actions columns large-2 medium-3">
-    <h3><?= __('Actions') ?></h3>
+    <h3><?= __('Toiminnot') ?></h3>
     <ul class="side-nav">
-        <li><?= $this->Html->link(__('Kaikki käyttäjät'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('Lisää tutor'), ['controller' => 'Users', 'action' => 'addTutor']) ?> </li>      
         <li><?= $this->Html->link(__('Kaikki oppilaat'), ['controller' => 'Students', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('Kaikki käyttäjät'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
     </ul>
 </div>
 <div class="users index large-10 medium-9 columns">

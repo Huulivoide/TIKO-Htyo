@@ -1,8 +1,15 @@
 <div class="actions columns large-2 medium-3">
-    <h3><?= __('Actions') ?></h3>
+    <h3><?= __('Toiminnot') ?></h3>
     <ul class="side-nav">
-        <li><?= $this->Form->postLink(__('Poista oppilas'), ['action' => 'delete', $student->user_id], ['confirm' => __('Are you sure you want to delete # {0}?', $student->user_id)]) ?> </li>
-        <li><?= $this->Html->link(__('Kaikki oppilaat'), ['action' => 'index']) ?> </li>
+        <?php if ($loggedUser['access_level_id'] == 1): ?>
+            <h6>Lomakkeet</h6>
+            <li><?= $this->Html->link(__('Lisää lomake'), ['controller' => 'Forms', 'action' => 'add']) ?> </li>
+            <h6>Tiedot</h6>
+            <li><?= $this->Html->link(__('Omat tietoni'), ['controller' => 'Students', 'action' => 'view', $student->user->id]) ?> </li>
+
+        <?php else: ?>
+            <li><?= $this->Html->link(__('Raportoi palaveri'), ['controller' => 'Meetings', 'action' => 'newPrivateMeeting']) ?> </li>
+        <?php endif; ?>
     </ul>
 </div>
 <div class="students view large-10 medium-9 columns">

@@ -1,9 +1,27 @@
 <div class="actions columns large-2 medium-3">
-    <h3><?= __('Actions') ?></h3>
+    <h3><?= __('Toiminnot') ?></h3>
     <ul class="side-nav">
-        <li><?= $this->Form->postLink(__('Poista tutor'), ['action' => 'delete', $tutor->id], ['confirm' => __('Are you sure you want to delete # {0}?', $tutor->id)]) ?> </li>
-        <li><?= $this->Html->link(__('Kaikki käyttäjät'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('Kaikki oppilaat'), ['controller' => 'Students', 'action' => 'index']) ?> </li>
+        <?php if ($loggedUser['access_level_id'] == 2): ?>
+            <h6>Tiedot</h6>
+            <li><?= $this->Html->link(__('Omat tietoni'), ['controller' => 'Users', 'action' => 'viewTutor', $user->id]) ?> </li>
+            <h6>Tutorointi</h6>
+            <li><?= $this->Html->link(__('Ryhmät'), ['controller' => 'Groups', 'action' => 'index']) ?> </li>
+            <li><?= $this->Html->link(__('Tapaamiset'), ['controller' => 'Meetings', 'action' => 'index']) ?> </li>
+            <h6>Kurssit</h6>
+            <li><?= $this->Html->link(__('Lisää kurssi'), ['controller' => 'Courses', 'action' => 'add']) ?> </li>
+            
+            
+        <?php elseif ($loggedUser['access_level_id'] == 3): ?>
+            <h6>Tiedot</h6>
+            <li><?= $this->Html->link(__('Omat tietoni'), ['controller' => 'Users', 'action' => 'viewTutor', $tutor->id]) ?> </li>
+            <h6>Tutorointi</h6>
+            <li><?= $this->Html->link(__('Tutorit'), ['controller' => 'Users', 'action' => 'listTutors']) ?> </li>
+            <li><?= $this->Html->link(__('Oppilaat'), ['controller' => 'Students', 'action' => 'index']) ?> </li>
+            <li><?= $this->Html->link(__('Ryhmät'), ['controller' => 'Groups', 'action' => 'index']) ?> </li>
+            <li><?= $this->Html->link(__('Tapaamiset'), ['controller' => 'Meetings', 'action' => 'index']) ?> </li>
+            <h6>Kurssit</h6>
+            <li><?= $this->Html->link(__('Lisää kurssi'), ['controller' => 'Courses', 'action' => 'add']) ?> </li>
+       <?php endif; ?>
     </ul>
 </div>
 <div class="users view large-10 medium-9 columns">
