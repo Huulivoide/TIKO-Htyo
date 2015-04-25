@@ -3,6 +3,22 @@
   Sami Voutilanen <Voutilainen.Sami.J@student.uta.fi>
 
 
+# Koodi ja tietokanta
+
+Järjestelmä löytyy toimintavalmiudesta osoitteesta:
+[http://hops.huulivoide.dy.fi/users/login](http://hops.huulivoide.dy.fi/users/login)
+
+Ohjelma koodin voi ladata osoitteesta:
+[https://github.com/Huulivoide/TIKO-Htyo/archive/koodivalmis.zip](https://github.com/Huulivoide/TIKO-Htyo/archive/koodivalmis.zip)
+tai
+[https://github.com/Huulivoide/TIKO-Htyo/archive/koodivalmis.tar.gz](https://github.com/Huulivoide/TIKO-Htyo/archive/koodivalmis.tar.gz)
+
+Koodi voi myös selata netissä osoitteessa:
+[https://github.com/Huulivoide/TIKO-Htyo](https://github.com/Huulivoide/TIKO-Htyo)
+
+Tietokannan yhteystiedot löytyvät palautuspaketin tiedostosta
+*TIKO-HOPS-Ryhmä6-tietokanta.txt*
+
 
 # Ohjelman ominaisuudet
 
