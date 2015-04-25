@@ -177,7 +177,11 @@ Ylitutor voi aina palata alkunäkymään oikean klikkaamalla nimeään oikeasta 
 
 # Jäsenten välinen työnjako
 
-Jotain tuli tehtyä.
+Työssä ei ollut tiettyä jakoa jäsenien kesken. Statistiikkaa voi katsoa projektin Github-sivulta. Lukujen tulkinnassa
+kannattaa ehkä ottaa huomioon, että tiedostot on luotu frameworkilla automaattisesti vain toisen osallistujan
+toimesta.
+
+https://github.com/Huulivoide/TIKO-Htyo/commits/master
 
 
 # Muutokset 1. vaiheeseen
@@ -187,4 +191,51 @@ Jotain pienii.
 
 # Oma arvio työstä
 
-Aika vaikee.
+Työ opetti tietokantaohjelmointia, ja oli siksi hyvä kurssin lopputyöksi.
+
+
+# Aineistoa
+
+     tunnus      |      salasana      |    rooli   |      puh     |           sähköposti                 |   etunimi  |   lisänimi  |   sukunimi  
+----------------:|:------------------:|:----------:|:------------:|:------------------------------------:|:----------:|:-----------:|:-----------
+ as98654         | AdhemardaSilva     | Opiskelija | 050654849    | daSilva.Adhemar.R@student.uta.fi     | Adhemar    | Rodrik      | daSilva
+ am98583         | AlexMcLeish        | Opiskelija | 0409548234   | McLeish.Alex.D@student.uta.fi        | Alex       | Dick        | McLeish
+ kk12349         | AnnaJokela         | Opiskelija | 041756865855 | Jokela.Anna.Alviira@student.uta.fi   | Anna       | Alviira     | Jokela
+ ab98765         | AnnaBerg           | Opiskelija | 04175686589  | Berg.Anna.I@student.uta.fi           | Anna       | Ilona       | Berg
+ ab98766         | AnteroBerg         | Opiskelija | 04175686590  | Berg.Antero.I@student.uta.fi         | Antero     | Ilmari      | Berg
+ be98767         | BirgittaErkkilä    | Opiskelija | 04175686591  | Erkkilä.Birgitta.x@student.uta.fi    | Birgitta   |             | Erkkilä
+ br99534         | BobRichardson      | Opiskelija | 0205438654   | Richardson.Bob.R@student.uta.fi      | Bob        | Rob         | Richardson
+ gd98435         | DordoniGiuseppe    | Opiskelija | 0405349869   | Giuseppe.Dordoni.M@student.uta.fi    | Dordoni    | Mario       | Giuseppe
+ dr45932         | DougRougvie        | Opiskelija | 0509458324   | Rougvie.Doug.D@student.uta.fi        | Doug       | Didier      | Rougvie
+ ef98768         | EetuFarback        | Opiskelija | 04175686592  | Farback.Eetu.A@student.uta.fi        | Eetu       | Antero      | Farback
+ kk12348         | EskoJokela         | Opiskelija | 041756865854 | jokela.esko.ilmari@student.uta.fi    | Esko       |             | Jokela
+ fg98768         | FabianaGomes       | Opiskelija | 04175686593  | Gomes.Fabiana.x@student.uta.fi       | Fabiana    |             | Gomes
+ gh98770         | GarryHarju         | Opiskelija | 04175686594  | Harju.Garry.A@student.uta.fi         | Garry      | Aku         | Harju
+ hp99438         | HeinoPulli         | Opiskelija | 0205439865   | Pulli.Heino.M@student.uta.fi         | Heino      | Matti       | Pulli
+ hi98771         | HenriIlola         | Opiskelija | 04175686595  | Ilola.Henri.E@student.uta.fi         | Henri      | Eerik       | Ilola
+ ij98772         | IlonaJoki          | Opiskelija | 04175686596  | Joki.Ilona.A@student.uta.fi          | Ilona      | Anastasia   | Joki
+ jw97456         | JarmoWasama        | Opiskelija | 020543986    | Wasama.Jarmo.S@student.uta.fi        | Jarmo      | Seppo       | Wasama
+ jl34594         | JimLeighton        | Opiskelija | 0456949340   | Leighton.Jim.J@student.uta.fi        | Jim        | Joseph      | Leighton
+ jm98345         | JohnMikaelsson     | Opiskelija | 0503453459   | Mikaelsson.John.E@student.uta.fi     | John       | Erik        | Mikaelsson
+ kj98771         | JoniKuikka         | Opiskelija | 04175686597  | Kuikka.Joni.J@student.uta.fi         | Joni       | Jeremias    | Kuikka
+ jm43593         | JosephMarrese      | Opiskelija | 0505469234   | Marrese.Joseph.A@student.uta.fi      | Joseph     | Aaron       | Marrese
+ jl98543         | JuhaniLaitinen     | Opiskelija | 0205438934   | Laitinen.Juhani.L@student.uta.fi     | Juhani     | Lalli       | Laitinen
+ jk12345         | KaisaJoki          | Opiskelija | 04175686586  | Joki.Kaisa.M@student.uta.fi          | Kaisa      | Maria       | Joki
+ kl98773         | KatriLaurala       | Opiskelija | 04175686599  | Laurala.Katri.E@student.uta.fi       | Katri      | Eveliina    | Laurala
+ kh43523         | KristiinaHanhirova | Opiskelija | 0504352349   | Hanhirova.Kristiina.x@student.uta.fi | Kristiina  |             | Hanhirova
+ lm98000         | LassiMäkelä        | Opiskelija | 0417568600   | Mäkelä.Lassi.x@student.uta.fi        | Lassi      |             | Mäkelä
+ ll12349         | LoordiLalli        | Opiskelija | 04175686588  | Lalli.Loordi.x@student.uta.fi        | Loordi     |             | Lalli
+ ma131313        | MarttiAhtisaari    | Opiskelija | 0456789034   | Ahtisaari.Martti.O@student.uta.fi    | Martti     | Oiva Kalevi | Ahtisaari
+ mk98654         | MattiKeinonen      | Opiskelija | 0205439658   | Keinonen.Matti.I@student.uta.fi      | Matti      | Ilpo        | Keinonen
+ mk121212        | MaunoKoivisto      | Opiskelija | 0506996709   | Koivisto.Mauno.H@student.uta.fi      | Mauno      | Henrik      | Koivisto
+ nc93453         | NickCohen          | Opiskelija | 0409568734   | Cohen.Nick.x@student.uta.fi          | Nick       |             | Cohen
+ jp99534         | PeltonenJorma      | Opiskelija | 0204325489   | Jorma.Peltonen.J@student.uta.fi      | Peltonen   | Juhani      | Jorma
+ sa23482         | ŠotaArveladze      | Opiskelija | 0459344383   | Arveladze.Sota.x@student.uta.fi      | Šota       |             | Arveladze
+ tj82543         | TarjaJokela        | Opiskelija | 0407466142   | Jokela.Tarja.A@student.uta.fi        | Tarja      | Aino        | Jokela
+ th141414        | TarjaHalonen       | Opiskelija | 0406789012   | Halonen.Kaarina.T@student.uta.fi     | Tarja      | Kaarina     | Halonen
+ th98345         | ToivoHyytiäinen    | Opiskelija | 0502349234   | Hyytiainen.Toivo.H@student.uta.fi    | Toivo      | Henrik      | Hyytiäinen
+ uk111111        | UrhoKekkonen       | Opiskelija | 3821191      | Kekkonen.Urho.K@student.uta.fi       | Urho       | Kalevi      | Kekkonen
+ uy98543         | UrpoYlönen         | Opiskelija | 0209543489   | Ylonen.Urpo.V@student.uta.fi         | Urpo       | Veli        | Ylönen
+ wd98645         | WaltDavis          | Opiskelija | 020543965    | Davis.Walt.G@student.uta.fi          | Walt       | George      | Davis
+ wh56705         | WillHeggie         | Opiskelija | 0452349584   | Heggie.Will.x@student.uta.fi         | Will       |             | Heggie
+ wm98647         | WillieMiller       | Opiskelija | 0409653458   | Miller.Willie.J@student.uta.fi       | Willie     | James       | Miller
