@@ -2,8 +2,8 @@
     <h3><?= __('Toiminnot') ?></h3>
     <ul class="side-nav">
         <?php if ($loggedUser['access_level_id'] == 1): ?>
-            <h6>Lomakkeet</h6>
-            <li><?= $this->Html->link(__('Lisää lomake'), ['controller' => 'Forms', 'action' => 'add']) ?> </li>
+            <h6>HOPS</h6>
+            <li><?= $this->Html->link(__('Lisää HOPS'), ['controller' => 'Forms', 'action' => 'add']) ?> </li>
             <h6>Tiedot</h6>
             <li><?= $this->Html->link(__('Omat tietoni'), ['controller' => 'Students', 'action' => 'view', $student->user->id]) ?> </li>
 
