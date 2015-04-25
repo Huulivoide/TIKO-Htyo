@@ -21,7 +21,7 @@
         ?>
         <?= $this->Form->input('report', ['label' => __('Mitä asioita palaverissa käsiteltiin?')]); ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->button(__('Raportoi')) ?>
     <?= $this->Form->end() ?>
 </div>
 <div class="columns">
