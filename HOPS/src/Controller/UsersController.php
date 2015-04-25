@@ -72,6 +72,7 @@ class UsersController extends AppController
         if ($this->request->is('post'))
         {
             $user = $this->Users->patchEntity($user, $this->request->data);
+            $user->access_level_id = 2;
             if ($this->Users->save($user))
             {
                 $this->Flash->success('Tuutorikäyttäjä on tallennettu järjestelmään');
