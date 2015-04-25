@@ -148,6 +148,7 @@ $endfor$
 \usepackage{adjustbox}
 \usepackage{caption}
 \usepackage{pdflscape}
+\usepackage{longtable}
 
 \newcommand{\insertGeneral}[4]
 {
