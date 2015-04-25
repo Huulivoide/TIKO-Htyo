@@ -8,7 +8,7 @@
             <li><?= $this->Html->link(__('Omat tietoni'), ['controller' => 'Students', 'action' => 'view', $student->user->id]) ?> </li>
 
         <?php else: ?>
-            <li><?= $this->Html->link(__('Raportoi palaveri'), ['controller' => 'Meetings', 'action' => 'newPrivateMeeting']) ?> </li>
+            <li><?= $this->Html->link(__('Raportoi palaveri'), ['controller' => 'Meetings', 'action' => 'newPrivateMeeting', $student->user_id]) ?> </li>
         <?php endif; ?>
     </ul>
 </div>
