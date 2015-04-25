@@ -179,11 +179,19 @@ class GroupsController extends AppController
         if ($this->Auth->user('access_level_id') >= 2)
         {
             $allowed[] = 'index';
-            $allowed[] = 'view';
-            $allowed[] = 'sendmail';
+
+            $id = $this->request->params['pass'][0];
+            $group = $this->Groups->get($id);
+
+            if ($group->tutor_id === $user['id']) {
+                $allowed[] = 'view';
+                $allowed[] = 'sendmail';
+            }
         }
         if ($this->Auth->user('access_level_id') >= 3)
         {
+            $allowed[] = 'view';
+            $allowed[] = 'sendmail';
             $allowed[] = 'index';
             $allowed[] = 'add';
         }
