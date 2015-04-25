@@ -185,6 +185,7 @@ class UsersController extends AppController
         {
             $allowed[] = 'index';
             $allowed[] = 'addTutor';
+            $allowed[] = 'listTutors';
         }
 
         if (in_array($this->request->param('action'), $allowed))
