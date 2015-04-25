@@ -37,7 +37,7 @@ heidän tietojaan.
 |                 Ominaisuus                    | Toteutettu | Toteutettu laajasti |
 |:----------------------------------------------|:----------:|:-------------------:|
 | Raportti __R1__                               |    __X__   |                     |
-| Raportti __R2__                               |            |                     |
+| Raportti __R2__                               |    __X__   |                     |
 | Raportti __R3__                               |    __X__   |                     |
 | Raportti __R4__                               |            |                     |
 | Raportti __R5__                               |    __X__   |                     |
