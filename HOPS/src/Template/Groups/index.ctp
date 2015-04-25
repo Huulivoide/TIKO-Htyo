@@ -18,10 +18,12 @@
     <tbody>
     <?php foreach ($groups as $group): ?>
         <tr>
+            <?php if ($loggedUser['id'] == $group->tutor_id || $loggedUser['access_level_id'] == 3): ?>
             <td><?= $this->Html->link($group->name, ['action' => 'view', $group->id]) ?></td>
             <td class="actions">
                 <?= $this->Html->link(__('Tarkastele'), ['action' => 'view', $group->id]) ?>
             </td>
+            <?php endif; ?>
         </tr>
 
     <?php endforeach; ?>
