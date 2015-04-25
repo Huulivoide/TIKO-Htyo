@@ -181,12 +181,15 @@ class UsersController extends AppController
     {
         $allowed = ['logout'];
 
-        if ($user['access_level_id'] >= 2)
+        if ($user['access_level_id'] == 2)
         {
-            $allowed[] = 'viewTutor';
+            $id = $this->request->params['pass'][0];
+            if ($id == $user['id'])
+                $allowed[] = 'viewTutor';
         }
         if ($user['access_level_id'] >= 3)
         {
+            $allowed[] = 'viewTutor';
             $allowed[] = 'index';
             $allowed[] = 'addTutor';
             $allowed[] = 'listTutors';

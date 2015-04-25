@@ -138,9 +138,15 @@ class StudentsController extends AppController
     {
         $allowed = ['add'];
 
-        if ($this->Auth->user('access_level_id') >= 1)
+        if ($this->Auth->user('access_level_id') == 1)
         {
-            $allowed[] = 'view';
+            $id = $this->request->params['pass'][0];
+            if ($id == $user['id'])
+                $allowed[] = 'view';        
+        }
+        if ($this->Auth->user('access_level_id') == 2) 
+        {
+            $allowed[] = 'view'; 
         }
         if ($this->Auth->user('access_level_id') >= 3)
         {
