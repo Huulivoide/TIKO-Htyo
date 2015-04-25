@@ -175,6 +175,36 @@ tutorit ja oppilaat. Ylitutor voi lisätä tutoreita Tutorit-linkin kautta, vali
 Ylitutor voi aina palata alkunäkymään oikean klikkaamalla nimeään oikeasta yläreunasta.
 
 
+### Uuden tuutorin lissäminen järjestelmään
+
+![Ylituutorin kotisivu](img/addTutor/Omat-tiedot.png)
+
+Aloitetaan Ylituutorin kotisivulta. Vasemmanlaidan toiminto-palkista klikataan
+linkkiä __Tuutorit__.
+
+\clearpage
+
+
+![Tuutori lista sivu](img/addTutor/Tuutori.png)
+
+Tällä sivulla on listrattuna kaikki opettajatuutorit, uuden tuutorin lisäämiksi
+klikkaa vasemmanlaidan toimintopalkin __Lisää tuutori__ linkkiä.
+
+\clearpage
+
+![Tuutorin lisäys sivu](img/addTutor/Lomake.png)
+
+1. Anna tuutorin käyttäjätunnus.
+2. Syötä tuutorille salasana.
+3. Syötä tuutorin nimi tiedeot
+   * Sukunimi
+   * Etunimi
+   * Mahdollinen toinen etunimi
+4. Syötä tuutorin puhelinnumero
+5. Anna tuutorin sähköpostiosoite
+6. Lopuksi klikkaa __Lisää__ painiketta tallentaaksesi tuutorin jörjestelmään.
+
+
 # Jäsenten välinen työnjako
 
 Työssä ei ollut tiettyä jakoa jäsenien kesken. Statistiikkaa voi katsoa projektin Github-sivulta. Lukujen tulkinnassa
