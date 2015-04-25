@@ -11,7 +11,7 @@
             <li><?= $this->Html->link(__('Lisää kurssi'), ['controller' => 'Courses', 'action' => 'add']) ?> </li>
             
             
-        <?php elseif ($loggedUser['access_level_id'] == 3): ?>
+        <?php elseif ($loggedUser['access_level_id'] == 3  && $loggedUser['id'] == $tutor->id): ?>
             <h6>Tiedot</h6>
             <li><?= $this->Html->link(__('Omat tietoni'), ['controller' => 'Users', 'action' => 'viewTutor', $tutor->id]) ?> </li>
             <h6>Tutorointi</h6>
@@ -21,6 +21,8 @@
             <li><?= $this->Html->link(__('Tapaamiset'), ['controller' => 'Meetings', 'action' => 'index']) ?> </li>
             <h6>Kurssit</h6>
             <li><?= $this->Html->link(__('Lisää kurssi'), ['controller' => 'Courses', 'action' => 'add']) ?> </li>
+       <?php else: ?>
+            <li><?= $this->Html->link(__('Kaikki tutorit'), ['controller' => 'Users', 'action' => 'listTutors']) ?> </li>
        <?php endif; ?>
     </ul>
 </div>
