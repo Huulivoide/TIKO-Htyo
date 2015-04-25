@@ -67,6 +67,51 @@ näkee vain oman profiilinsa. Opiskelija voi aina palata alkunäkymään oikean 
 nimeään oikeasta yläreunasta.
 
 
+### Uuden HOPS-lomakkeen täyttäminen
+
+![Opiskelijan kotisivu](img/addHOPS/Omat-tiedot.png)
+
+Uuden HOPS-lomakkeen täyttäminen aloitetaan opiskieljan kotisilta,
+klikkaamalla vasemmanlaidan toimintopalkin __Lisää HOPS__ linkkiä.
+
+\clearpage
+
+![HOPS-lomake](img/addHOPS/HOPS-lomake.png)
+
+\clearpage
+
+1. Ensimmäisenä lomakkeella on näkyvissä lista kursseista, jotka olet aiemmin ilmoittanut
+   aikovasi suorittaa. Merkitse kurssi suoritetuksi klikkaamalla kurssin nimen oikealla puolella
+   olevaa tekstikenttää, jolloin sinulle aukeaa kalenteri, josta voit valita suoritus päivän.
+   Kurssien suoritus ajankohtien ei tarvitse olla täysin tarkkoja, kunhan valittu päivämäärä osuu
+   kuitenkin oikean periodin kohdalle. Jos et ole suorittanut jotakin kurssi, niin jätä sen ajankohta
+   tyhjäksi.
+2. Toisena askeleena on listata sellaiset suorittamasi kurssit, joita et ollut aiemmassa HOPS:issasi
+   ilmoittanut aikovasi suorittaa. Lisää kurssi kenttiä klikkaamalla vihreää plussan näköistä
+   __Lisää kurssi__ painiketta. Lisää kenttiä vain sen verran mitä tarvitset, yksikään kenttä ei saa
+   jäädä tyhjäksi.
+3. Aloita kirjoittamaan vasemman puoleiseen kenttään kurssin tunnusta tai nimeä, jolloin järjestelmä
+   antaa listan ehdoksia kursseista. Kurssi tulee valita avautuvasta listasta, nimen kirjoittaminen
+   käsin ei tule toimimaan oikein, vaikka nimi olisi kirjoitettu juuri kuten listassa.
+4. Valitse suoritusajankohta kohdan *1.* tapaan.
+5. Listaa kurssit jotka aioit suorittaa tänä lukuvuonna. Klikkaamalla vihreää plussa symbolia
+   saat esiin uuden kentän, johon voit taas alkaa kirjoittamaan kurssin nimeä tai tunnusta.
+   Kurssi tulee jälleen valita listasta klikkaamalla. Toisinkin kohdassa *3-4.* niin ei nyt ole
+   tarpeellista antaa mitään tarkkaa ajankohtaa.
+6. Kerro aiotko työskennellä lukuvuoden aikana. Kun valitsen kohdan __Kyllä__, niin tulevat kohdat
+   *7.* ja *8.* näkyviin. Jos valitset kohdan __EI__ niin tulee näkyviin vain kohta *8.*
+7. Kerro kokonaislukuna kuinka monta tuntia keskimäärin aiot työskennellä viikossa tulevan vuoden aikana.
+8. Kerro lyhyesti miksi tai mikset aio työskennellä ja minkälaista työtä aiot mahdollisesti tehdä.
+9. Tähän kohtaan voit listata aihealueita, kursseja tai mitätahansa muita pääaineeseesi liittyviä
+   asioita jotka koet eritoten kiinnostaviksi.
+10. Kerro lyhyesti mitkä muut Tampereen yliopiston tarjoamat opinnot siinua kinnostavat tai
+    minkälaisia opintoja toivoisit tarjottavan.
+11. Tähän kohtaan voit listata opiskeluun liittyviä asioita jotka koit positiivisiksi ja hyvin
+    onnistuneiksi viimevuoden aikana.
+12. Lopuksi kerro vielä mitkä asiat eivät sujuneet odotustesi mukaisesti. Muista antaa myös
+    parannus ehdotuksia.
+13. Kun olet täyttänyt kaikki kohdat, niin klikkaa __Tallenna__ painiketta.
+
 \clearpage
 
 ## Tutor
