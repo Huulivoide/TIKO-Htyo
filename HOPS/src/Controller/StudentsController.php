@@ -142,11 +142,16 @@ class StudentsController extends AppController
         {
             $id = $this->request->params['pass'][0];
             if ($id == $user['id'])
-                $allowed[] = 'view';        
+                $allowed[] = 'view';
         }
-        if ($this->Auth->user('access_level_id') >= 2) 
+        if ($this->Auth->user('access_level_id') >= 2)
         {
-            $allowed[] = 'view'; 
+            $id = $this->request->params['pass'][0];
+            $student = $this->Students->get($id, [
+                'contain' => ['Tutors']
+            ]);
+            if ($student->tutor_id === $user['id'])
+                $allowed[] = 'view';
         }
         if ($this->Auth->user('access_level_id') >= 3)
         {
