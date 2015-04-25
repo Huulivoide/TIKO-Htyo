@@ -146,10 +146,13 @@ class UsersController extends AppController
             {
                 $user['name'] = $this->Users->get($user['id'])->name;
                 $this->Auth->setUser($user);
-                return $this->redirect($this->Auth->redirectUrl());
+                if ($user['access_level_id'] == 1)
+                    return $this->redirect(['controller' => 'Students', 'action' => 'view', $user[id]]);
+                else
+                    return $this->redirect(['action' => 'viewTutor', $user[id]]);
             }
 
-            $this->Flash->error(__('Käyttäjtunnus tai salasana oli väärin, yritä uudelleen.'));
+            $this->Flash->error(__('Käyttäjätunnus tai salasana oli väärin, yritä uudelleen.'));
         }
     }
 
