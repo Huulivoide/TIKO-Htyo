@@ -122,7 +122,7 @@ class CoursesController extends AppController
 
     public function isAuthorized($user)
     {
-        $allowed = [];
+        $allowed = ['search'];
 
         if ($this->Auth->user('access_level_id') >= 2)
         {
