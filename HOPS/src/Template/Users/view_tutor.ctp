@@ -3,17 +3,17 @@
     <ul class="side-nav">
         <?php if ($loggedUser['access_level_id'] == 2): ?>
             <h6>Tiedot</h6>
-            <li><?= $this->Html->link(__('Omat tietoni'), ['controller' => 'Users', 'action' => 'viewTutor', $user->id]) ?> </li>
+            <li><?= $this->Html->link(__('Omat tietoni'), ['controller' => 'Users', 'action' => 'viewTutor', $loggedUser['id']]) ?> </li>
             <h6>Tutorointi</h6>
             <li><?= $this->Html->link(__('Ryhmät'), ['controller' => 'Groups', 'action' => 'index']) ?> </li>
             <li><?= $this->Html->link(__('Tapaamiset'), ['controller' => 'Meetings', 'action' => 'index']) ?> </li>
             <h6>Kurssit</h6>
             <li><?= $this->Html->link(__('Lisää kurssi'), ['controller' => 'Courses', 'action' => 'add']) ?> </li>
-            
-            
+
+
         <?php elseif ($loggedUser['access_level_id'] == 3  && $loggedUser['id'] == $tutor->id): ?>
             <h6>Tiedot</h6>
-            <li><?= $this->Html->link(__('Omat tietoni'), ['controller' => 'Users', 'action' => 'viewTutor', $tutor->id]) ?> </li>
+            <li><?= $this->Html->link(__('Omat tietoni'), ['controller' => 'Users', 'action' => 'viewTutor', $loggedUser['id']]) ?> </li>
             <h6>Tutorointi</h6>
             <li><?= $this->Html->link(__('Tutorit'), ['controller' => 'Users', 'action' => 'listTutors']) ?> </li>
             <li><?= $this->Html->link(__('Oppilaat'), ['controller' => 'Students', 'action' => 'index']) ?> </li>
@@ -38,10 +38,10 @@
 
             <h6 class="subheader"><?= __('Sähköpostiosoite') ?></h6>
             <p><?= $this->Text->autoLinkEmails($tutor->email) ?></p>
-            
+
             <h6 class="subheader"><?= __('Tutoroitavia') ?></h6>
             <p><?= $tutor->num_of_tutored ?></p>
-            
+
         </div>
     </div>
 
@@ -92,7 +92,7 @@
                     <tr>
                         <td>
                             <?=
-                            $this->Html->link($student->user->id, [
+                            $this->Html->link($student->studentNumber, [
                                 'controller' => 'Students',
                                 'action' => 'view',
                                 $student->user->id
